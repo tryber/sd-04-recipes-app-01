@@ -1,7 +1,7 @@
 const firstLetterURL = 'https://www.themealdb.com/api/json/v1/1/search.php?f=';
 const nameURL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 const ingredientesURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
-const principalRecipesURL = 'https://www.themealdb.com/api/json/v1/1/filter.php?i=';
+const principalRecipesURL = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
 
 const getFood = (filter, food) => {
   let link = '';
@@ -17,4 +17,15 @@ const getFood = (filter, food) => {
     );
 };
 
-export default getFood;
+const categoriesURL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+
+const getCategoriesFood = () => {
+  return fetch(`${categoriesURL}`)
+    .then((response) =>
+      response
+        .json()
+        .then((json) => (response.ok ? Promise.resolve(json.meals) : Promise.reject(json))),
+    );
+}
+
+export default { getFood, getCategoriesFood };
