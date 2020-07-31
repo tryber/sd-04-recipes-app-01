@@ -4,7 +4,7 @@ const nameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 const ingredientesURL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 const principalRecipesURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-const getDrink = (filter, drink) => {
+export const getDrink = (filter, drink) => {
   let link = '';
   if (!filter) link = principalRecipesURL;
   if (filter === 'Ingrediente') link = `${ingredientesURL}${drink}`;
@@ -20,13 +20,11 @@ const getDrink = (filter, drink) => {
 
 const categoriesURL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
 
-const getCategoriesDrink = () => {
-  return fetch(`${categoriesURL}`)
+export const getCategoriesDrink = () => (
+  fetch(`${categoriesURL}`)
     .then((response) =>
       response
         .json()
         .then((json) => (response.ok ? Promise.resolve(json.drinks) : Promise.reject(json))),
-    );
-}
-
-export default { getDrink, getCategoriesDrink };
+    )
+);
