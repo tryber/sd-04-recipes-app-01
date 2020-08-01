@@ -1,4 +1,5 @@
-import getFood from '../../services/index';
+import { getFood, getCategoriesFood } from '../../services/food';
+import { getDrink, getCategoriesDrink } from '../../services/drink';
 // import getDrink from '../../services'
 
 export const CHANGE_INPUT = 'CHANGE_INPUT';
