@@ -26,6 +26,5 @@ function App() {
     </Switch>
   );
 }
-/* Cacique, pfv me ajuda */
 
 export default App;
