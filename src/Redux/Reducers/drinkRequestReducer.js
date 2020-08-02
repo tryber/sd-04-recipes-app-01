@@ -2,7 +2,7 @@ import { REQUESTING_DRINK, REQUEST_DRINK_SUCCESS, REQUEST_DRINK_ERROR } from '..
 
 const INITIAL_STATE = {
   isLoading: false,
-  drinks: {},
+  drinks: [],
   drinksError: '',
 };
 

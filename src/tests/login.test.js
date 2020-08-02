@@ -1,28 +1,22 @@
 import React from 'react';
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
 import { fireEvent } from '@testing-library/react';
 
-import renderWithRedux from './renderWithRedux';
+import renderWithReduxAndRouter from './renderWithReduxAndRouter';
 
 import App from '../App';
 
-// usar essa função para renderizar os componentes
-const renderWithRouter = (initialEntries = ['/']) => (
-  <Router history={createMemoryHistory({ initialEntries })}>
-    <App />
-  </Router>
-);
-
 describe('Login page', () => {
   test('render Login page', () => {
-    const { getByText } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByText } = renderWithReduxAndRouter(<App />);
     const Login = getByText('Login');
     expect(Login).toBeInTheDocument();
   });
 
   test('should have email input that works', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const email = getByTestId('email-input');
     expect(email).toBeInTheDocument();
     expect(email.type).toBe('email');
@@ -32,7 +26,10 @@ describe('Login page', () => {
   });
 
   test('should have password input that works', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const password = getByTestId('password-input');
     expect(password).toBeInTheDocument();
     expect(password.type).toBe('password');
@@ -42,7 +39,10 @@ describe('Login page', () => {
   });
 
   test('should have a disabled submit button', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const submitButton = getByTestId('login-submit-btn');
     expect(submitButton).toBeInTheDocument();
     expect(submitButton.textContent).toBe('Entrar');
@@ -50,7 +50,10 @@ describe('Login page', () => {
   });
 
   test('should not enable button when email is not valid', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
@@ -63,7 +66,10 @@ describe('Login page', () => {
   });
 
   test('should not enable button when the password has less than 6 characters', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
@@ -79,7 +85,10 @@ describe('Login page', () => {
   });
 
   test('should enable button when email and password are valid', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
@@ -92,7 +101,10 @@ describe('Login page', () => {
   });
 
   test('when the button is clicked the user email, mealsToken(1), cocktailsToken(1) should all be saved at the local storage', () => {
-    const { getByTestId } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
@@ -110,7 +122,10 @@ describe('Login page', () => {
   });
 
   test('when the button is clicked the App should redirect to /comidas', () => {
-    const { getByTestId, history } = renderWithRedux(renderWithRouter(), { initialState: {} });
+    const { getByTestId, history } = renderWithReduxAndRouter(<App />, {
+      initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+      initialEntries: ['/'],
+    });
     const email = getByTestId('email-input');
     const password = getByTestId('password-input');
 
@@ -120,9 +135,7 @@ describe('Login page', () => {
     const submitButton = getByTestId('login-submit-btn');
     expect(submitButton).toBeInTheDocument();
     expect(submitButton).not.toBeDisabled();
-
     fireEvent.click(submitButton);
-    // console.log(history);
-    // expect(history.path).toBe('/comidas');
+    expect(history.location.pathname).toBe('/comidas');
   });
 });

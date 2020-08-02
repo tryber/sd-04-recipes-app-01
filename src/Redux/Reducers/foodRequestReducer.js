@@ -2,7 +2,7 @@ import { REQUESTING_FOOD, REQUEST_FOOD_SUCCESS, REQUEST_FOOD_ERROR } from '../Ac
 
 const INITIAL_STATE = {
   isLoading: false,
-  foods: {},
+  foods: [],
   foodsError: '',
 };
 
