@@ -1,14 +1,16 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Comidas from './Pages/Comidas';
+import './App.css';
+import Meals from './Pages/Meals';
 import Login from './Pages/Login';
+import Drinks from './Pages/Drinks';
 
 function App() {
   return (
     <Switch>
       <Route exact path="/" component={Login} />
-      <Route exact path="/comidas" component={Comidas} />
-      <Route exact path="/bebidas" component={Login} />
+      <Route exact path="/comidas" component={Meals} />
+      <Route exact path="/bebidas" component={Drinks} />
       <Route exact path="/explorar" component={Login} />
       <Route exact path="/explorar/comidas" component={Login} />
       <Route exact path="/explorar/bebidas" component={Login} />
