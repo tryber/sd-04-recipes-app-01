@@ -9,7 +9,7 @@ const CardsFood = ({ meals }) => {
     for (let index = 0; index < 12; index += 1) {
       newArrFoods.push(meals[index]);
     }
-  } else newArrFoods = meals;
+  } else newArrFoods = [...meals];
 
   return (
     <div>
