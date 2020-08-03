@@ -1,13 +1,13 @@
 import React from 'react';
 import CardsFood from '../Components/CardsFood';
 
-const Comidas = () => {
+const Meals = () => {
   return (
     <div>
-      <h1>Comidas</h1>
+      <h1>Meals</h1>
       <CardsFood />
     </div>
   );
 };
 
-export default Comidas;
+export default Meals;

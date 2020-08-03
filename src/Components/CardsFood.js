@@ -4,7 +4,7 @@ import meals from '../testttt/meals';
 const CardsFood = () => {
   let comidas = [];
 
-  if (meals.meals.length < 12) {
+  if (meals.meals.length > 12) {
     for (let index = 0; index < 12; index++) {
       comidas.push(meals.meals[index]);
     }
@@ -19,7 +19,7 @@ const CardsFood = () => {
             src={item.strMealThumb}
             width="200"
             data-testid={`${i}-card-img`}
-            alt={item.strMeals}
+            alt={item.strMeal}
           />
           <p key={item.strMeal} data-testid={`${i}-card-name`}>
             {item.strMeal}
