@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { changeInputAct } from '../Redux/Actions';
 import ButtonLogin from '../Components/ButtonLogin';
-import Header from '../Components/Header';
 
 class Login extends React.Component {
   render() {
@@ -34,7 +33,6 @@ class Login extends React.Component {
         />
         <br />
         <ButtonLogin />
-        <Header pathname={pathname} />
       </div>
     );
   }

@@ -3,8 +3,9 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CardsDrink from '../Components/CardsDrink';
 import { getDrinks } from '../Redux/Actions/index';
+import Header from '../Components/Header';
 
-const Drinks = ({ isLoading, cardsRequisition }) => {
+const Drinks = ({ isLoading, cardsRequisition, location: { pathname } }) => {
   useEffect(() => {
     cardsRequisition();
   }, []);
@@ -12,6 +13,7 @@ const Drinks = ({ isLoading, cardsRequisition }) => {
   if (isLoading) return <h2>Loading...</h2>;
   return (
     <div>
+      <Header pathname={pathname} />
       <h1>Drinks</h1>
       <CardsDrink />
     </div>
