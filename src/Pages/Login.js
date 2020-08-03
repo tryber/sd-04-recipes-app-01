@@ -45,7 +45,7 @@ Login.propTypes = {
 
 const mapStateToProps = (state) => ({
   ...state.reducerList,
-  shouldRedirect: state.reducerList.shouldRedirect,
+  shouldRedirect: state.loginReducer.shouldRedirect,
 });
 
 const mapDispatchToProps = (dispatch) => ({
