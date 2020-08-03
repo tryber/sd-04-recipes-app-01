@@ -6,7 +6,7 @@ const CardsFood = ({ meals }) => {
   let newArrFoods = [];
 
   if (meals.length > 12) {
-    for (let index = 0; index < 12; index++) {
+    for (let index = 0; index < 12; index += 1) {
       newArrFoods.push(meals[index]);
     }
   } else newArrFoods = meals;
@@ -32,9 +32,7 @@ const CardsFood = ({ meals }) => {
 };
 
 CardsFood.propTypes = {
-  meals: PropTypes.shape({
-    length: PropTypes.number,
-  }),
+  meals: PropTypes.shape.isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -6,7 +6,7 @@ const CardsDrink = ({ drinks }) => {
   let newArrDrinks = [];
 
   if (drinks.length > 12) {
-    for (let index = 0; index < 12; index++) {
+    for (let index = 0; index < 12; index += 1) {
       newArrDrinks.push(drinks[index]);
     }
   } else newArrDrinks = drinks;
@@ -16,7 +16,7 @@ const CardsDrink = ({ drinks }) => {
       {newArrDrinks.map((item, i) => (
         <div key={item.idDrink}>
           <img
-            key={i}
+            key={item.idDrink}
             src={item.strDrinkThumb}
             width="200"
             data-testid={`${i}-card-img`}
@@ -32,9 +32,7 @@ const CardsDrink = ({ drinks }) => {
 };
 
 CardsDrink.propTypes = {
-  drinks: PropTypes.shape({
-    length: PropTypes.number,
-  }),
+  drinks: PropTypes.shape.isRequired,
 };
 
 const mapStateToProps = (state) => ({

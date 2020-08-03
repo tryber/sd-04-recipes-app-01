@@ -19,8 +19,8 @@ const Drinks = ({ isLoading, cardsRequisition }) => {
 };
 
 Drinks.propTypes = {
-  cardsRequisition: PropTypes.func,
-  isLoading: PropTypes.bool,
+  cardsRequisition: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
