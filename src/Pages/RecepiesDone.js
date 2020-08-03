@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 
 const RecepiesDone = ({ location: { pathname } }) => (
@@ -6,5 +7,11 @@ const RecepiesDone = ({ location: { pathname } }) => (
     <Header pathname={pathname} />
   </div>
 );
+
+RecepiesDone.propTypes = {
+  location: PropTypes.shape(
+    PropTypes.string.isRequired,
+  ).isRequired,
+};
 
 export default RecepiesDone;

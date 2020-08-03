@@ -9,7 +9,9 @@ const RecepiesFavorited = ({ location: { pathname } }) => (
 );
 
 RecepiesFavorited.propTypes = {
-  pathname: PropTypes.string.isRequired,
+  location: PropTypes.shape(
+    PropTypes.string.isRequired,
+  ).isRequired,
 };
 
 export default RecepiesFavorited;

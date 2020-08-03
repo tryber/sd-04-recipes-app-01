@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { ReactFragment } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import profileImage from '../images/profileIcon.svg';
@@ -10,7 +10,7 @@ const renderTitle = (pathname, showSearchBar) => {
   switch (pathname) {
     case '/comidas':
       return (
-        <>
+        <div>
           <h2 data-testid="page-title">Comidas</h2>
           <div>
             <input
@@ -21,11 +21,11 @@ const renderTitle = (pathname, showSearchBar) => {
               alt="Search"
             />
           </div>
-        </>
+        </div>
       );
     case '/bebidas':
       return (
-        <>
+        <div>
           <h2 data-testid="page-title">Bebidas</h2>
           <div>
             <input
@@ -36,7 +36,7 @@ const renderTitle = (pathname, showSearchBar) => {
               alt="Search"
             />
           </div>
-        </>
+        </div>
       );
     case '/explorar':
       return <h2 data-testid="page-title">Explorar</h2>;
@@ -51,7 +51,7 @@ const renderTitle = (pathname, showSearchBar) => {
       return <h2 data-testid="page-title">Explorar Ingredientes</h2>;
     case '/explorar/comidas/area':
       return (
-        <>
+        <div>
           <h2 data-testid="page-title">Explorar Origem</h2>
           <div>
             <input
@@ -62,7 +62,7 @@ const renderTitle = (pathname, showSearchBar) => {
               alt="Search"
             />
           </div>
-        </>
+        </div>
       );
     case '/perfil':
       return <h2 data-testid="page-title">Perfil</h2>;
