@@ -1,7 +1,7 @@
 import { REQUESTING_FOOD, REQUEST_FOOD_SUCCESS, REQUEST_FOOD_ERROR } from '../Actions/index';
 
 const INITIAL_STATE = {
-  isLoading: false,
+  isLoading: true,
   foods: [],
   foodsError: '',
 };

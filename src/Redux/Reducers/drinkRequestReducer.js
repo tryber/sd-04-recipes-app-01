@@ -1,7 +1,7 @@
 import { REQUESTING_DRINK, REQUEST_DRINK_SUCCESS, REQUEST_DRINK_ERROR } from '../Actions/index';
 
 const INITIAL_STATE = {
-  isLoading: false,
+  isLoading: true,
   drinks: [],
   drinksError: '',
 };
