@@ -1,18 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import drinks from '../testttt/drinks';
+import { connect } from 'react-redux';
 
-const CardsDrink = () => {
-  let bebidas = [];
+const CardsDrink = ({ drinks }) => {
+  let newArrDrinks = [];
 
-  if (drinks.drinks.length > 12) {
+  if (drinks.length > 12) {
     for (let index = 0; index < 12; index++) {
-      bebidas.push(drinks.drinks[index]);
+      newArrDrinks.push(drinks[index]);
     }
-  } else bebidas = drinks.drinks;
+  } else newArrDrinks = drinks;
 
   return (
     <div>
-      {bebidas.map((item, i) => (
+      {newArrDrinks.map((item, i) => (
         <div key={item.idDrink}>
           <img
             key={i}
@@ -30,4 +31,14 @@ const CardsDrink = () => {
   );
 };
 
-export default CardsDrink;
+CardsDrink.propTypes = {
+  drinks: PropTypes.shape({
+    length: PropTypes.number,
+  }),
+};
+
+const mapStateToProps = (state) => ({
+  drinks: state.drinkRequestReducer.drinks,
+});
+
+export default connect(mapStateToProps, null)(CardsDrink);

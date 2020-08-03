@@ -1,18 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import meals from '../testttt/meals';
+import { connect } from 'react-redux';
 
-const CardsFood = () => {
-  let comidas = [];
+const CardsFood = ({ meals }) => {
+  let newArrFoods = [];
 
-  if (meals.meals.length > 12) {
+  if (meals.length > 12) {
     for (let index = 0; index < 12; index++) {
-      comidas.push(meals.meals[index]);
+      newArrFoods.push(meals[index]);
     }
-  } else comidas = meals.meals;
+  } else newArrFoods = meals;
 
   return (
     <div>
-      {comidas.map((item, i) => (
+      {newArrFoods.map((item, i) => (
         <div key={item.idMeal}>
           <img
             key={i}
@@ -30,4 +31,14 @@ const CardsFood = () => {
   );
 };
 
-export default CardsFood;
+CardsFood.propTypes = {
+  meals: PropTypes.shape({
+    length: PropTypes.number,
+  }),
+};
+
+const mapStateToProps = (state) => ({
+  meals: state.foodRequestReducer.foods,
+});
+
+export default connect(mapStateToProps, null)(CardsFood);
