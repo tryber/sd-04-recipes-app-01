@@ -2,16 +2,16 @@ import React from 'react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { render } from '@testing-library/react';
-
+import thunk from 'redux-thunk';
 import rootReducer from '../Redux/Reducers';
 
 export default function renderWithReduxAndRouter(
   component,
   {
     initialState,
-    store = createStore(rootReducer, initialState),
+    store = createStore(rootReducer, initialState, applyMiddleware(thunk)),
     initialEntries = ['/'],
     history = createMemoryHistory({ initialEntries }),
   } = {},

@@ -1,7 +1,7 @@
 import {
-  REQUESTING_CATEGORIES_DRINK,
-  REQUEST_CATEGORIES_DRINK_SUCCESS,
-  REQUEST_CATEGORIES_DRINK_ERROR,
+  REQUESTING_CATEGORIES_FOOD,
+  REQUEST_CATEGORIES_FOOD_SUCCESS,
+  REQUEST_CATEGORIES_FOOD_ERROR,
 } from '../Actions/index';
 
 const INITIAL_STATE = {
@@ -12,11 +12,11 @@ const INITIAL_STATE = {
 
 function categoriesFoodRequestReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case REQUESTING_CATEGORIES_DRINK:
+    case REQUESTING_CATEGORIES_FOOD:
       return { ...state, isLoading: true };
-    case REQUEST_CATEGORIES_DRINK_SUCCESS:
+    case REQUEST_CATEGORIES_FOOD_SUCCESS:
       return { ...state, categoriesFoods: action.data, isLoading: false };
-    case REQUEST_CATEGORIES_DRINK_ERROR:
+    case REQUEST_CATEGORIES_FOOD_ERROR:
       return { ...state, categoriesFoodsError: action.error, isLoading: false };
     default:
       return state;

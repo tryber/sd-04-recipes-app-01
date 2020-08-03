@@ -34,6 +34,17 @@ const requestFoodError = (error) => ({
   error,
 });
 
+export function getFoods(filter, food) {
+  return (dispatch) => {
+    requestingFood();
+
+    return getFood(filter, food).then(
+      (data) => dispatch(requestFoodSuccess(data)),
+      (error) => dispatch(requestFoodError(error)),
+    );
+  };
+}
+
 const requestingDrink = () => ({
   type: REQUESTING_DRINK,
 });
@@ -48,19 +59,16 @@ const requestDrinkError = (error) => ({
   error,
 });
 
-const requestingCategoriesDrink = () => ({
-  type: REQUESTING_CATEGORIES_DRINK,
-});
+export function getDrinks(filter, drink) {
+  return (dispatch) => {
+    requestingDrink();
 
-const requestCategoriesDrinkSuccess = (data) => ({
-  type: REQUEST_CATEGORIES_DRINK_SUCCESS,
-  data,
-});
-
-const requestCategoriesDrinkError = (error) => ({
-  type: REQUEST_CATEGORIES_DRINK_ERROR,
-  error,
-});
+    return getDrink(filter, drink).then(
+      (data) => dispatch(requestDrinkSuccess(data)),
+      (error) => dispatch(requestDrinkError(error)),
+    );
+  };
+}
 
 const requestingCategoriesFood = () => ({
   type: REQUESTING_CATEGORIES_FOOD,
@@ -76,28 +84,6 @@ const requestCategoriesFoodError = (error) => ({
   error,
 });
 
-export function getFoods(filter, food) {
-  return (dispatch) => {
-    requestingFood();
-
-    return getFood(filter, food).then(
-      (data) => dispatch(requestFoodSuccess(data)),
-      (error) => dispatch(requestFoodError(error)),
-    );
-  };
-}
-
-export function getDrinks(filter, drink) {
-  return (dispatch) => {
-    requestingDrink();
-
-    return getDrink(filter, drink).then(
-      (data) => dispatch(requestDrinkSuccess(data)),
-      (error) => dispatch(requestDrinkError(error)),
-    );
-  };
-}
-
 export function getCategoriesFoods() {
   return (dispatch) => {
     requestingCategoriesFood();
@@ -108,6 +94,20 @@ export function getCategoriesFoods() {
     );
   };
 }
+
+const requestingCategoriesDrink = () => ({
+  type: REQUESTING_CATEGORIES_DRINK,
+});
+
+const requestCategoriesDrinkSuccess = (data) => ({
+  type: REQUEST_CATEGORIES_DRINK_SUCCESS,
+  data,
+});
+
+const requestCategoriesDrinkError = (error) => ({
+  type: REQUEST_CATEGORIES_DRINK_ERROR,
+  error,
+});
 
 export function getCategoriesDrinks() {
   return (dispatch) => {
