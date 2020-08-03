@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { changeInputAct } from '../Redux/Actions';
 import ButtonLogin from '../Components/ButtonLogin';
+import Header from '../Components/Header';
 
 class Login extends React.Component {
   render() {
-    const { changeInput, shouldRedirect } = this.props;
+    const { changeInput, shouldRedirect, location: { pathname } } = this.props;
     if (shouldRedirect) {
       return <Redirect to="/comidas" />;
     }
@@ -33,6 +34,7 @@ class Login extends React.Component {
         />
         <br />
         <ButtonLogin />
+        <Header pathname={pathname} />
       </div>
     );
   }
