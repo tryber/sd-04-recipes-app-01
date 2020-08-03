@@ -14,7 +14,7 @@ const CardsDrink = ({ drinks }) => {
   return (
     <div>
       {newArrDrinks.map((item, i) => (
-        <div key={item.idDrink}>
+        <div key={item.idDrink} data-testid={`${i}-recipe-card`}>
           <img
             key={item.idDrink}
             src={item.strDrinkThumb}
