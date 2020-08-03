@@ -42,7 +42,7 @@ ButtonLogin.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  ...state.reducerList,
+  ...state.loginReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
