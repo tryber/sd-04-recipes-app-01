@@ -3,9 +3,13 @@ import meals from '../testttt/meals';
 
 const CardsFood = () => {
   let comidas = [];
-  for (let index = 0; index < 12; index++) {
-    comidas.push(meals.meals[index]);
-  }
+
+  if (meals.meals.length < 12) {
+    for (let index = 0; index < 12; index++) {
+      comidas.push(meals.meals[index]);
+    }
+  } else comidas = meals.meals;
+
   return (
     <div>
       {comidas.map((item, i) => (
