@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CardsDrink from '../Components/CardsDrink';
 import { getDrinks } from '../Redux/Actions/index';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 const Drinks = ({ isLoading, cardsRequisition, location: { pathname } }) => {
   useEffect(() => {
@@ -16,6 +17,7 @@ const Drinks = ({ isLoading, cardsRequisition, location: { pathname } }) => {
       <Header pathname={pathname} />
       <h1>Drinks</h1>
       <CardsDrink />
+      <Footer />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CardsFood from '../Components/CardsFood';
 import { getFoods } from '../Redux/Actions/index';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 const Meals = ({ isLoading, cardsRequisition, location: { pathname } }) => {
   useEffect(() => {
@@ -15,6 +16,7 @@ const Meals = ({ isLoading, cardsRequisition, location: { pathname } }) => {
       <Header pathname={pathname} />
       <h1>Meals</h1>
       <CardsFood />
+      <Footer />
     </div>
   );
 };
