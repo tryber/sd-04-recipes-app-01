@@ -23,9 +23,9 @@ const Meals = ({ isLoadingFood, isLoadingCategory, cardsRequisition, categoriesR
 
 Meals.propTypes = {
   cardsRequisition: PropTypes.func.isRequired,
-  categoriesRequisition: PropTypes.func,
-  isLoadingCategory: PropTypes.bool,
-  isLoadingFood: PropTypes.bool,
+  categoriesRequisition: PropTypes.func.isRequired,
+  isLoadingCategory: PropTypes.bool.isRequired,
+  isLoadingFood: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
