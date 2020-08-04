@@ -2,16 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getFoods } from '../Redux/Actions/index';
-
-const createNewCategories = (categoriesList) => {
-  const newArrCategories = [];
-  if (categoriesList.length > 0) {
-    for (let index = 0; index < 5; index += 1) {
-      newArrCategories.push(categoriesList[index]);
-    }
-  }
-  return newArrCategories;
-};
+import { createNewCategories } from '../helpers';
 
 const CategoriesFood = ({ categoriesList, cardsRequisition }) => {
   const [valueCategory, setValueCategory] = useState('');
