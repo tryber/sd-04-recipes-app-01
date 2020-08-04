@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 const CardsDrink = ({ drinks, request }) => {
   let newArrDrinks = [];
@@ -23,26 +23,28 @@ const CardsDrink = ({ drinks, request }) => {
   return (
     <div>
       {newArrDrinks.map((item, i) => (
-        <div key={item.idDrink} data-testid={`${i}-recipe-card`}>
-          <img
-            key={item.idDrink}
-            src={item.strDrinkThumb}
-            width="200"
-            data-testid={`${i}-card-img`}
-            alt={item.strDrink}
-          />
-          <p key={item.strDrink} data-testid={`${i}-card-name`}>
-            {item.strDrink}
-          </p>
-        </div>
+        <Link to={`/bebidas/${item.idDrink}`} key={item.idDrink}>
+          <div key={item.idDrink} data-testid={`${i}-recipe-card`}>
+            <img
+              key={item.idDrink}
+              src={item.strDrinkThumb}
+              width="200"
+              data-testid={`${i}-card-img`}
+              alt={item.strDrink}
+            />
+            <p key={item.strDrink} data-testid={`${i}-card-name`}>
+              {item.strDrink}
+            </p>
+          </div>
+        </Link>
       ))}
     </div>
   );
 };
 
 CardsDrink.propTypes = {
-  drinks: PropTypes.shape.isRequired,
   request: PropTypes.func.isRequired,
+  drinks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
