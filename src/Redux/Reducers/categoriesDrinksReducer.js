@@ -15,9 +15,9 @@ function categoriesDrinkRequestReducer(state = INITIAL_STATE, action) {
     case REQUESTING_CATEGORIES_DRINK:
       return { ...state, isLoading: true };
     case REQUEST_CATEGORIES_DRINK_SUCCESS:
-      return { ...state, categoriesFoods: action.data, isLoading: false };
+      return { ...state, categoriesDrinks: action.data, isLoading: false };
     case REQUEST_CATEGORIES_DRINK_ERROR:
-      return { ...state, categoriesFoodsError: action.error, isLoading: false };
+      return { ...state, categoriesDrinksError: action.error, isLoading: false };
     default:
       return state;
   }
