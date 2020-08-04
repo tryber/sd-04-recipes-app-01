@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -32,7 +32,7 @@ const CardsFood = ({ meals }) => {
 };
 
 CardsFood.propTypes = {
-  meals: PropTypes.shape.isRequired,
+  meals: PropTypes.arrayOf(object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
