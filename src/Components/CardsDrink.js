@@ -49,4 +49,4 @@ const mapStateToProps = (state) => ({
   drinks: state.drinkRequestReducer.drinks,
 });
 
-export default connect(mapStateToProps, null)(CardsDrink);
+export default connect(mapStateToProps)(CardsDrink);
