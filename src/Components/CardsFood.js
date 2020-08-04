@@ -32,7 +32,7 @@ const CardsFood = ({ meals }) => {
 };
 
 CardsFood.propTypes = {
-  meals: PropTypes.shape.isRequired,
+  meals: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = (state) => ({

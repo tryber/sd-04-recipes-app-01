@@ -2,16 +2,19 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import CardsDrink from '../Components/CardsDrink';
-import { getDrinks } from '../Redux/Actions/index';
+import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
+import CategoriesDrink from '../Components/CategoriesDrink';
 
-const Drinks = ({ isLoading, cardsRequisition }) => {
+const Drinks = ({ isLoadingDrink, isLoadingCategory, cardsRequisition, categoriesRequisition }) => {
   useEffect(() => {
     cardsRequisition();
+    categoriesRequisition();
   }, []);
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoadingDrink || isLoadingCategory) return <h2>Loading...</h2>;
   return (
     <div>
+      <CategoriesDrink />
       <h1>Drinks</h1>
       <CardsDrink />
     </div>
@@ -20,15 +23,19 @@ const Drinks = ({ isLoading, cardsRequisition }) => {
 
 Drinks.propTypes = {
   cardsRequisition: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  categoriesRequisition: PropTypes.func.isRequired,
+  isLoadingCategory: PropTypes.bool.isRequired,
+  isLoadingDrink: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  isLoading: state.drinkRequestReducer.isLoading,
+  isLoadingDrink: state.drinkRequestReducer.isLoading,
+  isLoadingCategory: state.categoriesDrinksReducer.isLoading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   cardsRequisition: () => dispatch(getDrinks()),
+  categoriesRequisition: () => dispatch(getCategoriesDrinks()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Drinks);

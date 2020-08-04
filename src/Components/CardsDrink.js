@@ -32,7 +32,7 @@ const CardsDrink = ({ drinks }) => {
 };
 
 CardsDrink.propTypes = {
-  drinks: PropTypes.shape.isRequired,
+  drinks: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
