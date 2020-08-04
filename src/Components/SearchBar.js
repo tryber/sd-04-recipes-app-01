@@ -15,7 +15,7 @@ const SearchBar = ({ request, showSearchBar }) => {
     }
   };
 
-  if (showSearchBar) return <div />;
+  if (!showSearchBar) return <div />;
   return (
     <div>
       <div>
@@ -53,7 +53,7 @@ SearchBar.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  // showSearchBar: state.headerAndFooterReducer.showSearchBar,
+  showSearchBar: state.headerAndFooterReducer.showSearchBar,
 });
 
 export default connect(mapStateToProps)(SearchBar);
