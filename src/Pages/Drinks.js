@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import CardsDrink from '../Components/CardsDrink';
 import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
 import CategoriesDrink from '../Components/CategoriesDrink';
+import Header from '../Components/Header';
 
-const Drinks = ({ isLoadingDrink, isLoadingCategory, cardsRequisition, categoriesRequisition }) => {
+const Drinks = ({ isLoadingDrink, isLoadingCategory, cardsRequisition, categoriesRequisition, location: { pathname } }) => {
+
   useEffect(() => {
     cardsRequisition();
     categoriesRequisition();
@@ -14,6 +16,7 @@ const Drinks = ({ isLoadingDrink, isLoadingCategory, cardsRequisition, categorie
   if (isLoadingDrink || isLoadingCategory) return <h2>Loading...</h2>;
   return (
     <div>
+      <Header pathname={pathname} />
       <CategoriesDrink />
       <h1>Drinks</h1>
       <CardsDrink />
@@ -26,6 +29,9 @@ Drinks.propTypes = {
   categoriesRequisition: PropTypes.func.isRequired,
   isLoadingCategory: PropTypes.bool.isRequired,
   isLoadingDrink: PropTypes.bool.isRequired,
+  location: PropTypes.shape(
+    PropTypes.string.isRequired,
+  ).isRequired,
 };
 
 const mapStateToProps = (state) => ({
