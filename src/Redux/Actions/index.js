@@ -15,10 +15,15 @@ export const REQUEST_CATEGORIES_FOOD_ERROR = 'REQUEST_CATEGORIES_FOOD_ERROR';
 export const REQUESTING_CATEGORIES_DRINK = 'REQUESTING_CATEGORIES_DRINK';
 export const REQUEST_CATEGORIES_DRINK_SUCCESS = 'REQUEST_CATEGORIES_DRINK_SUCCESS';
 export const REQUEST_CATEGORIES_DRINK_ERROR = 'REQUEST_CATEGORIES_DRINK_ERROR';
+export const SHOW_SEARCH_BAR = 'SHOW_SEARCH_BAR';
 
 export const changeInputAct = ({ name, value }) => ({ type: CHANGE_INPUT, name, value });
 
 export const redirectAct = () => ({ type: REDIRECT });
+
+export const showSearchBarAct = () => ({
+  type: SHOW_SEARCH_BAR,
+});
 
 const requestingFood = () => ({
   type: REQUESTING_FOOD,
