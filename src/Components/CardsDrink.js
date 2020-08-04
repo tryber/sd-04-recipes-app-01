@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const CardsDrink = ({ drinks }) => {
   let newArrDrinks = [];
@@ -14,18 +15,20 @@ const CardsDrink = ({ drinks }) => {
   return (
     <div>
       {newArrDrinks.map((item, i) => (
-        <div key={item.idDrink} data-testid={`${i}-recipe-card`}>
-          <img
-            key={item.idDrink}
-            src={item.strDrinkThumb}
-            width="200"
-            data-testid={`${i}-card-img`}
-            alt={item.strDrink}
-          />
-          <p key={item.strDrink} data-testid={`${i}-card-name`}>
-            {item.strDrink}
-          </p>
-        </div>
+        <Link to={`/bebidas/${item.idDrink}`}>
+          <div key={item.idDrink} data-testid={`${i}-recipe-card`}>
+            <img
+              key={item.idDrink}
+              src={item.strDrinkThumb}
+              width="200"
+              data-testid={`${i}-card-img`}
+              alt={item.strDrink}
+            />
+            <p key={item.strDrink} data-testid={`${i}-card-name`}>
+              {item.strDrink}
+            </p>
+          </div>
+        </Link>
       ))}
     </div>
   );

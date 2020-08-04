@@ -1,24 +1,37 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { getFoods } from '../Redux/Actions/index';
 
-const CategoriesFood = ({ categoriesList, cardsRequisition }) => {
+const createNewCategories = (categoriesList) => {
   const newArrCategories = [];
-
   if (categoriesList.length > 0) {
     for (let index = 0; index < 5; index += 1) {
       newArrCategories.push(categoriesList[index]);
     }
   }
+  return newArrCategories;
+};
+
+const CategoriesFood = ({ categoriesList, cardsRequisition }) => {
+  const [valueCategory, setValueCategory] = useState('');
 
   const changeCategory = (nameCategory) => {
-    cardsRequisition(nameCategory);
+    if (valueCategory === nameCategory) {
+      setValueCategory('');
+      cardsRequisition();
+    } else {
+      setValueCategory(nameCategory);
+      cardsRequisition(nameCategory);
+    }
   };
 
   return (
     <div>
-      {newArrCategories.map((item) => (
+      <button data-testid="All-category-filter" onClick={() => changeCategory()}>
+        All
+      </button>
+      {createNewCategories(categoriesList).map((item) => (
         <button
           data-testid={`${item.strCategory}-category-filter`}
           key={item.strCategory}
