@@ -1,9 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-const CardsDrink = ({ drinks }) => {
+const CardsDrink = ({ drinks, request }) => {
   let newArrDrinks = [];
+
+  if (drinks === null) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    request();
+    return <div />;
+  }
+
+  if (drinks.length === 1) return <Redirect to={`/bebidas/${drinks[0].idDrink}`} />;
 
   if (drinks.length > 12) {
     for (let index = 0; index < 12; index += 1) {
@@ -33,6 +42,7 @@ const CardsDrink = ({ drinks }) => {
 
 CardsDrink.propTypes = {
   drinks: PropTypes.shape.isRequired,
+  request: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({

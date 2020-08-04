@@ -6,7 +6,7 @@ import { getFoods } from '../Redux/Actions/index';
 import SearchBar from '../Components/SearchBar';
 import Header from '../Components/Header';
 
-const Meals = ({ isLoading, cardsRequisition, requestFoods, location: { pathname } }) => {
+const Meals = ({ isLoading, cardsRequisition, location: { pathname } }) => {
   useEffect(() => {
     cardsRequisition();
   }, [cardsRequisition]);
@@ -15,15 +15,14 @@ const Meals = ({ isLoading, cardsRequisition, requestFoods, location: { pathname
   return (
     <div>
       <Header pathname={pathname} />
-      <SearchBar request={requestFoods} />
-      <CardsFood />
+      <SearchBar request={cardsRequisition} />
+      <CardsFood request={cardsRequisition} />
     </div>
   );
 };
 
 Meals.propTypes = {
   cardsRequisition: PropTypes.func.isRequired,
-  requestFoods: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   location: PropTypes.shape(
     PropTypes.string.isRequired,
@@ -35,8 +34,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cardsRequisition: () => dispatch(getFoods()),
-  requestFoods: (filter, food) => dispatch(getFoods(filter, food)),
+  cardsRequisition: (filter, food) => dispatch(getFoods(filter, food)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Meals);
