@@ -6,7 +6,13 @@ import CardsFood from '../Components/CardsFood';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesFood from '../Components/CategoriesFood';
 
-const Meals = ({ isLoadingFood, isLoadingCategory, cardsRequisition, categoriesRequisition, location: { pathname } }) => {
+const Meals = ({
+  isLoadingFood,
+  isLoadingCategory,
+  cardsRequisition,
+  categoriesRequisition,
+  location: { pathname },
+}) => {
   useEffect(() => {
     cardsRequisition();
     categoriesRequisition();
@@ -28,9 +34,7 @@ Meals.propTypes = {
   categoriesRequisition: PropTypes.func.isRequired,
   isLoadingCategory: PropTypes.bool.isRequired,
   isLoadingFood: PropTypes.bool.isRequired,
-  location: PropTypes.shape(
-    PropTypes.string.isRequired,
-  ).isRequired,
+  location: PropTypes.shape(PropTypes.string.isRequired).isRequired,
 };
 
 const mapStateToProps = (state) => ({
