@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import CardsDrink from '../Components/CardsDrink';
 import { getDrinks } from '../Redux/Actions/index';
 import SearchBar from '../Components/SearchBar';
+import Header from '../Components/Header';
 
-const Drinks = ({ isLoading, cardsRequisition, requestDrinks }) => {
+const Drinks = ({ isLoading, cardsRequisition, requestDrinks, location: { pathname } }) => {
   useEffect(() => {
     cardsRequisition();
   }, []);
@@ -13,6 +14,7 @@ const Drinks = ({ isLoading, cardsRequisition, requestDrinks }) => {
   if (isLoading) return <h2>Loading...</h2>;
   return (
     <div>
+      <Header pathname={pathname} />
       <SearchBar request={requestDrinks} />
       <CardsDrink />
     </div>
@@ -23,6 +25,9 @@ Drinks.propTypes = {
   cardsRequisition: PropTypes.func.isRequired,
   requestDrinks: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  location: PropTypes.shape(
+    PropTypes.string.isRequired,
+  ).isRequired,
 };
 
 const mapStateToProps = (state) => ({
