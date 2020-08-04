@@ -7,7 +7,7 @@ import ButtonLogin from '../Components/ButtonLogin';
 
 class Login extends React.Component {
   render() {
-    const { changeInput, shouldRedirect, location: { pathname } } = this.props;
+    const { changeInput, shouldRedirect } = this.props;
     if (shouldRedirect) {
       return <Redirect to="/comidas" />;
     }

@@ -22,6 +22,9 @@ const Meals = ({ isLoading, cardsRequisition, location: { pathname } }) => {
 Meals.propTypes = {
   cardsRequisition: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  location: PropTypes.shape(
+    PropTypes.string.isRequired,
+  ).isRequired,
 };
 
 const mapStateToProps = (state) => ({

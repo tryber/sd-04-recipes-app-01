@@ -6,37 +6,28 @@ import profileImage from '../images/profileIcon.svg';
 import SearchImage from '../images/searchIcon.svg';
 import { showSearchBarAct } from '../Redux/Actions';
 
+const renderInput = (Name, showSearchBar) => (
+  <div>
+    <h2 data-testid="page-title">{Name}</h2>
+    <input
+      type="image"
+      src={SearchImage}
+      onClick={() => showSearchBar()}
+      data-testid="search-top-btn"
+      alt="Search"
+    />
+  </div>
+);
+
 const renderTitle = (pathname, showSearchBar) => {
   switch (pathname) {
     case '/comidas':
       return (
-        <div>
-          <h2 data-testid="page-title">Comidas</h2>
-          <div>
-            <input
-              type="image"
-              src={SearchImage}
-              onClick={() => showSearchBar()}
-              data-testid="search-top-btn"
-              alt="Search"
-            />
-          </div>
-        </div>
+        renderInput('Comidas', showSearchBar)
       );
     case '/bebidas':
       return (
-        <div>
-          <h2 data-testid="page-title">Bebidas</h2>
-          <div>
-            <input
-              type="image"
-              src={SearchImage}
-              onClick={() => showSearchBar()}
-              data-testid="search-top-btn"
-              alt="Search"
-            />
-          </div>
-        </div>
+        renderInput('Bebidas', showSearchBar)
       );
     case '/explorar':
       return <h2 data-testid="page-title">Explorar</h2>;
@@ -51,18 +42,7 @@ const renderTitle = (pathname, showSearchBar) => {
       return <h2 data-testid="page-title">Explorar Ingredientes</h2>;
     case '/explorar/comidas/area':
       return (
-        <div>
-          <h2 data-testid="page-title">Explorar Origem</h2>
-          <div>
-            <input
-              type="image"
-              src={SearchImage}
-              onClick={() => showSearchBar()}
-              data-testid="search-top-btn"
-              alt="Search"
-            />
-          </div>
-        </div>
+        renderInput('Explorar Origem', showSearchBar)
       );
     case '/perfil':
       return <h2 data-testid="page-title">Perfil</h2>;
