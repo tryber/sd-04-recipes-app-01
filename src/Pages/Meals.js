@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Header from '../Components/Header';
 import CardsFood from '../Components/CardsFood';
+import SearchBar from '../Components/SearchBar';
+import Header from '../Components/Header';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesFood from '../Components/CategoriesFood';
 
@@ -16,15 +17,15 @@ const Meals = ({
   useEffect(() => {
     cardsRequisition();
     categoriesRequisition();
-  }, []);
+  }, [cardsRequisition, categoriesRequisition]);
 
   if (isLoadingFood || isLoadingCategory) return <h2>Loading...</h2>;
   return (
     <div>
       <Header pathname={pathname} />
+      <SearchBar request={cardsRequisition} />
       <CategoriesFood />
-      <h1>Meals</h1>
-      <CardsFood />
+      <CardsFood request={cardsRequisition} />
     </div>
   );
 };
@@ -43,7 +44,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cardsRequisition: () => dispatch(getFoods()),
+  cardsRequisition: (filter, food) => dispatch(getFoods(filter, food)),
   categoriesRequisition: () => dispatch(getCategoriesFoods()),
 });
 
