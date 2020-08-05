@@ -5,7 +5,6 @@ import { Redirect, Link } from 'react-router-dom';
 import { createNewArr } from '../helpers';
 
 const CardsDrink = ({ drinks, request }) => {
-
   if (drinks === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     request();
