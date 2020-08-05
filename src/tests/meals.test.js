@@ -20,21 +20,26 @@ const mockGetFood = jest.spyOn(services, 'getFood').mockImplementation((filter =
   if (filter === 'Primeira letra') link = firstLetterURL;
   return fetch(link).then((data) => data.json()).then((data) => data.meals);
 });
+
+const mockGetCategoriesFood = jest.spyOn(services, 'getCategoriesFood').mockImplementation(() => {
+  const categoriesURL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+  return fetch(categoriesURL).then((data) => data.json()).then((data) => data.meals);
+});
+
 describe('test', () => {
-  beforeAll(mockGetFood);
+  beforeAll(mockGetFood, mockGetCategoriesFood);
   beforeEach(cleanup);
   test('test', async () => {
     // mockGetFood().then(data => data.json()).then(data => console.log(data))
     await act(async () => {
       renderWithReduxAndRouter(<App />, {
-        initialState: { loginReducer: { email: '', password: '', shouldRedirect: false } },
+        initialState: {},
         initialEntries: ['/comidas'],
       });
     });
-    // const test =  getByTestId('test');
-    // await waitForElementToBeRemoved()
-    // await waitForElementToBeRemoved(() => queryByText('loading'));
+
     expect(services.getFood).toHaveBeenCalled();
+    expect(services.getCategoriesFood).toHaveBeenCalled();
     const test = await screen.findByTestId('profile-top-btn');
     expect(test).toBeInTheDocument();
   });
