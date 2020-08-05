@@ -17,3 +17,13 @@ export const createNewCategories = (categoriesList) => {
   }
   return newArrCategories;
 };
+
+export const createNewArr = (mealsOrDrinks) => {
+  let newArrFoods = [];
+  if (mealsOrDrinks.length > 12) {
+    for (let index = 0; index < 12; index += 1) {
+      newArrFoods.push(mealsOrDrinks[index]);
+    }
+  } else newArrFoods = [...mealsOrDrinks];
+  return newArrFoods;
+};
