@@ -1,10 +1,18 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
-const CardsFood = ({ meals }) => {
+const CardsFood = ({ meals, request }) => {
   let newArrFoods = [];
+
+  if (meals === null) {
+    alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    request();
+    return <div />;
+  }
+
+  if (meals.length === 1) return <Redirect to={`/comidas/${meals[0].idMeal}`} />;
 
   if (meals.length > 12) {
     for (let index = 0; index < 12; index += 1) {
@@ -35,6 +43,7 @@ const CardsFood = ({ meals }) => {
 };
 
 CardsFood.propTypes = {
+  request: PropTypes.func.isRequired,
   meals: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
@@ -42,4 +51,4 @@ const mapStateToProps = (state) => ({
   meals: state.foodRequestReducer.foods,
 });
 
-export default connect(mapStateToProps, null)(CardsFood);
+export default connect(mapStateToProps)(CardsFood);

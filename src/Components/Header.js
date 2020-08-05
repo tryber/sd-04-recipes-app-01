@@ -57,7 +57,6 @@ const renderTitle = (pathname, showSearchBar) => {
 
 const Header = (props) => {
   const { pathname, showSearchBar } = props;
-  console.log(props);
   return (
     <div className="header">
       <Link to="/perfil">
