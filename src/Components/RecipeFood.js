@@ -1,25 +1,38 @@
-import PropTypes, { element } from 'prop-types';
+import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import { getIngredients } from '../helpers';
 
 const RecipeFood = (props) => {
-  const { detailsRecipe: { strMeal, strMealThumb, strCategory, ...measures } } = props;
-  // console.log(measures)
-  // const xablau = (Object.keys(measures));
-  // const valores = xablau.map(element => measures[element])
-  // console.log(valores)
-  // console.log(xablau.filter(element => element.startsWith('strIngredient')).map(element => measures[element]))
-  // console.log(xablau.filter(element => element.startsWith('strMeasure')))
+  const {
+    detailsRecipe: { strMeal, strMealThumb, strCategory, strYoutube, strInstructions, ...measures },
+  } = props;
+
   return (
     <div>
       <h2 data-testid="recipe-title">{strMeal}</h2>
-      <img
-        src={strMealThumb}
-        alt={strMeal}
-        data-testid="recipe-photo"
-        width="200"
-      />
+      <img src={strMealThumb} alt={strMeal} data-testid="recipe-photo" width="200" />
       <p data-testid="recipe-category">{strCategory}</p>
+      <p>Ingredients:</p>
+      <ul>
+        {getIngredients(measures).map(({ ingredient, measure }, index) => (
+          <li data-testid={`${index}-ingredient-name-and-measure`} key={ingredient}>
+            {measure} {ingredient}
+          </li>
+        ))}
+      </ul>
+      <p>Instructions</p>
+      <p data-testid="instructions">{strInstructions}</p>
+      <iframe
+        data-testid="video"
+        title="video"
+        width="300"
+        height="300"
+        src={strYoutube.replace('watch?v=', 'embed/')}
+        frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      />
     </div>
   );
 };
@@ -29,6 +42,8 @@ RecipeFood.propTypes = {
     strCategory: PropTypes.string,
     strMeal: PropTypes.string,
     strMealThumb: PropTypes.string,
+    strYoutube: PropTypes.string,
+    strInstructions: PropTypes.string,
   }).isRequired,
 };
 
