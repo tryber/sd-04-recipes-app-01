@@ -22,7 +22,7 @@ RecipeFood.propTypes = {
     strCategory: PropTypes.string,
     strMeal: PropTypes.string,
     strMealThumb: PropTypes.string,
-  }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

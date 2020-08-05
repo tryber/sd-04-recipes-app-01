@@ -23,7 +23,11 @@ const DetailsDrink = (props) => {
 DetailsDrink.propTypes = {
   detailsRequisition: PropTypes.func.isRequired,
   isLoadingDetails: PropTypes.bool.isRequired,
-  match: PropTypes.arrayOf(PropTypes.object).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+  }),
 };
 
 const mapStateToProps = (state) => ({
