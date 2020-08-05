@@ -1,9 +1,15 @@
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
 const RecipeFood = (props) => {
-  const { detailsRecipe: { strMeal, strMealThumb, strCategory } } = props;
+  const { detailsRecipe: { strMeal, strMealThumb, strCategory, ...measures } } = props;
+  // console.log(measures)
+  // const xablau = (Object.keys(measures));
+  // const valores = xablau.map(element => measures[element])
+  // console.log(valores)
+  // console.log(xablau.filter(element => element.startsWith('strIngredient')).map(element => measures[element]))
+  // console.log(xablau.filter(element => element.startsWith('strMeasure')))
   return (
     <div>
       <h2 data-testid="recipe-title">{strMeal}</h2>

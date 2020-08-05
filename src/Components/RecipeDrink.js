@@ -3,7 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const RecipeDrink = (props) => {
-  const { detailsRecipe: { strDrink, strDrinkThumb, strAlcoholic } } = props;
+  const { detailsRecipe: { strDrink, strDrinkThumb, strAlcoholic, ...measures } } = props;
+
   return (
     <div>
       <h2 data-testid="recipe-title">{strDrink}</h2>
