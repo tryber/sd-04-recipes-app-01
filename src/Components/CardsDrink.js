@@ -2,10 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import { createNewArr } from '../helpers';
 
 const CardsDrink = ({ drinks, request }) => {
-  let newArrDrinks = [];
-
   if (drinks === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     request();
@@ -14,15 +13,9 @@ const CardsDrink = ({ drinks, request }) => {
 
   if (drinks.length === 1) return <Redirect to={`/bebidas/${drinks[0].idDrink}`} />;
 
-  if (drinks.length > 12) {
-    for (let index = 0; index < 12; index += 1) {
-      newArrDrinks.push(drinks[index]);
-    }
-  } else newArrDrinks = [...drinks];
-
   return (
     <div>
-      {newArrDrinks.map((item, i) => (
+      {createNewArr(drinks).map((item, i) => (
         <Link to={`/bebidas/${item.idDrink}`} key={item.idDrink}>
           <div key={item.idDrink} data-testid={`${i}-recipe-card`}>
             <img
