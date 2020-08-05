@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
-const RecipeFood = ({ detailsRecipe: { strMeal, strMealThumb, strCategory }}) => {
+const RecipeFood = ({ detailsRecipe: { strMeal, strMealThumb, strCategory } }) => {
   return (
     <div>
       <h2 data-testid="recipe-title">{strMeal}</h2>
