@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getDetailsDrinks } from '../Redux/Actions/index';
+import RecipeDrink from '../Components/RecipeDrink';
 
 const DetailsDrink = (props) => {
   const { match: { params: { id } }, detailsRequisition, isLoadingDetails } = props;
@@ -16,6 +17,7 @@ const DetailsDrink = (props) => {
       <h2>
         Detalhes da receita
       </h2>
+      <RecipeDrink />
     </div>
   );
 };

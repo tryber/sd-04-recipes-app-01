@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
 
-const RecipeFood = ({ detailsRecipe: { strMeal, strMealThumb, strCategory } }) => {
+const RecipeFood = (props) => {
+  const { detailsRecipe: { strMeal, strMealThumb, strCategory } } = props;
   return (
     <div>
       <h2 data-testid="recipe-title">{strMeal}</h2>
@@ -12,7 +13,7 @@ const RecipeFood = ({ detailsRecipe: { strMeal, strMealThumb, strCategory } }) =
         data-testid="recipe-photo"
         width="200"
       />
-      <p>{strCategory}</p>
+      <p data-testid="recipe-category">{strCategory}</p>
     </div>
   );
 };
