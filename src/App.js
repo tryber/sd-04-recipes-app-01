@@ -13,6 +13,8 @@ import ExploreByArea from './Pages/ExploreByArea';
 import Profile from './Pages/Profile';
 import RecepiesDone from './Pages/RecepiesDone';
 import RecepiesFavorited from './Pages/RecepiesFavorited';
+import DetailsFood from './Pages/DetailsFood';
+import DetailsDrink from './Pages/DetailsDrink';
 
 function App() {
   return (
@@ -29,8 +31,8 @@ function App() {
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/receitas-feitas" component={RecepiesDone} />
       <Route exact path="/receitas-favoritas" component={RecepiesFavorited} />
-      <Route exact path="/comidas/:id" component={Login} />
-      <Route exact path="/bebidas/:id" component={Login} />
+      <Route exact path="/comidas/:id" component={DetailsFood} />
+      <Route exact path="/bebidas/:id" component={DetailsDrink} />
       <Route exact path="/comidas/:id/in-progress" component={Login} />
       <Route exact path="/bebidas/:id/in-progress" component={Login} />
     </Switch>
