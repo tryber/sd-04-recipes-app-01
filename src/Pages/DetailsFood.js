@@ -29,7 +29,7 @@ DetailsFood.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string,
     }),
-  }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

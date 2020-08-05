@@ -26,8 +26,8 @@ DetailsDrink.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
-    }).isRequired,
-  }),
+    }),
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
