@@ -19,12 +19,11 @@ const CategoriesFood = ({ categoriesList, cardsRequisition }) => {
 
   return (
     <div>
-      <button type="button" data-testid="All-category-filter" onClick={() => changeCategory()}>
+      <button data-testid="All-category-filter" onClick={() => changeCategory()}>
         All
       </button>
       {createNewCategories(categoriesList).map((item) => (
         <button
-          type="button"
           data-testid={`${item.strCategory}-category-filter`}
           key={item.strCategory}
           value={item.strCategory}

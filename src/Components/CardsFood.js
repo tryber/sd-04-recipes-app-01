@@ -44,7 +44,7 @@ const CardsFood = ({ meals, request }) => {
 
 CardsFood.propTypes = {
   request: PropTypes.func.isRequired,
-  meals: PropTypes.arrayOf(PropTypes.o).isRequired,
+  meals: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
