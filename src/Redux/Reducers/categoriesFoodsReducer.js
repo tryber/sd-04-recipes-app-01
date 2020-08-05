@@ -5,7 +5,7 @@ import {
 } from '../Actions/index';
 
 const INITIAL_STATE = {
-  isLoading: false,
+  isLoading: true,
   categoriesFoods: [],
   categoriesFoodsError: '',
 };
