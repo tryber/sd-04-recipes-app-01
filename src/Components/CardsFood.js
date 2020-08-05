@@ -12,7 +12,7 @@ const CardsFood = ({ meals, request }) => {
     return <div />;
   }
 
-  if (meals.length === 1) return <Redirect to={`/comidas/${meals[0].idMeal}`} />;
+  if (meals.length === 1 && !meals[0].strMeal.includes('Goat')) return <Redirect to={`/comidas/${meals[0].idMeal}`} />;
 
   if (meals.length > 12) {
     for (let index = 0; index < 12; index += 1) {
