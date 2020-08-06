@@ -24,7 +24,7 @@ const InputHeart = (heart, callback) => {
 
 const InputShare = (strSource, callback) => (
   <div>
-    <CopyToClipboard text={strSource}>
+    <CopyToClipboard text={`http://localhost:3000${strSource}`}>
       <input
         type="image"
         src={shareIcon}
@@ -52,11 +52,11 @@ const foodData = (strMeal, strMealThumb, strCategory, idMeal, strArea) => (
   }
 );
 
-const drinkData = (strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink, strArea) => (
+const drinkData = (strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink) => (
   {
     id: idDrink,
     type: 'bebida',
-    area: strArea,
+    area: '',
     category: strCategory,
     alcoholicOrNot: strAlcoholic,
     name: strDrink,
@@ -75,9 +75,9 @@ const IconsFood = (props) => {
   }
   if (path === '/bebidas/:id') {
     const { detailsDrink: {
-      strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink, strArea,
+      strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink,
     } } = props;
-    actualData = drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink, strArea);
+    actualData = drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
   }
   const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
   const onFavorite = () => {
