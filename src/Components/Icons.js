@@ -84,7 +84,7 @@ const IconsFood = (props) => {
   if (path === '/bebidas/:id') {
     const {
       detailsDrink: { strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink } } = props;
-    actualData = drinkData( strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
+    actualData = drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
   }
   const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
   const onFavorite = () => {
