@@ -6,7 +6,6 @@ import RecipeFood from '../Components/RecipeFood';
 
 const DetailsFood = (props) => {
   const { match: { params: { id } }, detailsRequisition, isLoadingDetails } = props;
-  console.log(props)
   useEffect(() => {
     detailsRequisition(id);
   }, [detailsRequisition, id]);
@@ -17,7 +16,7 @@ const DetailsFood = (props) => {
       <h2>
         Detalhes da receita
       </h2>
-      <RecipeFood pathName={props.match}/>
+      <RecipeFood pathName={props.match} />
     </div>
   );
 };

@@ -21,10 +21,10 @@ export const createNewCategories = (categoriesList) => {
 export const getLocalStorage = (key) => {
   const local = localStorage.getItem(key);
   if (!local) {
-    return []
+    return [];
   }
-  return JSON.parse(local)
-}
+  return JSON.parse(local);
+};
 
 export const createNewArr = (mealsOrDrinks) => {
   let newArrFoods = [];

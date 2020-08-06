@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Icons from './Icons';
 
 const RecipeDrink = (props) => {
-  const { detailsRecipe: { strDrink, strDrinkThumb, strAlcoholic, ...measures }, pathName } = props;
+  const { detailsRecipe: { strDrink, strDrinkThumb, strAlcoholic }, pathName } = props;
 
   return (
     <div>
@@ -27,6 +27,7 @@ RecipeDrink.propTypes = {
     strDrinkThumb: PropTypes.string,
     strAlcoholic: PropTypes.string,
   }).isRequired,
+  pathName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
