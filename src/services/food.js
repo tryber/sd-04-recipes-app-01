@@ -33,6 +33,6 @@ export const getDetailsFood = (id) => (
   fetch(`${detailsURL}${id}`).then((response) =>
     response
       .json()
-      .then((json) => (response.ok ? Promise.resolve(json.meals) : Promise.reject(json))),
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
   )
 );

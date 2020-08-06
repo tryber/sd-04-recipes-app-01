@@ -33,6 +33,6 @@ export const getDetailsDrink = (id) => (
   fetch(`${detailsURL}${id}`).then((response) =>
     response
       .json()
-      .then((json) => (response.ok ? Promise.resolve(json.drinks) : Promise.reject(json))),
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
   )
 );

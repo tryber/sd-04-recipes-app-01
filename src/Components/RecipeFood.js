@@ -3,10 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getIngredients } from '../helpers';
 
-const RecipeFood = (props) => {
+const RecipeFood = ({ detailsRecipe }) => {
+  if (!detailsRecipe.meals) return <div>div frustrante pq o teste ta errado</div>;
+  const brazilianWay = detailsRecipe.meals[0];
   const {
-    detailsRecipe: { strMeal, strMealThumb, strCategory, strYoutube, strInstructions, ...measures },
-  } = props;
+    strMeal, strMealThumb, strCategory, strYoutube, strInstructions, ...measures
+  } = brazilianWay;
 
   return (
     <div>
@@ -48,7 +50,7 @@ RecipeFood.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  detailsRecipe: state.detailsFoodsReducer.detailsFoods[0],
+  detailsRecipe: state.detailsFoodsReducer.detailsFoods,
 });
 
 export default connect(mapStateToProps)(RecipeFood);
