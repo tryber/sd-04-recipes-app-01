@@ -5,6 +5,7 @@ import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 import save from '../helpers/index';
 import { getLocalStorage } from '../helpers/index';
+
 const copy = require('clipboard-copy');
 
 const InputHeart = (heart, callback) => {
@@ -24,8 +25,8 @@ const InputHeart = (heart, callback) => {
 const InputShare = (strSource, callback) => {
   const handleShare = () => {
     callback(true);
-    copy(`http://localhost:3000${strSource}`)
-  }
+    copy(`http://localhost:3000${strSource}`);
+  };
   return (
     <div>
       <input
@@ -82,21 +83,8 @@ const IconsFood = (props) => {
   }
   if (path === '/bebidas/:id') {
     const {
-      detailsDrink: {
-        strDrink,
-        strDrinkThumb,
-        strCategory,
-        strAlcoholic,
-        idDrink,
-      },
-    } = props;
-    actualData = drinkData(
-      strDrink,
-      strDrinkThumb,
-      strCategory,
-      strAlcoholic,
-      idDrink,
-    );
+      detailsDrink: { strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink } } = props;
+    actualData = drinkData( strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
   }
   const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
   const onFavorite = () => {
