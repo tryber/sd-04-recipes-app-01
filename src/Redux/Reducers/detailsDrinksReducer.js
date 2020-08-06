@@ -6,7 +6,7 @@ import {
 
 const INITIAL_STATE = {
   isLoading: true,
-  detailsDrinks: [],
+  detailsDrinks: {},
   detailsDrinksError: '',
 };
 

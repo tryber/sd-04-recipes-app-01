@@ -35,3 +35,19 @@ export const createNewArr = (mealsOrDrinks) => {
   } else newArrFoods = [...mealsOrDrinks];
   return newArrFoods;
 };
+
+export const keysToArray = (measures, name) => (
+  Object.keys(measures)
+    .filter((item) => item.startsWith(name))
+    .map((item) => measures[item])
+    .filter((item) => item !== '' && item !== null)
+);
+
+export const getIngredients = (measures) => {
+  const ingredientsKeys = keysToArray(measures, 'strIngredient');
+  const measureKeys = keysToArray(measures, 'strMeasure');
+  return ingredientsKeys.map((item, index) => ({
+    ingredient: item,
+    measure: measureKeys[index],
+  }));
+};

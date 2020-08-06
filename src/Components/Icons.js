@@ -115,9 +115,4 @@ IconsFood.propTypes = {
   pathName: PropTypes.arrayOf(Object).isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  detailsRecipe: state.detailsFoodsReducer.detailsFoods[0],
-  detailsDrink: state.detailsDrinksReducer.detailsDrinks[0],
-});
-
-export default connect(mapStateToProps)(IconsFood);
+export default IconsFood;

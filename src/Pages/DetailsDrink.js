@@ -6,7 +6,6 @@ import RecipeDrink from '../Components/RecipeDrink';
 
 const DetailsDrink = (props) => {
   const { match: { params: { id } }, detailsRequisition, isLoadingDetails } = props;
-
   useEffect(() => {
     detailsRequisition(id);
   }, [detailsRequisition, id]);
