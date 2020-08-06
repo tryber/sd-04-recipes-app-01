@@ -1,6 +1,7 @@
 import PropTypes, { element } from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import Icons from './Icons';
 
 const RecipeFood = (props) => {
   const { detailsRecipe: { strMeal, strMealThumb, strCategory, ...measures } } = props;
@@ -20,6 +21,7 @@ const RecipeFood = (props) => {
         width="200"
       />
       <p data-testid="recipe-category">{strCategory}</p>
+      <Icons />
     </div>
   );
 };

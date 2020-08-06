@@ -17,3 +17,11 @@ export const createNewCategories = (categoriesList) => {
   }
   return newArrCategories;
 };
+
+export const getLocalStorage = (key) => {
+  const local = localStorage.getItem(key);
+  if (!local) {
+    return []
+  }
+  return JSON.parse(local)
+}
