@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import Icons from './Icons';
 
 const RecipeDrink = (props) => {
-  const { detailsRecipe: { strDrink, strDrinkThumb, strAlcoholic, ...measures } } = props;
+  const { detailsRecipe: { strDrink, strDrinkThumb, strAlcoholic, ...measures }, pathName } = props;
 
   return (
     <div>
@@ -15,6 +16,7 @@ const RecipeDrink = (props) => {
         width="200"
       />
       <p data-testid="recipe-category">{strAlcoholic}</p>
+      <Icons pathName={pathName} />
     </div>
   );
 };

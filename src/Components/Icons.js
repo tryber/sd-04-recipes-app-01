@@ -40,15 +40,8 @@ const Comparisor = (idMeal) => (
   getLocalStorage('favoriteRecipes').find(({ id }) => id === idMeal)
 );
 
-
-const Icons = (props) => {
-  const [copied, setCopied] = useState(false);
-  const [render, setRender] = useState(false);
-  const {
-    detailsRecipe: { strMeal, strMealThumb, strCategory, strSource, idMeal, strArea },
-  } = props;
-  const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
-  const actualData = {
+const foodData = (strMeal, strMealThumb, strCategory, idMeal, strArea) => (
+  {
     id: idMeal,
     type: 'comida',
     area: strArea,
@@ -56,7 +49,37 @@ const Icons = (props) => {
     alcoholicOrNot: '',
     name: strMeal,
     image: strMealThumb,
-  };
+  }
+);
+
+const drinkData = (strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink, strArea) => (
+  {
+    id: idDrink,
+    type: 'bebida',
+    area: strArea,
+    category: strCategory,
+    alcoholicOrNot: strAlcoholic,
+    name: strDrink,
+    image: strDrinkThumb,
+  }
+);
+
+const IconsFood = (props) => {
+  const [copied, setCopied] = useState(false);
+  const [render, setRender] = useState(false);
+  const { pathName: { path, url } } = props;
+  let actualData = [];
+  if (path === '/comidas/:id') {
+    const { detailsRecipe: { strMeal, strMealThumb, strCategory, idMeal, strArea } } = props;
+    actualData = foodData(strMeal, strMealThumb, strCategory, idMeal, strArea);
+  }
+  if (path === '/bebidas/:id') {
+    const { detailsDrink: {
+      strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink, strArea,
+    } } = props;
+    actualData = drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink, strArea);
+  }
+  const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
   const onFavorite = () => {
     const setToLocalStore = [...infoFromLocalStorage, actualData];
     save('favoriteRecipes', setToLocalStore);
@@ -76,22 +99,25 @@ const Icons = (props) => {
   return (
     <div>
       <div>
-        {Comparisor(idMeal)
+        {Comparisor(actualData.id)
           ? InputHeart(blackHeart, unFavorite)
           : InputHeart(whiteHeart, onFavorite)}
       </div>
-      {InputShare(strSource, setCopied)}
+      {InputShare(url, setCopied)}
       {copied && <p>Link copiado!</p>}
     </div>
   );
 };
 
-Icons.propTypes = {
+IconsFood.propTypes = {
   detailsRecipe: PropTypes.arrayOf(Object).isRequired,
+  detailsDrink: PropTypes.arrayOf(Object).isRequired,
+  pathName: PropTypes.arrayOf(Object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
   detailsRecipe: state.detailsFoodsReducer.detailsFoods[0],
+  detailsDrink: state.detailsDrinksReducer.detailsDrinks[0],
 });
 
-export default connect(mapStateToProps)(Icons);
+export default connect(mapStateToProps)(IconsFood);

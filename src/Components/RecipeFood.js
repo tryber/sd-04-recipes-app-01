@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import Icons from './Icons';
 
 const RecipeFood = (props) => {
-  const { detailsRecipe: { strMeal, strMealThumb, strCategory, ...measures } } = props;
-  // console.log(measures)
+  const { detailsRecipe: { strMeal, strMealThumb, strCategory, ...measures }, pathName } = props;
+  console.log(props)
   // const xablau = (Object.keys(measures));
   // const valores = xablau.map(element => measures[element])
   // console.log(valores)
@@ -21,7 +21,7 @@ const RecipeFood = (props) => {
         width="200"
       />
       <p data-testid="recipe-category">{strCategory}</p>
-      <Icons />
+      <Icons pathName={pathName} />
     </div>
   );
 };
