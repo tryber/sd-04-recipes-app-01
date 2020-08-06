@@ -18,10 +18,10 @@ export const createNewCategories = (categoriesList) => {
   return newArrCategories;
 };
 
-export const createNewArr = (mealsOrDrinks) => {
+export const createNewArr = (mealsOrDrinks, numOfItens) => {
   let newArrFoods = [];
-  if (mealsOrDrinks.length > 12) {
-    for (let index = 0; index < 12; index += 1) {
+  if (mealsOrDrinks.length > numOfItens) {
+    for (let index = 0; index < numOfItens; index += 1) {
       newArrFoods.push(mealsOrDrinks[index]);
     }
   } else newArrFoods = [...mealsOrDrinks];
