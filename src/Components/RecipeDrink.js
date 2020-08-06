@@ -16,7 +16,7 @@ const RecipeDrink = ({ detailsRecipe, pathName }) => {
     <div>
       <h2 data-testid="recipe-title">{strDrink}</h2>
       <img src={strDrinkThumb} alt={strDrink} data-testid="recipe-photo" width="200" />
-      <Icons pathName={pathName} detailsDrink={brazilianWay}/>
+      <Icons pathName={pathName} detailsDrink={brazilianWay} />
       <p data-testid="recipe-category">{strAlcoholic}</p>
       <p>Ingredients:</p>
       <ul data-testid="0-ingredient-name-and-measure">
