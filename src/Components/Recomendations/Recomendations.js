@@ -15,7 +15,7 @@ const Recomendations = (props) => {
     whereShouldItGo = 'bebidas';
   }
   return (
-    <div className="recomendations" data-testid="recomendation-card">
+    <div className="recomendations">
       {createNewArr(stateDrinksOrFoods, 6).map((item, i) => (
         <Link to={`/${whereShouldItGo}/${item[id]}`} key={item[id]}>
           <div className="recomendations-card" key={item[id]} data-testid={`${i}-recomendation-card`}>
@@ -23,10 +23,9 @@ const Recomendations = (props) => {
               key={item[id]}
               src={item[strThumb]}
               width="150"
-              data-testid={`${i}-card-img`}
               alt={item[strName]}
             />
-            <p key={item[strName]} data-testid={`${i}-card-name`}>
+            <p key={item[strName]} data-testid={`${i}-recomendation-title`}>
               {item[strName]}
             </p>
           </div>
