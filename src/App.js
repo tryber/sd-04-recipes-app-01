@@ -15,6 +15,8 @@ import RecepiesDone from './Pages/RecepiesDone';
 import RecepiesFavorited from './Pages/RecepiesFavorited';
 import DetailsFood from './Pages/DetailsFood';
 import DetailsDrink from './Pages/DetailsDrink';
+import MeaslInProgress from './Pages/MealsInPropgress';
+import DrinkslInProgress from './Pages/DrinksInProgress';
 
 function App() {
   return (
@@ -33,8 +35,8 @@ function App() {
       <Route exact path="/receitas-favoritas" component={RecepiesFavorited} />
       <Route exact path="/comidas/:id" component={DetailsFood} />
       <Route exact path="/bebidas/:id" component={DetailsDrink} />
-      <Route exact path="/comidas/:id/in-progress" component={Login} />
-      <Route exact path="/bebidas/:id/in-progress" component={Login} />
+      <Route exact path="/comidas/:id/in-progress" component={MeaslInProgress} />
+      <Route exact path="/bebidas/:id/in-progress" component={DrinkslInProgress} />
     </Switch>
   );
 }

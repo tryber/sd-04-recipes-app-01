@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getDetailsFoods, getDrinks } from '../Redux/Actions/index';
 import RecipeFood from '../Components/RecipeFood';
 import Recomendations from '../Components/Recomendations/Recomendations';
+import StartRecipeBtn from '../Components/StartRecipeBtn';
 
 const DetailsFood = ({
   match: {
@@ -27,6 +28,7 @@ const DetailsFood = ({
       <h2>Detalhes da receita</h2>
       <RecipeFood pathName={match} />
       <Recomendations pathName={match} stateDrinksOrFoods={drinks} />
+      <StartRecipeBtn pathName={match} id={id} />
     </div>
   );
 };
