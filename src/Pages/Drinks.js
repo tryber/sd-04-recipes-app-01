@@ -6,6 +6,7 @@ import SearchBar from '../Components/SearchBar';
 import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
 import CategoriesDrink from '../Components/CategoriesDrink';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 const Drinks = ({
   isLoadingDrink,
@@ -26,6 +27,7 @@ const Drinks = ({
       <SearchBar request={cardsRequisition} />
       <CategoriesDrink />
       <CardsDrink request={cardsRequisition} />
+      <Footer />
     </div>
   );
 };

@@ -26,3 +26,13 @@ export const getCategoriesFood = () => (
       .then((json) => (response.ok ? Promise.resolve(json.meals) : Promise.reject(json))),
   )
 );
+
+const detailsURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
+
+export const getDetailsFood = (id) => (
+  fetch(`${detailsURL}${id}`).then((response) =>
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);
