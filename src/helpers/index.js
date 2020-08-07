@@ -26,7 +26,7 @@ export const getLocalStorage = (key) => {
   return JSON.parse(local);
 };
 
-export const createNewArr = (mealsOrDrinks, numOfItens) => {
+export const createNewArr = (mealsOrDrinks, numOfItens = 12) => {
   let newArrFoods = [];
   if (mealsOrDrinks.length > numOfItens) {
     for (let index = 0; index < numOfItens; index += 1) {
@@ -36,12 +36,11 @@ export const createNewArr = (mealsOrDrinks, numOfItens) => {
   return newArrFoods;
 };
 
-export const keysToArray = (measures, name) => (
+export const keysToArray = (measures, name) =>
   Object.keys(measures)
     .filter((item) => item.startsWith(name))
     .map((item) => measures[item])
-    .filter((item) => item !== '' && item !== null)
-);
+    .filter((item) => item !== '' && item !== null);
 
 export const getIngredients = (measures) => {
   const ingredientsKeys = keysToArray(measures, 'strIngredient');
@@ -50,4 +49,11 @@ export const getIngredients = (measures) => {
     ingredient: item,
     measure: measureKeys[index],
   }));
+};
+
+export const recomendationItemKeys = (pathname) => {
+  if (pathname.includes('/bebidas')) {
+    return { id: 'idMeal', strName: 'strMeal', strThumb: 'strMealThumb' };
+  }
+  return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
 };

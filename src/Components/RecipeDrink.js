@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Icons from './Icons';
 import { getIngredients } from '../helpers';
 
-
 const RecipeDrink = ({ detailsRecipe, pathName }) => {
   if (!detailsRecipe.drinks) return <div>div frustrante pq o teste ta errado</div>;
   const brazilianWay = detailsRecipe.drinks[0];

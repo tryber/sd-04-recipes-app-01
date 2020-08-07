@@ -119,7 +119,9 @@ const IconsFood = (props) => {
 IconsFood.propTypes = {
   detailsRecipe: PropTypes.arrayOf(Object).isRequired,
   detailsDrink: PropTypes.arrayOf(Object).isRequired,
-  pathName: PropTypes.arrayOf(Object).isRequired,
+  pathName: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default IconsFood;
