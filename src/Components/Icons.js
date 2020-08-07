@@ -14,12 +14,13 @@ const InputHeart = (heart, callback) => {
       <input
         type="image"
         src={heart}
+        alt="s2"
         data-testid="favorite-btn"
         onClick={() => callback()}
       />
     );
   }
-  return <input type="image" src={heart} data-testid="favorite-btn" />;
+  return <input type="image" alt="s2" src={heart} data-testid="favorite-btn" />;
 };
 
 const InputShare = (strSource, callback) => {
@@ -31,6 +32,7 @@ const InputShare = (strSource, callback) => {
     <div>
       <input
         type="image"
+        alt="shareIcon"
         src={shareIcon}
         data-testid="share-btn"
         onClick={() => handleShare()}
@@ -117,9 +119,28 @@ const IconsFood = (props) => {
 };
 
 IconsFood.propTypes = {
-  detailsRecipe: PropTypes.arrayOf(Object).isRequired,
-  detailsDrink: PropTypes.arrayOf(Object).isRequired,
-  pathName: PropTypes.arrayOf(Object).isRequired,
+  detailsDrink: PropTypes.shape({
+    strDrink: PropTypes.string,
+    strDrinkThumb: PropTypes.string,
+    strCategory: PropTypes.string,
+    strAlcoholic: PropTypes.string,
+    idDrink: PropTypes.string,
+  }),
+  detailsRecipe: PropTypes.shape({
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+    strCategory: PropTypes.string,
+    idMeal: PropTypes.string,
+    strArea: PropTypes.string,
+  }),
+  pathName: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+IconsFood.defaultProps = {
+  detailsDrink: {},
+  detailsRecipe: {},
 };
 
 export default IconsFood;

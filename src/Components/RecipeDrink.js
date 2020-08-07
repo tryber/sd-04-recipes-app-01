@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Icons from './Icons';
 import { getIngredients } from '../helpers';
 
-
 const RecipeDrink = ({ detailsRecipe, pathName }) => {
   if (!detailsRecipe.drinks) return <div>div frustrante pq o teste ta errado</div>;
   const brazilianWay = detailsRecipe.drinks[0];
@@ -34,12 +33,11 @@ const RecipeDrink = ({ detailsRecipe, pathName }) => {
 
 RecipeDrink.propTypes = {
   detailsRecipe: PropTypes.shape({
-    strDrink: PropTypes.string,
-    strDrinkThumb: PropTypes.string,
-    strAlcoholic: PropTypes.string,
-    strInstructions: PropTypes.string,
+    drinks: PropTypes.arrayOf(Object).isRequired,
   }).isRequired,
-  pathName: PropTypes.string.isRequired,
+  pathName: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -5,6 +5,16 @@
   align-items:  center;
 }
 
+.start-recipe-btn {
+  bottom: 0;
+  position: fixed;
+}
+
+.btnPosition {
+  display: flex;
+  justify-content: center;
+}
+
 .footer {
   position: fixed;;
   bottom: 0;
