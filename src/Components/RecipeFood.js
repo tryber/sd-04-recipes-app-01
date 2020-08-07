@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import Icons from './Icons';
 import { getIngredients } from '../helpers';
 
-const RecipeFood = ({ detailsRecipe }) => {
+const RecipeFood = ({ detailsRecipe, pathName }) => {
   if (!detailsRecipe.meals) return <div>div frustrante pq o teste ta errado</div>;
   const brazilianWay = detailsRecipe.meals[0];
   const {
@@ -14,6 +15,7 @@ const RecipeFood = ({ detailsRecipe }) => {
     <div>
       <h2 data-testid="recipe-title">{strMeal}</h2>
       <img src={strMealThumb} alt={strMeal} data-testid="recipe-photo" width="200" />
+      <Icons pathName={pathName} detailsRecipe={brazilianWay} />
       <p data-testid="recipe-category">{strCategory}</p>
       <p>Ingredients:</p>
       <ul>
@@ -47,6 +49,7 @@ RecipeFood.propTypes = {
     strYoutube: PropTypes.string,
     strInstructions: PropTypes.string,
   }).isRequired,
+  pathName: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({

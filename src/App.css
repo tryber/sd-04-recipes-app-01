@@ -5,6 +5,16 @@
   align-items:  center;
 }
 
+.footer {
+  position: fixed;;
+  bottom: 0;
+  display: flex;
+  background-color: gray;
+  justify-content: space-around;
+  align-items:  center;
+  width: 100%;
+}
+
 #meals {
   height: 100vh;
   width: 100%;

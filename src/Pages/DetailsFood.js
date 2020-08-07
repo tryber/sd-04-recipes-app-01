@@ -16,7 +16,7 @@ const DetailsFood = (props) => {
       <h2>
         Detalhes da receita
       </h2>
-      <RecipeFood />
+      <RecipeFood pathName={props.match} />
     </div>
   );
 };
