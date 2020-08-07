@@ -33,12 +33,11 @@ const RecipeDrink = ({ detailsRecipe, pathName }) => {
 
 RecipeDrink.propTypes = {
   detailsRecipe: PropTypes.shape({
-    strDrink: PropTypes.string,
-    strDrinkThumb: PropTypes.string,
-    strAlcoholic: PropTypes.string,
-    strInstructions: PropTypes.string,
+    drinks: PropTypes.arrayOf(Object).isRequired,
   }).isRequired,
-  pathName: PropTypes.string.isRequired,
+  pathName: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({

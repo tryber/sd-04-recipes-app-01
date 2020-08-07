@@ -20,7 +20,7 @@ const RecipeFood = ({ detailsRecipe, pathName }) => {
       <p>Ingredients:</p>
       <ul>
         {getIngredients(measures).map(({ ingredient, measure }, index) => (
-          <li data-testid={`${index}-ingredient-name-and-measure`} key={ingredient}>
+          <li data-testid={`${index}-ingredient-name-and-measure`} key={`${measure} ${ingredient}`}>
             {measure} {ingredient}
           </li>
         ))}
@@ -43,11 +43,7 @@ const RecipeFood = ({ detailsRecipe, pathName }) => {
 
 RecipeFood.propTypes = {
   detailsRecipe: PropTypes.shape({
-    strCategory: PropTypes.string,
-    strMeal: PropTypes.string,
-    strMealThumb: PropTypes.string,
-    strYoutube: PropTypes.string,
-    strInstructions: PropTypes.string,
+    meals: PropTypes.arrayOf(Object).isRequired,
   }).isRequired,
   pathName: PropTypes.shape({
     path: PropTypes.string.isRequired,

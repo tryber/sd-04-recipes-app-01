@@ -7,9 +7,6 @@ import './Recomendations.css';
 const Recomendations = (props) => {
   const { pathName, stateDrinksOrFoods } = props;
   const { id, strName, strThumb } = recomendationItemKeys(pathName.path);
-  console.log(id, strName, strThumb);
-  console.log(stateDrinksOrFoods);
-  console.log(pathName);
   let whereShouldItGo = 'comidas';
   if (pathName.path.includes('/comidas')) {
     whereShouldItGo = 'bebidas';

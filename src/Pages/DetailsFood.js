@@ -5,16 +5,17 @@ import { getDetailsFoods, getDrinks } from '../Redux/Actions/index';
 import RecipeFood from '../Components/RecipeFood';
 import Recomendations from '../Components/Recomendations/Recomendations';
 
-const DetailsFood = (props) => {
-  const {
-    match: {
-      params: { id },
-    },
-    detailsRequisition,
-    isLoadingDetails,
-    drinksRequest,
-    isLoadingRecomendation,
-  } = props;
+const DetailsFood = ({
+  match: {
+    params: { id },
+  },
+  detailsRequisition,
+  isLoadingDetails,
+  drinksRequest,
+  isLoadingRecomendation,
+  match,
+  drinks,
+}) => {
   useEffect(() => {
     detailsRequisition(id);
     drinksRequest();
@@ -24,8 +25,8 @@ const DetailsFood = (props) => {
   return (
     <div>
       <h2>Detalhes da receita</h2>
-      <RecipeFood pathName={props.match} />
-      <Recomendations pathName={props.match} stateDrinksOrFoods={props.drinks} />
+      <RecipeFood pathName={match} />
+      <Recomendations pathName={match} stateDrinksOrFoods={drinks} />
     </div>
   );
 };
