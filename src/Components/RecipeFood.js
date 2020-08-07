@@ -49,7 +49,9 @@ RecipeFood.propTypes = {
     strYoutube: PropTypes.string,
     strInstructions: PropTypes.string,
   }).isRequired,
-  pathName: PropTypes.string.isRequired,
+  pathName: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => ({
