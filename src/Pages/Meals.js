@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import CardsFood from '../Components/CardsFood';
 import SearchBar from '../Components/SearchBar';
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesFood from '../Components/CategoriesFood';
 
@@ -26,6 +27,7 @@ const Meals = ({
       <SearchBar request={cardsRequisition} />
       <CategoriesFood />
       <CardsFood request={cardsRequisition} />
+      <Footer />
     </div>
   );
 };

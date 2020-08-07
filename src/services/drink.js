@@ -26,3 +26,13 @@ export const getCategoriesDrink = () => (
       .then((json) => (response.ok ? Promise.resolve(json.drinks) : Promise.reject(json))),
   )
 );
+
+const detailsURL = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
+
+export const getDetailsDrink = (id) => (
+  fetch(`${detailsURL}${id}`).then((response) =>
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);
