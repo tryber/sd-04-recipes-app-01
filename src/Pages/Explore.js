@@ -7,11 +7,11 @@ import Footer from '../Components/Footer';
 const Explore = ({ location: { pathname } }) => (
   <div>
     <Header pathname={pathname} />
-    <Link to='/explorar/comidas'>
-      <button data-testid='explore-food'>Explorar Comidas</button>
+    <Link to="/explorar/comidas">
+      <button data-testid="explore-food">Explorar Comidas</button>
     </Link>
-    <Link to='/explorar/bebidas'>
-      <button data-testid='explore-drinks'>Explorar Bebidas</button>
+    <Link to="/explorar/bebidas">
+      <button data-testid="explore-drinks">Explorar Bebidas</button>
     </Link>
     <Footer />
   </div>
