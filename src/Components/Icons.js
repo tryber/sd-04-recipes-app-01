@@ -14,12 +14,13 @@ const InputHeart = (heart, callback) => {
       <input
         type="image"
         src={heart}
+        alt="like"
         data-testid="favorite-btn"
         onClick={() => callback()}
       />
     );
   }
-  return <input type="image" src={heart} data-testid="favorite-btn" />;
+  return <input type="image" alt="dislike" src={heart} data-testid="favorite-btn" />;
 };
 
 const InputShare = (strSource, callback) => {
@@ -31,6 +32,7 @@ const InputShare = (strSource, callback) => {
     <div>
       <input
         type="image"
+        alt="share"
         src={shareIcon}
         data-testid="share-btn"
         onClick={() => handleShare()}
