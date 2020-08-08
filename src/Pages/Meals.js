@@ -7,6 +7,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesFood from '../Components/CategoriesFood';
+import Cards from '../Components/TesteRefatoring';
 
 const Meals = ({
   isLoadingFood,
@@ -26,7 +27,8 @@ const Meals = ({
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
       <CategoriesFood />
-      <CardsFood request={cardsRequisition} />
+      {/* <CardsFood request={cardsRequisition} /> */}
+      <Cards request={cardsRequisition} pathname={pathname} />
       <Footer />
     </div>
   );
