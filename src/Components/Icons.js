@@ -71,25 +71,27 @@ const drinkData = (
 });
 
 const IconsFood = (props) => {
+  console.log(props)
   const [copied, setCopied] = useState(false);
   const [render, setRender] = useState(false);
   const {
     pathName: { path, url },
   } = props;
   let actualData = [];
-  if (path === '/comidas/:id') {
+  if (path === '/comidas/:id' || path === '/comidas/:id/in-progress') {
     const {
       detailsRecipe: { strMeal, strMealThumb, strCategory, idMeal, strArea },
     } = props;
     actualData = foodData(strMeal, strMealThumb, strCategory, idMeal, strArea);
   }
-  if (path === '/bebidas/:id') {
+  if (path === '/bebidas/:id' || path === '/bebidas/:id/in-progress') {
     const {
       detailsDrink: { strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink } } = props;
     actualData = drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
   }
   const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
   const onFavorite = () => {
+    console.log(actualData)
     const setToLocalStore = [...infoFromLocalStorage, actualData];
     save('favoriteRecipes', setToLocalStore);
     setRender(!render);
