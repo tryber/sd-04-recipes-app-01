@@ -6,6 +6,8 @@ import Footer from '../Components/Footer';
 const ExploreByArea = ({ location: { pathname } }) => (
   <div>
     <Header pathname={pathname} />
+    {/* <SearchBar request={cardsRequisition} />
+    <Cards request={cardsRequisition} pathname={pathname} /> */}
     <Footer />
   </div>
 );
@@ -15,5 +17,6 @@ ExploreByArea.propTypes = {
     PropTypes.string.isRequired,
   ).isRequired,
 };
+
 
 export default ExploreByArea;

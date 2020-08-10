@@ -19,7 +19,7 @@ const Cards = (props) => {
     return <div />;
   }
 
-  if (type.length === 1 && type[0][id] !== '52968') return <Redirect to={`/comidas/${type[0][id]}`} />;
+  if (type.length === 1 && type[0][id] !== '52968') return <Redirect to={`${pathname}/${type[0][id]}`} />;
   return (
     <div>
       {createNewArr(type).map((item, i) => (

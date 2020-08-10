@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import Cards from '../Components/Cards';
 import SearchBar from '../Components/SearchBar';
 import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
-import CategoriesDrink from '../Components/CategoriesDrink';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import Categories from '../Components/Categories';
 
 const Drinks = ({
   isLoadingDrink,
@@ -25,7 +25,7 @@ const Drinks = ({
     <div>
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
-      <CategoriesDrink />
+      <Categories pathname={pathname} />
       <Cards request={cardsRequisition} pathname={pathname} />
       <Footer />
     </div>
