@@ -44,7 +44,6 @@ const decorationCheck = (event) => {
 
 const deleteOrAdd = (event, actualData, drinkOrFood, local, Ingredients) => {
   if (!Ingredients.includes(event.target.name)) {
-    console.log('passei também');
     return addToStorage(local, actualData, drinkOrFood, event);
   }
   let newlocal = [];
@@ -76,7 +75,6 @@ const handleInput = (
     !local[drinkOrFood.key][actualData[drinkOrFood.id]]
   ) {
     setToStore = addToStorageFistTime(local, actualData, drinkOrFood, event);
-    console.log('passei');
   } else {
     setToStore = deleteOrAdd(
       event,
@@ -185,7 +183,6 @@ const MeaslInProgress = ({
   detailsFood,
   match,
 }) => {
-  console.log(match);
   const [render, setRender] = useState(false);
   const decorationDefault = { 'text-decoration': 'line-through' };
   let actualData = [];

@@ -16,7 +16,6 @@ import RecepiesFavorited from './Pages/RecepiesFavorited';
 import DetailsFood from './Pages/DetailsFood';
 import DetailsDrink from './Pages/DetailsDrink';
 import MeaslInProgress from './Pages/MealsInPropgress';
-import DrinkslInProgress from './Pages/DrinksInProgress';
 
 function App() {
   return (
