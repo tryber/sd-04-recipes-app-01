@@ -96,11 +96,11 @@ const requestCategoriesFoodError = (error) => ({
   error,
 });
 
-export function getCategoriesFoods() {
+export function getCategoriesFoods(type) {
   return (dispatch) => {
     requestingCategoriesFood();
 
-    return getCategoriesFood().then(
+    return getCategoriesFood(type).then(
       (data) => dispatch(requestCategoriesFoodSuccess(data)),
       (error) => dispatch(requestCategoriesFoodError(error)),
     );
