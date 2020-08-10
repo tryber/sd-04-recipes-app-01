@@ -170,18 +170,18 @@ const renderIngredientCheckBox = (
   </div>
 );
 const btnTrue = () => (
-    <button className="start-recipe-btn" type='button'>Finalizar Receita</button>
-)
+  <button className='start-recipe-btn' type='button'>Finalizar Receita</button>
+);
 const btnFalse = () => (
-  <button type='button' className="start-recipe-btn" disabled>Finalizar Receita</button>
-)
-const renderButton = (actualData, drinkOrFood, render, setRender) => {
+  <button type='button' className='start-recipe-btn' disabled>Finalizar Receita</button>
+);
+const renderButton = (actualData, drinkOrFood) => {
   const store = getLocalStorage('inProgressRecipes');
   const key = drinkOrFood.key;
   const value = key[[actualData[drinkOrFood.id]]];
   const ingredientsOnTheBoard = !store[key] || !store[value] ? [] : store[value];
   const compareForButton = getIngredients(actualData).map((Ingredient) => Ingredient.ingredient);
-  if (ingredientsForButton.length === ingredientsOnTheBoard.length) {
+  if (compareForButton.length === ingredientsOnTheBoard.length) {
     return btnTrue();
   }
   return btnFalse();
