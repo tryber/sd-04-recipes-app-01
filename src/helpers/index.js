@@ -90,3 +90,10 @@ export const filterCards = (doneRecipes, name, callback, string) => {
     callback(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
   }
 };
+
+export const recomendationItemKeysToCards = (pathname) => {
+  if (pathname.includes('/comidas')) {
+    return { id: 'idMeal', strName: 'strMeal', strThumb: 'strMealThumb' };
+  }
+  return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
+};
