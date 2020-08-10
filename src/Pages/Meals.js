@@ -6,7 +6,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesFood from '../Components/CategoriesFood';
-import Cards from '../Components/TesteRefatoring';
+import Cards from '../Components/Cards';
 
 const Meals = ({
   isLoadingFood,

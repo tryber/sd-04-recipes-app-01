@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Cards from '../Components/TesteRefatoring';
+import Cards from '../Components/Cards';
 import SearchBar from '../Components/SearchBar';
 import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
 import CategoriesDrink from '../Components/CategoriesDrink';

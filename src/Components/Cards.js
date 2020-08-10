@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { createNewArr, recomendationItemKeysToCards } from '../helpers';
 
 const Cards = (props) => {
@@ -17,7 +18,7 @@ const Cards = (props) => {
     request();
     return <div />;
   }
-  
+
   if (type.length === 1 && type[0][id] !== '52968')
     return <Redirect to={`/comidas/${type[0][id]}`} />;
   return (
@@ -40,6 +41,13 @@ const Cards = (props) => {
       ))}
     </div>
   );
+};
+
+Cards.propTypes = {
+  pathname: PropTypes.string.isRequired,
+  request: PropTypes.func.isRequired,
+  drinks: PropTypes.arrayOf(Object).isRequired,
+  meals: PropTypes.arrayOf(Object).isRequired,
 };
 
 const mapStateToProps = (state) => ({
