@@ -12,7 +12,6 @@ const addToStorageFistTime = (local, actualData, drinkOrFood, event) => ({
     [actualData[drinkOrFood.id]]: [event.target.name],
   },
 });
-
 const addToStorage = (local, actualData, drinkOrFood, event) => ({
   ...local,
   [drinkOrFood.key]: {
@@ -23,7 +22,6 @@ const addToStorage = (local, actualData, drinkOrFood, event) => ({
     ],
   },
 });
-
 const deleteStorage = (local, actualData, drinkOrFood, event) => {
   const array = [];
   local[drinkOrFood.key][actualData[drinkOrFood.id]].forEach((ingredient) => {
@@ -33,7 +31,6 @@ const deleteStorage = (local, actualData, drinkOrFood, event) => {
   });
   return array;
 };
-
 const decorationCheck = (event) => {
   let element = event.target.style.textDecoration;
   if (element === 'line-through') {
@@ -41,7 +38,6 @@ const decorationCheck = (event) => {
   }
   return (element = 'line-through');
 };
-
 const deleteOrAdd = (event, actualData, drinkOrFood, local, Ingredients) => {
   if (!Ingredients.includes(event.target.name)) {
     return addToStorage(local, actualData, drinkOrFood, event);
@@ -53,7 +49,6 @@ const deleteOrAdd = (event, actualData, drinkOrFood, local, Ingredients) => {
     [drinkOrFood.key]: { [actualData[drinkOrFood.id]]: newlocal },
   };
 };
-
 const handleInput = (
   event,
   actualData,
@@ -88,7 +83,6 @@ const handleInput = (
   save('inProgressRecipes', setToStore);
   return decorationCheck(event);
 };
-
 const renderInputs = (
   Ingredients,
   actualData,
@@ -137,7 +131,6 @@ const renderInputs = (
     />
   )
 );
-
 const renderIngredientCheckBox = (
   actualData,
   drinkOrFood,
@@ -176,17 +169,12 @@ const renderIngredientCheckBox = (
     ))}
   </div>
 );
-
 const btnTrue = () => (
-  <div className="btnPosition">
     <button className="start-recipe-btn" type='button'>Finalizar Receita</button>
-  </div>
 )
-
 const btnFalse = () => (
   <button type='button' className="start-recipe-btn" disabled>Finalizar Receita</button>
 )
-
 const renderButton = (actualData, drinkOrFood, render, setRender) => {
   const store = getLocalStorage('inProgressRecipes');
   const key = drinkOrFood.key;
@@ -198,20 +186,11 @@ const renderButton = (actualData, drinkOrFood, render, setRender) => {
   }
   return btnFalse();
 };
-
-const MeaslInProgress = ({
-  match: { path },
-  detailsDrink,
-  detailsFood,
-  match,
-}) => {
+const MeaslInProgress = ({ match: { path }, detailsDrink, detailsFood, match }) => {
   const [render, setRender] = useState(false);
   const decorationDefault = { 'text-decoration': 'line-through' };
   let actualData = [];
-  let drinkOrFood = {
-    id: '',
-    key: '',
-  };
+  let drinkOrFood = { id: '', key: '' };
   if (path === '/comidas/:id/in-progress') {
     actualData = detailsFood.meals[0];
     drinkOrFood = { id: 'idMeal', key: 'meals' };
@@ -257,16 +236,13 @@ const MeaslInProgress = ({
     </div>
   );
 };
-
 MeaslInProgress.propTypes = {
   match: PropTypes.arrayOf(String).isRequired,
   detailsDrink: PropTypes.arrayOf(Object).isRequired,
   detailsFood: PropTypes.arrayOf(Object).isRequired,
 };
-
 const mapStateToProps = (state) => ({
   detailsFood: state.detailsFoodsReducer.detailsFoods,
   detailsDrink: state.detailsDrinksReducer.detailsDrinks,
 });
-
 export default connect(mapStateToProps)(MeaslInProgress);
