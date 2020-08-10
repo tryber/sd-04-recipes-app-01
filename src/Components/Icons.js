@@ -80,7 +80,7 @@ const verifyingRoute = (props, path) => {
   const {
     detailsDrink: { strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink } } = props;
   return drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
-}
+};
 
 const IconsFood = (props) => {
   const [copied, setCopied] = useState(false);
@@ -120,20 +120,6 @@ const IconsFood = (props) => {
 };
 
 IconsFood.propTypes = {
-  detailsDrink: PropTypes.shape({
-    strDrink: PropTypes.string,
-    strDrinkThumb: PropTypes.string,
-    strCategory: PropTypes.string,
-    strAlcoholic: PropTypes.string,
-    idDrink: PropTypes.string,
-  }),
-  detailsRecipe: PropTypes.shape({
-    strMeal: PropTypes.string,
-    strMealThumb: PropTypes.string,
-    strCategory: PropTypes.string,
-    idMeal: PropTypes.string,
-    strArea: PropTypes.string,
-  }),
   pathName: PropTypes.shape({
     path: PropTypes.string.isRequired,
   }).isRequired,
