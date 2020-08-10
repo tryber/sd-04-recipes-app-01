@@ -8,10 +8,12 @@ const Cards = (props) => {
   const { meals, drinks, request, pathname } = props;
   const { id, strName, strThumb } = recomendationItemKeysToCards(pathname);
 
-  let type = drinks;
-  if (pathname.includes('/comida')) {
-    type = meals;
-  }
+  let type = meals;
+  if (pathname.includes('/bebidas')) type =drinks;
+  console.log(type)
+
+  let newPathname = pathname;
+  if (pathname.includes('/explorar')) newPathname = '/comidas';
 
   if (type === null) {
     alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
@@ -19,11 +21,11 @@ const Cards = (props) => {
     return <div />;
   }
 
-  if (type.length === 1 && type[0][id] !== '52968') return <Redirect to={`${pathname}/${type[0][id]}`} />;
+  if (type.length === 1 && type[0][id] !== '52968') return <Redirect to={`${newPathname}/${type[0][id]}`} />;
   return (
     <div>
       {createNewArr(type).map((item, i) => (
-        <Link to={`${pathname}/${item[id]}`} key={item[id]}>
+        <Link to={`${newPathname}/${item[id]}`} key={item[id]}>
           <div key={item[id]} data-testid={`${i}-recipe-card`}>
             <img
               key={item[id]}

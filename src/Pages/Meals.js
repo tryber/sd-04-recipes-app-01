@@ -25,6 +25,7 @@ const Meals = ({
     <div>
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
+      {/* <CategoriesFood /> */}
       <Categories pathname={pathname} />
       <Cards request={cardsRequisition} pathname={pathname} />
       <Footer />
