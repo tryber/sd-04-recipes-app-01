@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import Header from '../Components/Header';
 import FilterTopBtns from '../Components/FilterTopBtns';
 import { getLocalStorage, convertObjKeys, filterCards } from '../helpers';
 import IconsFood from '../Components/Icons';
+import StandardCard from '../Components/StandardCard';
 
 const RecepiesFavorited = ({ location: { pathname } }) => {
   const [favoriteRecipes, setFavoriteRecipes] = useState(getLocalStorage('favoriteRecipes'));
@@ -22,19 +22,13 @@ const RecepiesFavorited = ({ location: { pathname } }) => {
     <div>
       <Header pathname={pathname} />
       <FilterTopBtns filterRecipes={filterRecipes} />
-      {favoriteRecipes.map((recipe, i) => (
+      {favoriteRecipes.map((recipe, index) => (
         <div>
-          <Link to={`/${recipe.type}s/${recipe.id}`}>
-            <img width="200" key={recipe.image} data-testid={`${i}-horizontal-image`} src={recipe.image} alt="recipe" />
-          </Link>
-          <p data-testid={`${i}-horizontal-top-text`}>{(recipe.type === 'comida') ? `${recipe.area} - ${recipe.category}` : recipe.alcoholicOrNot}</p>
-          <Link to={`/${recipe.type}s/${recipe.id}`}>
-            <h1 data-testid={`${i}-horizontal-name`}>{recipe.name}</h1>
-          </Link>
+          <StandardCard recipe={recipe} i={index} />
           <button type="button" onClick={() => unfavorite()}>
             <IconsFood
               pathName={createPathObj(recipe.type, recipe.id)}
-              i={i}
+              i={index}
               detailsRecipe={convertObjKeys(recipe)}
               detailsDrink={convertObjKeys(recipe)}
               PathDoneFavorite={pathname}
