@@ -177,6 +177,28 @@ const renderIngredientCheckBox = (
   </div>
 );
 
+const btnTrue = () => (
+  <div className="btnPosition">
+    <button className="start-recipe-btn" type='button'>Finalizar Receita</button>
+  </div>
+)
+
+const btnFalse = () => (
+  <button type='button' className="start-recipe-btn" disabled>Finalizar Receita</button>
+)
+
+const renderButton = (actualData, drinkOrFood, render, setRender) => {
+  const store = getLocalStorage('inProgressRecipes')
+  const ingredientsOnTheBoard = (!store[drinkOrFood.key] || !store[drinkOrFood.key][actualData[drinkOrFood.id]]) ? [] : store[drinkOrFood.key][actualData[drinkOrFood.id]]
+  const ingredientsForButton = getIngredients(actualData).map((Ingredient) => Ingredient.ingredient );
+  console.log(ingredientsForButton.sort())
+  console.log(ingredientsOnTheBoard.sort())
+  if (ingredientsForButton.length === ingredientsOnTheBoard.length) {
+    return btnTrue();
+  }
+  return btnFalse();
+}
+
 const MeaslInProgress = ({
   match: { path },
   detailsDrink,
@@ -231,6 +253,7 @@ const MeaslInProgress = ({
       )}
       <p>Instructions</p>
       <p data-testid="instructions">{actualData.strInstructions}</p>
+      {renderButton(actualData, drinkOrFood, render, setRender)}
     </div>
   );
 };
