@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import CardsFood from '../Components/CardsFood';
 import SearchBar from '../Components/SearchBar';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
@@ -27,7 +26,6 @@ const Meals = ({
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
       <CategoriesFood />
-      {/* <CardsFood request={cardsRequisition} /> */}
       <Cards request={cardsRequisition} pathname={pathname} />
       <Footer />
     </div>

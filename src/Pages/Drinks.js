@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import CardsDrink from '../Components/CardsDrink';
+import Cards from '../Components/TesteRefatoring';
 import SearchBar from '../Components/SearchBar';
 import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
 import CategoriesDrink from '../Components/CategoriesDrink';
@@ -26,7 +26,7 @@ const Drinks = ({
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
       <CategoriesDrink />
-      <CardsDrink request={cardsRequisition} />
+      <Cards request={cardsRequisition} pathname={pathname} />
       <Footer />
     </div>
   );
