@@ -27,6 +27,8 @@ const ExploreByArea = ({ location: { pathname }, categoriesRequisition, cardsReq
 
 ExploreByArea.propTypes = {
   location: PropTypes.shape(PropTypes.string.isRequired).isRequired,
+  categoriesRequisition: PropTypes.func.isRequired,
+  cardsRequisition: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

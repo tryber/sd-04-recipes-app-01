@@ -7,7 +7,7 @@ const filterCategoryAreaURL = 'https://www.themealdb.com/api/json/v1/1/filter.ph
 
 export const getFood = (filter = '', food) => {
   let link = `${filterCategoryURL}${filter}`;
-  if (food === '/explorar/comidas/area') link = `${filterCategoryAreaURL}${filter}`
+  if (food === '/explorar/comidas/area') link = `${filterCategoryAreaURL}${filter}`;
   if (filter === '') link = principalRecipesURL;
   if (filter === 'Ingrediente') link = `${ingredientesURL}${food}`;
   if (filter === 'Nome') link = `${nameURL}${food}`;
@@ -29,15 +29,12 @@ export const getCategoriesFood = (type) => {
     response
       .json()
       .then((json) => (response.ok ? Promise.resolve(json.meals) : Promise.reject(json))),
-  )
+  );
 };
 
 const detailsURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
-export const getDetailsFood = (id) => (
+export const getDetailsFood = (id) =>
   fetch(`${detailsURL}${id}`).then((response) =>
-    response
-      .json()
-      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
-  )
-);
+    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  );

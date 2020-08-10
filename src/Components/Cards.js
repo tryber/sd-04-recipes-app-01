@@ -9,8 +9,8 @@ const Cards = (props) => {
   const { id, strName, strThumb } = recomendationItemKeysToCards(pathname);
 
   let type = meals;
-  if (pathname.includes('/bebidas')) type =drinks;
-  console.log(type)
+  if (pathname.includes('/bebidas')) type = drinks;
+  console.log(type);
 
   let newPathname = pathname;
   if (pathname.includes('/explorar')) newPathname = '/comidas';

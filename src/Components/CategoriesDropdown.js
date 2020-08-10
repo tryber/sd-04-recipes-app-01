@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getFoods } from '../Redux/Actions/index';
 
 const Categories = ({ categoriesList, cardsRequisition, pathname }) => {
-
   const changeCategory = (e) => {
     if (e.target.value === 'all') cardsRequisition();
     else cardsRequisition(e.target.value, `${pathname}`);
@@ -16,15 +15,11 @@ const Categories = ({ categoriesList, cardsRequisition, pathname }) => {
         <option value="all" data-testid="All-option">
           All
         </option>
-      {(categoriesList).map((item) => (
-        <option
-          data-testid={`${item.strArea}-option`}
-          key={item.strArea}
-          value={item.strArea}
-        >
-          {item.strArea}
-        </option>
-      ))}
+        {categoriesList.map((item) => (
+          <option data-testid={`${item.strArea}-option`} key={item.strArea} value={item.strArea}>
+            {item.strArea}
+          </option>
+        ))}
       </select>
     </div>
   );
