@@ -188,16 +188,16 @@ const btnFalse = () => (
 )
 
 const renderButton = (actualData, drinkOrFood, render, setRender) => {
-  const store = getLocalStorage('inProgressRecipes')
-  const ingredientsOnTheBoard = (!store[drinkOrFood.key] || !store[drinkOrFood.key][actualData[drinkOrFood.id]]) ? [] : store[drinkOrFood.key][actualData[drinkOrFood.id]]
-  const ingredientsForButton = getIngredients(actualData).map((Ingredient) => Ingredient.ingredient );
-  console.log(ingredientsForButton.sort())
-  console.log(ingredientsOnTheBoard.sort())
+  const store = getLocalStorage('inProgressRecipes');
+  const key = drinkOrFood.key;
+  const value = key[[actualData[drinkOrFood.id]]];
+  const ingredientsOnTheBoard = !store[key] || !store[value] ? [] : store[value];
+  const compareForButton = getIngredients(actualData).map((Ingredient) => Ingredient.ingredient);
   if (ingredientsForButton.length === ingredientsOnTheBoard.length) {
     return btnTrue();
   }
   return btnFalse();
-}
+};
 
 const MeaslInProgress = ({
   match: { path },
