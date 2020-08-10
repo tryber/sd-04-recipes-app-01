@@ -8,14 +8,14 @@ import { getLocalStorage } from '../helpers/index';
 
 const copy = require('clipboard-copy');
 
-const InputHeart = (heart, callback) => {
+const InputHeart = (heart, callback, i, PathDoneFavorite) => {
   if (callback) {
     return (
       <input
         type="image"
         src={heart}
         alt="s2"
-        data-testid="favorite-btn"
+        data-testid={(PathDoneFavorite === '/receitas-feitas' || PathDoneFavorite === '/receitas-favoritas') ? `${i}-horizontal-favorite-btn` : 'favorite-btn'}
         onClick={() => callback()}
       />
     );
@@ -23,7 +23,7 @@ const InputHeart = (heart, callback) => {
   return <input type="image" alt="s2" src={heart} data-testid="favorite-btn" />;
 };
 
-const InputShare = (strSource, callback) => {
+const InputShare = (strSource, callback, i, PathDoneFavorite) => {
   const handleShare = () => {
     callback(true);
     copy(`http://localhost:3000${strSource}`);
@@ -34,7 +34,7 @@ const InputShare = (strSource, callback) => {
         type="image"
         alt="shareIcon"
         src={shareIcon}
-        data-testid="share-btn"
+        data-testid={(PathDoneFavorite === '/receitas-feitas' || PathDoneFavorite === '/receitas-favoritas') ? `${i}-horizontal-share-btn` : 'share-btn'}
         onClick={() => handleShare()}
       />
     </div>
@@ -74,7 +74,7 @@ const IconsFood = (props) => {
   const [copied, setCopied] = useState(false);
   const [render, setRender] = useState(false);
   const {
-    pathName: { path, url },
+    pathName: { path, url }, i, PathDoneFavorite,
   } = props;
   let actualData = [];
   if (path === '/comidas/:id') {
@@ -109,16 +109,23 @@ const IconsFood = (props) => {
     <div>
       <div>
         {Comparisor(actualData.id)
-          ? InputHeart(blackHeart, unFavorite)
-          : InputHeart(whiteHeart, onFavorite)}
+          ? InputHeart(blackHeart, unFavorite, i, PathDoneFavorite)
+          : InputHeart(whiteHeart, onFavorite, i, PathDoneFavorite)}
       </div>
-      {InputShare(url, setCopied)}
+      {InputShare(url, setCopied, i, PathDoneFavorite)}
       {copied && <p>Link copiado!</p>}
     </div>
   );
 };
 
+IconsFood.defaultProps = {
+  i: 0,
+  PathDoneFavorite: '',
+};
+
 IconsFood.propTypes = {
+  i: PropTypes.number,
+  PathDoneFavorite: PropTypes.string,
   detailsDrink: PropTypes.shape({
     strDrink: PropTypes.string,
     strDrinkThumb: PropTypes.string,
@@ -135,6 +142,7 @@ IconsFood.propTypes = {
   }),
   pathName: PropTypes.shape({
     path: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
   }).isRequired,
 };
 

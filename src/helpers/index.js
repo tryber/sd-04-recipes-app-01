@@ -57,3 +57,36 @@ export const recomendationItemKeys = (pathname) => {
   }
   return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
 };
+
+export const createPathObj = (type, id) => ({ path: `/${type}/:id`, url: `/${type}/${id}` });
+
+export const convertObjKeys = (recipe) => {
+  if (recipe.type === 'comida') {
+    return {
+      strMeal: recipe.name,
+      strMealThumb: recipe.image,
+      strCategory: recipe.category,
+      idMeal: recipe.id,
+      strArea: recipe.area,
+    };
+  }
+  return {
+    strDrink: recipe.name,
+    strDrinkThumb: recipe.image,
+    strCategory: recipe.category,
+    strAlcoholic: recipe.alcoholicOrNot,
+    idDrink: recipe.id,
+  };
+};
+
+export const filterCards = (doneRecipes, name, callback, string) => {
+  if (name === 'All') {
+    callback(getLocalStorage(string));
+  }
+  if (name === 'Foods') {
+    callback(doneRecipes.filter((recipe) => recipe.type === 'comida'));
+  }
+  if (name === 'Drinks') {
+    callback(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
+  }
+};
