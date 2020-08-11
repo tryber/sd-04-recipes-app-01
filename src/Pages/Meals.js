@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import CardsFood from '../Components/CardsFood';
 import SearchBar from '../Components/SearchBar';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
-import CategoriesFood from '../Components/CategoriesFood';
+import Cards from '../Components/Cards';
+import Categories from '../Components/Categories';
 
 const Meals = ({
   isLoadingFood,
@@ -25,8 +25,8 @@ const Meals = ({
     <div>
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
-      <CategoriesFood />
-      <CardsFood request={cardsRequisition} />
+      <Categories pathname={pathname} />
+      <Cards request={cardsRequisition} pathname={pathname} />
       <Footer />
     </div>
   );

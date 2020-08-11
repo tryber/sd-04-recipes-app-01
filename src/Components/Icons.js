@@ -8,14 +8,14 @@ import { getLocalStorage } from '../helpers/index';
 
 const copy = require('clipboard-copy');
 
-const InputHeart = (heart, callback) => {
+const InputHeart = (heart, callback, i, PathDoneFavorite) => {
   if (callback) {
     return (
       <input
         type="image"
         src={heart}
         alt="s2"
-        data-testid="favorite-btn"
+        data-testid={(PathDoneFavorite === '/receitas-feitas' || PathDoneFavorite === '/receitas-favoritas') ? `${i}-horizontal-favorite-btn` : 'favorite-btn'}
         onClick={() => callback()}
       />
     );
@@ -23,7 +23,7 @@ const InputHeart = (heart, callback) => {
   return <input type="image" alt="s2" src={heart} data-testid="favorite-btn" />;
 };
 
-const InputShare = (strSource, id, callback) => {
+const InputShare = (strSource, id, callback, i, PathDoneFavorite) => {
   console.log(strSource)
   let src = "";
   if (strSource === '/comidas/:id' || strSource === '/comidas/:id/in-progress') {
@@ -41,7 +41,7 @@ const InputShare = (strSource, id, callback) => {
         type="image"
         alt="shareIcon"
         src={shareIcon}
-        data-testid="share-btn"
+        data-testid={(PathDoneFavorite === '/receitas-feitas' || PathDoneFavorite === '/receitas-favoritas') ? `${i}-horizontal-share-btn` : 'share-btn'}
         onClick={() => handleShare(src)}
       />
     </div>
@@ -93,7 +93,7 @@ const IconsFood = (props) => {
   const [copied, setCopied] = useState(false);
   const [render, setRender] = useState(false);
   const {
-    pathName: { path, url },
+    pathName: { path, url }, i, PathDoneFavorite,
   } = props;
   const actualData = verifyingRoute(props, path);
   const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
@@ -117,18 +117,40 @@ const IconsFood = (props) => {
     <div>
       <div>
         {Comparisor(actualData.id)
-          ? InputHeart(blackHeart, unFavorite)
-          : InputHeart(whiteHeart, onFavorite)}
+          ? InputHeart(blackHeart, unFavorite, i, PathDoneFavorite)
+          : InputHeart(whiteHeart, onFavorite, i, PathDoneFavorite)}
       </div>
-      {InputShare(path, actualData.id, setCopied)}
+      {InputShare(path, actualData.id, setCopied, i, PathDoneFavorite)}
       {copied && <p>Link copiado!</p>}
     </div>
   );
 };
 
+IconsFood.defaultProps = {
+  i: 0,
+  PathDoneFavorite: '',
+};
+
 IconsFood.propTypes = {
+  i: PropTypes.number,
+  PathDoneFavorite: PropTypes.string,
+  detailsDrink: PropTypes.shape({
+    strDrink: PropTypes.string,
+    strDrinkThumb: PropTypes.string,
+    strCategory: PropTypes.string,
+    strAlcoholic: PropTypes.string,
+    idDrink: PropTypes.string,
+  }),
+  detailsRecipe: PropTypes.shape({
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+    strCategory: PropTypes.string,
+    idMeal: PropTypes.string,
+    strArea: PropTypes.string,
+  }),
   pathName: PropTypes.shape({
     path: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
   }).isRequired,
 };
 

@@ -10,6 +10,7 @@ import ExploreByDrink from './Pages/ExploreByDrink';
 import ExploreByFoodIngredients from './Pages/ExploreByFoodIngredients';
 import ExploreByDrinkIngredients from './Pages/ExploreByDrinkIngredients';
 import ExploreByArea from './Pages/ExploreByArea';
+import ExploreByAreaNotFound from './Pages/ExploreByAreaNotFound';
 import Profile from './Pages/Profile';
 import RecepiesDone from './Pages/RecepiesDone';
 import RecepiesFavorited from './Pages/RecepiesFavorited';
@@ -29,6 +30,7 @@ function App() {
       <Route exact path="/explorar/comidas/ingredientes" component={ExploreByFoodIngredients} />
       <Route exact path="/explorar/bebidas/ingredientes" component={ExploreByDrinkIngredients} />
       <Route exact path="/explorar/comidas/area" component={ExploreByArea} />
+      <Route exact path="/explorar/bebidas/area" component={ExploreByAreaNotFound} />
       <Route exact path="/perfil" component={Profile} />
       <Route exact path="/receitas-feitas" component={RecepiesDone} />
       <Route exact path="/receitas-favoritas" component={RecepiesFavorited} />
