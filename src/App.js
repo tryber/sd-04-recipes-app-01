@@ -20,25 +20,47 @@ import MeaslInProgress from './Pages/MealsInPropgress';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/" component={Login} />
-      <Route exact path="/comidas" component={Meals} />
-      <Route exact path="/bebidas" component={Drinks} />
-      <Route exact path="/explorar" component={Explore} />
-      <Route exact path="/explorar/comidas" component={ExploreByFood} />
-      <Route exact path="/explorar/bebidas" component={ExploreByDrink} />
-      <Route exact path="/explorar/comidas/ingredientes" component={ExploreByFoodIngredients} />
-      <Route exact path="/explorar/bebidas/ingredientes" component={ExploreByDrinkIngredients} />
-      <Route exact path="/explorar/comidas/area" component={ExploreByArea} />
-      <Route exact path="/explorar/bebidas/area" component={ExploreByAreaNotFound} />
-      <Route exact path="/perfil" component={Profile} />
-      <Route exact path="/receitas-feitas" component={RecepiesDone} />
-      <Route exact path="/receitas-favoritas" component={RecepiesFavorited} />
-      <Route exact path="/comidas/:id" component={DetailsFood} />
-      <Route exact path="/bebidas/:id" component={DetailsDrink} />
-      <Route exact path="/comidas/:id/in-progress" component={MeaslInProgress} />
-      <Route exact path="/bebidas/:id/in-progress" component={MeaslInProgress} />
-    </Switch>
+    <div className="App">
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/comidas" component={Meals} />
+        <Route exact path="/bebidas" component={Drinks} />
+        <Route exact path="/explorar" component={Explore} />
+        <Route exact path="/explorar/comidas" component={ExploreByFood} />
+        <Route exact path="/explorar/bebidas" component={ExploreByDrink} />
+        <Route
+          exact
+          path="/explorar/comidas/ingredientes"
+          component={ExploreByFoodIngredients}
+        />
+        <Route
+          exact
+          path="/explorar/bebidas/ingredientes"
+          component={ExploreByDrinkIngredients}
+        />
+        <Route exact path="/explorar/comidas/area" component={ExploreByArea} />
+        <Route
+          exact
+          path="/explorar/bebidas/area"
+          component={ExploreByAreaNotFound}
+        />
+        <Route exact path="/perfil" component={Profile} />
+        <Route exact path="/receitas-feitas" component={RecepiesDone} />
+        <Route exact path="/receitas-favoritas" component={RecepiesFavorited} />
+        <Route exact path="/comidas/:id" component={DetailsFood} />
+        <Route exact path="/bebidas/:id" component={DetailsDrink} />
+        <Route
+          exact
+          path="/comidas/:id/in-progress"
+          component={MeaslInProgress}
+        />
+        <Route
+          exact
+          path="/bebidas/:id/in-progress"
+          component={MeaslInProgress}
+        />
+      </Switch>
+    </div>
   );
 }
 
