@@ -65,7 +65,7 @@ export const recipeInProgressData = (pathname) => {
     };
   }
   return { strName: 'strDrink', strThumb: 'strDrinkThumb', categorieOrAlcoholic: 'strAlcoholic' };
-}
+};
 
 export const createPathObj = (type, id) => ({ path: `/${type}/:id`, url: `/${type}/${id}` });
 

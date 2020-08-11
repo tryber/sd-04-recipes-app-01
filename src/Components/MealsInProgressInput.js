@@ -95,7 +95,7 @@ const renderInputs = (
     <input
       type="checkbox"
       name={ingredient}
-      data-testid={`ingredient-step`}
+      data-testid="ingredient-step"
       onClick={(event) =>
         handleInputRendered(
           event,
@@ -140,8 +140,7 @@ const renderIngredientCheckBox = (
     <p data-testid="recipe-category">{actualData.strCategory}</p>
     <p>Ingredients:</p>
     {getIngredients(actualData).map(({ ingredient, measure }, index) => (
-      <div       data-testid={`${index}-ingredient-step`}
-      >
+      <div data-testid={`${index}-ingredient-step`}>
         {renderInputs(
           Ingredients,
           actualData,

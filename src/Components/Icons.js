@@ -24,16 +24,15 @@ const InputHeart = (heart, callback, i, PathDoneFavorite) => {
 };
 
 const InputShare = (strSource, id, callback, i, PathDoneFavorite) => {
-  console.log(strSource)
-  let src = "";
+  let src = '';
   if (strSource === '/comidas/:id' || strSource === '/comidas/:id/in-progress') {
-    src = "http://localhost:3000/comidas/"
+    src = 'http://localhost:3000/comidas/';
   } else {
-    src = "http://localhost:3000/bebidas/"
+    src = 'http://localhost:3000/bebidas/';
   }
-  const handleShare = (src) => {
+  const handleShare = (srcReal) => {
     callback(true);
-    copy(`${src}${id}`);
+    copy(`${srcReal}${id}`);
   };
   return (
     <div>
@@ -93,7 +92,7 @@ const IconsFood = (props) => {
   const [copied, setCopied] = useState(false);
   const [render, setRender] = useState(false);
   const {
-    pathName: { path, url }, i, PathDoneFavorite,
+    pathName: { path }, i, PathDoneFavorite,
   } = props;
   const actualData = verifyingRoute(props, path);
   const infoFromLocalStorage = getLocalStorage('favoriteRecipes');
@@ -129,6 +128,8 @@ const IconsFood = (props) => {
 IconsFood.defaultProps = {
   i: 0,
   PathDoneFavorite: '',
+  detailsDrink: {},
+  detailsRecipe: {},
 };
 
 IconsFood.propTypes = {
@@ -152,11 +153,6 @@ IconsFood.propTypes = {
     path: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
-};
-
-IconsFood.defaultProps = {
-  detailsDrink: {},
-  detailsRecipe: {},
 };
 
 export default IconsFood;
