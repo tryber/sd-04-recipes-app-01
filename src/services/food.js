@@ -21,9 +21,11 @@ export const getFood = (filter = '', food) => {
 
 const categoriesURL = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 const categoriesAreaURL = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
+const listIngredientesURL = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
 
 export const getCategoriesFood = (type) => {
   let link = categoriesURL;
+  if (type === 'ingredient') link = listIngredientesURL;
   if (type === 'area') link = categoriesAreaURL;
   return fetch(`${link}`).then((response) =>
     response

@@ -97,3 +97,10 @@ export const recomendationItemKeysToCards = (pathname) => {
   }
   return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
 };
+
+export const recomendationIngredientsToCards = (pathname) => {
+  if (pathname.includes('/comidas')) {
+    return { strName: 'strIngredient' };
+  }
+  return { strName: 'strIngredient1' };
+};

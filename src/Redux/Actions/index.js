@@ -121,11 +121,11 @@ const requestCategoriesDrinkError = (error) => ({
   error,
 });
 
-export function getCategoriesDrinks() {
+export function getCategoriesDrinks(type) {
   return (dispatch) => {
     requestingCategoriesDrink();
 
-    return getCategoriesDrink().then(
+    return getCategoriesDrink(type).then(
       (data) => dispatch(requestCategoriesDrinkSuccess(data)),
       (error) => dispatch(requestCategoriesDrinkError(error)),
     );
