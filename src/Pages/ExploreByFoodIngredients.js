@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import { connect } from 'react-redux';
 import { getCategoriesFoods } from '../Redux/Actions/index';
 import CardsIngredients from '../Components/CardsIngredients';
 
