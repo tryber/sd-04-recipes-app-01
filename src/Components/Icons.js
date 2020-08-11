@@ -23,10 +23,17 @@ const InputHeart = (heart, callback) => {
   return <input type="image" alt="s2" src={heart} data-testid="favorite-btn" />;
 };
 
-const InputShare = (strSource, callback) => {
-  const handleShare = () => {
+const InputShare = (strSource, id, callback) => {
+  console.log(strSource)
+  let src = "";
+  if (strSource === '/comidas/:id' || strSource === '/comidas/:id/in-progress') {
+    src = "http://localhost:3000/comidas/"
+  } else {
+    src = "http://localhost:3000/bebidas/"
+  }
+  const handleShare = (src) => {
     callback(true);
-    copy(`http://localhost:3000${strSource}`);
+    copy(`${src}${id}`);
   };
   return (
     <div>
@@ -35,7 +42,7 @@ const InputShare = (strSource, callback) => {
         alt="shareIcon"
         src={shareIcon}
         data-testid="share-btn"
-        onClick={() => handleShare()}
+        onClick={() => handleShare(src)}
       />
     </div>
   );
@@ -113,7 +120,7 @@ const IconsFood = (props) => {
           ? InputHeart(blackHeart, unFavorite)
           : InputHeart(whiteHeart, onFavorite)}
       </div>
-      {InputShare(url, setCopied)}
+      {InputShare(path, actualData.id, setCopied)}
       {copied && <p>Link copiado!</p>}
     </div>
   );
