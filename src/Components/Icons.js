@@ -135,20 +135,6 @@ IconsFood.defaultProps = {
 IconsFood.propTypes = {
   i: PropTypes.number,
   PathDoneFavorite: PropTypes.string,
-  detailsDrink: PropTypes.shape({
-    strDrink: PropTypes.string,
-    strDrinkThumb: PropTypes.string,
-    strCategory: PropTypes.string,
-    strAlcoholic: PropTypes.string,
-    idDrink: PropTypes.string,
-  }),
-  detailsRecipe: PropTypes.shape({
-    strMeal: PropTypes.string,
-    strMealThumb: PropTypes.string,
-    strCategory: PropTypes.string,
-    idMeal: PropTypes.string,
-    strArea: PropTypes.string,
-  }),
   pathName: PropTypes.shape({
     path: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
