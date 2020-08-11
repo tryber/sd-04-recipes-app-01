@@ -2,29 +2,35 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createNewArr, recomendationIngredientsToCards } from '../helpers';
+import { Link } from 'react-router-dom';
 
 const CardsIngredients = (props) => {
   const { ingredientsListFood, ingredientsListDrink, pathname } = props;
   const { strName } = recomendationIngredientsToCards(pathname);
 
   let type = ingredientsListFood;
-  let link = 'https://www.themealdb.com/images/ingredients/';
+  let newPathname = '/comidas';
+  let link = 'https://www.themealdb.com/images/ingredients';
   if (pathname.includes('/bebidas')) {
     type = ingredientsListDrink;
-    link = 'https://www.thecocktaildb.com/images/ingredients/';
+    link = 'https://www.thecocktaildb.com/images/ingredients';
+    newPathname = '/bebidas';
   }
+
   return (
     <div>
       {createNewArr(type).map((item, i) => (
-        <div key={item[strName]} data-testid={`${i}-ingredient-card`}>
-          <img
-            data-testid={`${i}-card-img`}
-            src={`${link}/${item[strName]}-Small.png`}
-            width="200"
-            alt={item[strName]}
-          />
-          <p data-testid={`${i}-card-name`}>{item[strName]}</p>
-        </div>
+        <Link key={item[strName]} to={{pathname: `${newPathname}/`, name: item[strName]}}>
+          <div key={item[strName]} data-testid={`${i}-ingredient-card`}>
+            <img
+              data-testid={`${i}-card-img`}
+              src={`${link}/${item[strName]}-Small.png`}
+              width="200"
+              alt={item[strName]}
+            />
+            <p data-testid={`${i}-card-name`}>{item[strName]}</p>
+          </div>
+        </Link>
       ))}
     </div>
   );
