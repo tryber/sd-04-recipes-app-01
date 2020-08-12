@@ -16,7 +16,8 @@ const Meals = ({
   location: { pathname, name },
 }) => {
   useEffect(() => {
-    name ? cardsRequisition('Ingrediente', name) : cardsRequisition();
+    if (name) cardsRequisition('Ingrediente', name);
+    else cardsRequisition();
     categoriesRequisition();
   }, [cardsRequisition, categoriesRequisition, name]);
 

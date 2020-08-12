@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { createNewArr, recomendationIngredientsToCards } from '../helpers';
 import { Link } from 'react-router-dom';
+import { createNewArr, recomendationIngredientsToCards } from '../helpers';
 
 const CardsIngredients = (props) => {
   const { ingredientsListFood, ingredientsListDrink, pathname } = props;
@@ -20,7 +20,7 @@ const CardsIngredients = (props) => {
   return (
     <div>
       {createNewArr(type).map((item, i) => (
-        <Link key={item[strName]} to={{pathname: `${newPathname}/`, name: item[strName]}}>
+        <Link key={item[strName]} to={{ pathname: `${newPathname}/`, name: item[strName] }}>
           <div key={item[strName]} data-testid={`${i}-ingredient-card`}>
             <img
               data-testid={`${i}-card-img`}

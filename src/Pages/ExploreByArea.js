@@ -35,6 +35,7 @@ ExploreByArea.propTypes = {
   location: PropTypes.shape(PropTypes.string.isRequired).isRequired,
   categoriesRequisition: PropTypes.func.isRequired,
   cardsRequisition: PropTypes.func.isRequired,
+  isLoadingCategory: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
