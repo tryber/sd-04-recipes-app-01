@@ -31,12 +31,13 @@ const Categories = ({
   };
 
   return (
-    <div>
-      <button data-testid="All-category-filter" onClick={() => changeCategory()}>
+    <div className="d-flex header-categories">
+      <button className="btn btn-primary btn-sm" data-testid="All-category-filter" onClick={() => changeCategory()}>
         All
       </button>
       {createNewCategories(categoriesList).map((item) => (
         <button
+          className="btn btn-primary btn-sm space"
           data-testid={`${item.strCategory}-category-filter`}
           key={item.strCategory}
           value={item.strCategory}

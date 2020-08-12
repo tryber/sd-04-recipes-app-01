@@ -22,7 +22,7 @@ const Meals = ({
 
   if (isLoadingFood || isLoadingCategory) return <h2>Loading...</h2>;
   return (
-    <div>
+    <div className="meals-Page">
       <Header pathname={pathname} />
       <SearchBar request={cardsRequisition} />
       <Categories pathname={pathname} />

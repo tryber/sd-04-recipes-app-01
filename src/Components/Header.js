@@ -7,9 +7,10 @@ import SearchImage from '../images/searchIcon.svg';
 import { showSearchBarAct } from '../Redux/Actions';
 
 const renderInput = (Name, showSearchBar) => (
-  <div>
+  <div className="d-flex flex-row justify-content-between">
     <h2 data-testid="page-title">{Name}</h2>
     <input
+      className="space"
       type="image"
       src={SearchImage}
       onClick={() => showSearchBar()}

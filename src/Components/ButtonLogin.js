@@ -23,11 +23,11 @@ const ButtonLogin = ({ email, password, shouldRedirect }) => {
   return (
     <div>
       {validateEmail(email) && password.length > 6 ? (
-        <button type="button" onClick={HandleButton} data-testid="login-submit-btn">
+        <button type="button" className="btn btn-primary btn-sm btn-block" onClick={HandleButton} data-testid="login-submit-btn">
           Entrar
         </button>
       ) : (
-        <button type="button" disabled data-testid="login-submit-btn">
+        <button type="button" className="btn btn-secondary btn-sm btn-block" disabled data-testid="login-submit-btn">
           Entrar
         </button>
       )}

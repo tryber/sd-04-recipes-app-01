@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import { createNewArr, recomendationItemKeysToCards } from '../helpers';
 
 const Cards = (props) => {
-  const { meals, drinks, request, pathname } = props;
+  const {
+    meals, drinks, request, pathname,
+  } = props;
   const { id, strName, strThumb } = recomendationItemKeysToCards(pathname);
 
   let type = meals;
@@ -22,18 +24,19 @@ const Cards = (props) => {
 
   if (type.length === 1 && type[0][id] !== '52968') return <Redirect to={`${newPathname}/${type[0][id]}`} />;
   return (
-    <div>
+    <div className="meal-container">
       {createNewArr(type).map((item, i) => (
         <Link to={`${newPathname}/${item[id]}`} key={item[id]}>
-          <div key={item[id]} data-testid={`${i}-recipe-card`}>
+          <div className="card card-meals" key={item[id]} data-testid={`${i}-recipe-card`}>
             <img
+              className="card-img-top"
               key={item[id]}
               src={item[strThumb]}
               width="200"
               data-testid={`${i}-card-img`}
               alt={item[strName]}
             />
-            <p key={item[strName]} data-testid={`${i}-card-name`}>
+            <p className="card-header text-center text-header font-weight-bold" key={item[strName]} data-testid={`${i}-card-name`}>
               {item[strName]}
             </p>
           </div>

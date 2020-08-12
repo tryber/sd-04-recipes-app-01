@@ -1,22 +1,39 @@
-
-
 body {
   display: flex;
   justify-content: center;
-  width: 100%;
-  min-width: 360px;
+  align-items: center;
+  min-height: 600px;
+  background-image: url(../src/images/canva-photo-editor\ \(1\).png);
+  background-size: 1000px;
+  background-repeat: repeat-y;
 }
 
 .App {
-  background-color: green;
-  width: 360px;
+  width: 340px;
+}
+
+.image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-height: 1000px;
+  opacity: 75%;
+  z-index: 0;
+}
+
+.space {
+  padding: 0 0px 0 50px;
+}
+
+.meals-Page {
+  z-index: 1;
 }
 
 .header {
   display: flex;
-  background-color: gray;
   justify-content: space-around;
   align-items:  center;
+  z-index: 1;
 }
 
 .start-recipe-btn {
@@ -29,14 +46,25 @@ body {
   justify-content: center;
 }
 
-.footer {
-  position: fixed;;
+.position-fixed {
+  margin-left: -10px;
+  position: fixed;
   bottom: 0;
-  display: flex;
-  background-color: gray;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items:  center;
-  width: 100%;
+  width: 360px;
+}
+
+.header-categories {
+  margin: 15px 0 20px 0;
+}
+
+.meal-container {
+  margin: 15px 15px 15px 15px;
+}
+
+.card-meals {
+  margin-bottom: 15px;
 }
 
 #meals {
@@ -76,6 +104,14 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 3em;
   animation: shake 1.5s infinite ease;
+}
+
+@media screen and (min-width: 1200px) 
+{
+  .image {
+    width: 100%;
+    max-height: none;
+  }
 }
 
 @keyframes shake {

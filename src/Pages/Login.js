@@ -12,26 +12,30 @@ class Login extends React.Component {
       return <Redirect to="/comidas" />;
     }
     return (
-      <div>
-        <p>Login</p>
-        <label htmlFor="email">Email</label>
-        <br />
-        <input
-          name="email"
-          onChange={(event) => changeInput(event)}
-          type="email"
-          data-testid="email-input"
-        />
-        <br />
-        <label htmlFor="password">Password</label>
-        <br />
-        <input
-          name="password"
-          type="password"
-          onChange={(event) => changeInput(event)}
-          data-testid="password-input"
-        />
-        <br />
+      <div className="card border-lg border-primary rounded-lg">
+        <p className="card-header text-center text-header font-weight-bold">Login</p>
+        <div className="card-body d-flex flex-column align-items-center">
+          <label htmlFor="email" />
+
+          <input
+            className="input border-primary rounded-lg"
+            name="email"
+            onChange={(event) => changeInput(event)}
+            type="email"
+            data-testid="email-input"
+            placeholder="E-mail"
+          />
+          <label htmlFor="password" />
+          <br />
+          <input
+            className="input border-primary rounded-lg"
+            name="password"
+            type="password"
+            onChange={(event) => changeInput(event)}
+            data-testid="password-input"
+            placeholder="Password"
+          />
+        </div>
         <ButtonLogin />
       </div>
     );
