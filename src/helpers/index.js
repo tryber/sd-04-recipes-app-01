@@ -58,6 +58,15 @@ export const recomendationItemKeys = (pathname) => {
   return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
 };
 
+export const recipeInProgressData = (pathname) => {
+  if (pathname === '/comidas/:id/in-progress') {
+    return {
+      strName: 'strMeal', strThumb: 'strMealThumb', categorieOrAlcoholic: 'strCategory',
+    };
+  }
+  return { strName: 'strDrink', strThumb: 'strDrinkThumb', categorieOrAlcoholic: 'strAlcoholic' };
+};
+
 export const createPathObj = (type, id) => ({ path: `/${type}/:id`, url: `/${type}/${id}` });
 
 export const convertObjKeys = (recipe) => {

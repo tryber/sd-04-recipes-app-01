@@ -13,8 +13,8 @@ const RecipeDrink = ({ detailsRecipe, pathName }) => {
 
   return (
     <div>
-      <h2 data-testid="recipe-title">{strDrink}</h2>
       <img src={strDrinkThumb} alt={strDrink} data-testid="recipe-photo" width="200" />
+      <h2 data-testid="recipe-title">{strDrink}</h2>
       <Icons pathName={pathName} detailsDrink={brazilianWay} />
       <p data-testid="recipe-category">{strAlcoholic}</p>
       <p>Ingredients:</p>

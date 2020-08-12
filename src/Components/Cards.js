@@ -10,7 +10,6 @@ const Cards = (props) => {
 
   let type = meals;
   if (pathname.includes('/bebidas')) type = drinks;
-  console.log(type);
 
   let newPathname = pathname;
   if (pathname.includes('/explorar')) newPathname = '/comidas';
