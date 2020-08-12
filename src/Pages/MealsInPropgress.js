@@ -21,7 +21,6 @@ const gettingDate = () => (
   `${new Date().getDate()}/${new Date().getMonth()}/${new Date().getFullYear()}`
 );
 
-
 const verifyingRoute = (actualData, drinkOrFood) => {
   if (drinkOrFood.id === 'idMeal') {
     return {
@@ -75,9 +74,9 @@ const btnFalse = () => (
 const renderButton = (actualData, drinkOrFood, setRedirect) => {
   const store = getLocalStorage('inProgressRecipes');
   const ingredientsOnTheBoard =
-  !store[drinkOrFood.key] ||
-  !store[drinkOrFood.key][actualData[drinkOrFood.id]]
-  ? [] : store[drinkOrFood.key][actualData[drinkOrFood.id]];
+    !store[drinkOrFood.key] ||
+      !store[drinkOrFood.key][actualData[drinkOrFood.id]]
+      ? [] : store[drinkOrFood.key][actualData[drinkOrFood.id]];
   const compareForButton = getIngredients(actualData).map((Ingredient) => Ingredient.ingredient);
   if (compareForButton.length === ingredientsOnTheBoard.length) {
     return btnTrue(actualData, drinkOrFood, setRedirect);
@@ -104,8 +103,8 @@ const verifyingActualData = (path, detailsFood, detailsDrink) => {
 };
 
 const MeaslInProgress = ({ match: { path, params: { id } }, detailsDrink, detailsFood, match,
-  detailsDrinkRequisition, detailsFoodRequisition, isLoadingDrinkDetails,
-  isLoadingFoodDetails }) => {
+  detailsDrinkRequisition, detailsFoodRequisition, isLoadingDrinkDetails, detailsFoodsError,
+  isLoadingFoodDetails, detailsDrinksError }) => {
   const [render, setRender] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
@@ -118,12 +117,13 @@ const MeaslInProgress = ({ match: { path, params: { id } }, detailsDrink, detail
       detailsDrinkRequisition(id);
     }
   }, [detailsFoodRequisition, detailsDrinkRequisition, id]);
+  if (detailsFoodsError !== '' || detailsDrinksError !== '') return <div>Failed to fetch</div>;
   if (isLoading) return <div>Loading...</div>;
   const { drinkOrFood, actualData } = verifyingActualData(path, detailsFood, detailsDrink);
   const localStorage = getLocalStorage('inProgressRecipes');
   const Ingredients =
     !localStorage[drinkOrFood.key] ||
-    !localStorage[drinkOrFood.key][actualData[drinkOrFood.id]]
+      !localStorage[drinkOrFood.key][actualData[drinkOrFood.id]]
       ? []
       : localStorage[drinkOrFood.key][actualData[drinkOrFood.id]];
   if (redirect) return <Redirect to="/receitas-feitas" />;
@@ -167,11 +167,15 @@ MeaslInProgress.propTypes = {
   isLoadingDrinkDetails: PropTypes.bool.isRequired,
   isLoadingFoodDetails: PropTypes.bool.isRequired,
   match: PropTypes.shape(Object).isRequired,
+  detailsFoodsError: PropTypes.string.isRequired,
+  detailsDrinksError: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   detailsFood: state.detailsFoodsReducer.detailsFoods,
+  detailsFoodsError: state.detailsFoodsReducer.detailsFoodsError,
   detailsDrink: state.detailsDrinksReducer.detailsDrinks,
+  detailsDrinksError: state.detailsDrinksReducer.detailsDrinksError,
   isLoadingDrinkDetails: state.detailsDrinksReducer.isLoading,
   isLoadingFoodDetails: state.detailsFoodsReducer.isLoading,
 });
