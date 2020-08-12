@@ -11,10 +11,8 @@ function foodRequestReducer(state = INITIAL_STATE, action) {
     case REQUESTING_FOOD:
       return { ...state, isLoading: true };
     case REQUEST_FOOD_SUCCESS:
-      console.log('deu bom')
       return { ...state, foods: action.data, isLoading: false };
     case REQUEST_FOOD_ERROR:
-      console.log('deu ruim')
       return { ...state, foodsError: action.error, isLoading: false };
     default:
       return state;
