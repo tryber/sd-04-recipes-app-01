@@ -8,18 +8,12 @@ import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesDropdown from '../Components/CategoriesDropdown';
 
-const ExploreByArea = ({
-  location: { pathname },
-  categoriesRequisition,
-  cardsRequisition,
-  isLoadingCategory,
-}) => {
+const ExploreByArea = ({ location: { pathname }, categoriesRequisition, cardsRequisition }) => {
   useEffect(() => {
     cardsRequisition();
     categoriesRequisition('area');
   }, [cardsRequisition, categoriesRequisition]);
 
-  if (isLoadingCategory) return <h2>Loading...</h2>;
   return (
     <div>
       <Header pathname={pathname} />
@@ -35,16 +29,11 @@ ExploreByArea.propTypes = {
   location: PropTypes.shape(PropTypes.string.isRequired).isRequired,
   categoriesRequisition: PropTypes.func.isRequired,
   cardsRequisition: PropTypes.func.isRequired,
-  isLoadingCategory: PropTypes.bool.isRequired,
 };
-
-const mapStateToProps = (state) => ({
-  isLoadingCategory: state.categoriesDrinksReducer.isLoading,
-});
 
 const mapDispatchToProps = (dispatch) => ({
   cardsRequisition: (filter, food) => dispatch(getFoods(filter, food)),
   categoriesRequisition: (type) => dispatch(getCategoriesFoods(type)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExploreByArea);
+export default connect(null, mapDispatchToProps)(ExploreByArea);
