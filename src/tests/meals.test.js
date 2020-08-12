@@ -4,6 +4,8 @@ import { cleanup, act, screen, fireEvent } from '@testing-library/react';
 import renderWithReduxAndRouter from './renderWithReduxAndRouter';
 import fetch from '../../cypress/mocks/fetch';
 import mealsByIngredient from '../../cypress/mocks/mealsByIngredient';
+import meals from '../../cypress/mocks/meals';
+
 import App from '../App';
 
 const services = require('../services/food');
@@ -31,6 +33,17 @@ const mockGetCategoriesFood = jest.spyOn(services, 'getCategoriesFood').mockImpl
     .then((data) => data.json())
     .then((data) => data.meals);
 });
+
+const getSearchbarBtns = async () => {
+  const inputBar = await screen.findByTestId('search-input');
+  const ingredientRadioLabel = await screen.findByTestId('ingredient-search-radio');
+  const nomeRadio = await screen.findByTestId('name-search-radio');
+  const primeiraLetraRadio = await screen.findByTestId('first-letter-search-radio');
+  const applyFilterBtn = await screen.findByTestId('exec-search-btn');
+  return {
+    inputBar, ingredientRadioLabel, nomeRadio, primeiraLetraRadio, applyFilterBtn,
+  };
+};
 
 describe('header of meals page', () => {
   beforeAll(mockGetFood, mockGetCategoriesFood);
@@ -83,12 +96,9 @@ describe('header of meals page', () => {
     expect(searchBtn).toBeInTheDocument();
 
     fireEvent.click(searchBtn);
-    const inputBar = await screen.findByTestId('search-input');
-    const ingredientRadioLabel = await screen.findByTestId('ingredient-search-radio');
-    const nomeRadio = await screen.findByTestId('name-search-radio');
-    const primeiraLetraRadio = await screen.findByTestId('first-letter-search-radio');
-    const applyFilterBtn = await screen.findByTestId('exec-search-btn');
-
+    const {
+      inputBar, ingredientRadioLabel, nomeRadio, primeiraLetraRadio, applyFilterBtn,
+    } = await getSearchbarBtns();
     expect(inputBar).toBeInTheDocument();
     expect(ingredientRadioLabel).toBeInTheDocument();
     expect(nomeRadio).toBeInTheDocument();
@@ -97,56 +107,37 @@ describe('header of meals page', () => {
   });
 });
 
-describe('searchbar of meals page', () => {
+describe('Render cards of meals page', () => {
   beforeAll(mockGetFood, mockGetCategoriesFood);
   beforeEach(cleanup);
 
-  test('searchbar should have all its properties', async () => {
-    await act(async () => {
-      renderWithReduxAndRouter(<App />, {
-        initialState: {},
-        initialEntries: ['/comidas'],
-      });
+  test('should render the 12 first meals', async () => {
+    const { getByTestId } = renderWithReduxAndRouter(<App />, {
+      initialState: {},
+      initialEntries: ['/comidas'],
     });
-    const searchBtn = await screen.findByTestId('search-top-btn');
 
-    expect(searchBtn).toBeInTheDocument();
+    await act(async () => {
+      expect(mockGetFood).toHaveBeenCalled();
+    });
 
-    fireEvent.click(searchBtn);
-    const inputBar = await screen.findByTestId('search-input');
-    const ingredientRadioLabel = await screen.findByTestId('ingredient-search-radio');
-    const nomeRadio = await screen.findByTestId('name-search-radio');
-    const primeiraLetraRadio = await screen.findByTestId('first-letter-search-radio');
-    const applyFilterBtn = await screen.findByTestId('exec-search-btn');
+    for (let index = 0; index < 12; index += 1) {
+      const cardDiv = getByTestId(`${index}-recipe-card`);
+      const cardImg = getByTestId(`${index}-card-img`);
+      const cardName = getByTestId(`${index}-card-name`);
 
-    expect(inputBar).toBeInTheDocument();
-    expect(inputBar.type).toBe('text');
-
-    expect(ingredientRadioLabel).toBeInTheDocument();
-    expect(ingredientRadioLabel.textContent).toBe('Ingrediente');
-    expect(ingredientRadioLabel.htmlFor).toBe('Ingrediente');
-    expect(ingredientRadioLabel.previousSibling.id).toBe('Ingrediente');
-    expect(ingredientRadioLabel.previousSibling.type).toBe('radio');
-    expect(ingredientRadioLabel.previousSibling.value).toBe('Ingrediente');
-
-    expect(nomeRadio).toBeInTheDocument();
-    expect(nomeRadio.textContent).toBe('Nome');
-    expect(nomeRadio.htmlFor).toBe('Nome');
-    expect(nomeRadio.previousSibling.id).toBe('Nome');
-    expect(nomeRadio.previousSibling.type).toBe('radio');
-    expect(nomeRadio.previousSibling.value).toBe('Nome');
-
-    expect(primeiraLetraRadio).toBeInTheDocument();
-    expect(primeiraLetraRadio.textContent).toBe('Primeira letra');
-    expect(primeiraLetraRadio.htmlFor).toBe('letra');
-    expect(primeiraLetraRadio.previousSibling.id).toBe('letra');
-    expect(primeiraLetraRadio.previousSibling.type).toBe('radio');
-    expect(primeiraLetraRadio.previousSibling.value).toBe('Primeira letra');
-
-    expect(applyFilterBtn).toBeInTheDocument();
-    expect(applyFilterBtn.textContent).toBe('Buscar');
-    expect(applyFilterBtn.type).toBe('button');
+      expect(cardDiv).toBeInTheDocument();
+      expect(cardDiv.parentElement.href).toBe(`http://localhost/comidas/${meals.meals[index].idMeal}`);
+      expect(cardImg.src).toBe(meals.meals[index].strMealThumb);
+      expect(cardImg.alt).toBe(meals.meals[index].strMeal);
+      expect(cardName.textContent).toBe(meals.meals[index].strMeal);
+    }
   });
+});
+
+describe('searchbar of meals page', () => {
+  beforeAll(mockGetFood, mockGetCategoriesFood);
+  beforeEach(cleanup);
 
   test('should filter meals by ingredient', async () => {
     const { getByTestId } = renderWithReduxAndRouter(<App />, {
@@ -158,9 +149,8 @@ describe('searchbar of meals page', () => {
     expect(searchBtn).toBeInTheDocument();
 
     fireEvent.click(searchBtn);
-    const inputBar = await screen.findByTestId('search-input');
-    const ingredientRadioLabel = await screen.findByTestId('ingredient-search-radio');
-    const applyFilterBtn = await screen.findByTestId('exec-search-btn');
+
+    const { inputBar, ingredientRadioLabel, applyFilterBtn } = await getSearchbarBtns();
     const firstFood = await screen.findByTestId('0-recipe-card');
 
     expect(firstFood).toBeInTheDocument();
