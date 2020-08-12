@@ -13,12 +13,13 @@ const Drinks = ({
   isLoadingCategory,
   cardsRequisition,
   categoriesRequisition,
-  location: { pathname },
+  location: { pathname, name },
 }) => {
   useEffect(() => {
-    cardsRequisition();
+    if (name) cardsRequisition('Ingrediente', name);
+    else cardsRequisition();
     categoriesRequisition();
-  }, [cardsRequisition, categoriesRequisition]);
+  }, [cardsRequisition, categoriesRequisition, name]);
 
   if (isLoadingDrink || isLoadingCategory) return <h2>Loading...</h2>;
   return (
