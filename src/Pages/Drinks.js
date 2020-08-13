@@ -7,6 +7,7 @@ import { getDrinks, getCategoriesDrinks } from '../Redux/Actions/index';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import Categories from '../Components/Categories';
+import Phrases from '../Components/Phrases';
 
 const Drinks = ({
   isLoadingDrink,
@@ -21,7 +22,7 @@ const Drinks = ({
     categoriesRequisition();
   }, [cardsRequisition, categoriesRequisition, name]);
 
-  if (isLoadingDrink || isLoadingCategory) return <h2>Loading...</h2>;
+  if (isLoadingDrink && isLoadingCategory) return <Phrases />;
   return (
     <div>
       <Header pathname={pathname} />

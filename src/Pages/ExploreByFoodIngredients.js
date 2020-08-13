@@ -5,6 +5,7 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { getCategoriesFoods } from '../Redux/Actions/index';
 import CardsIngredients from '../Components/CardsIngredients';
+import Phrases from '../Components/Phrases';
 
 const ExploreByFoodIngredients = ({
   location: { pathname },
@@ -15,7 +16,7 @@ const ExploreByFoodIngredients = ({
     categoriesRequisition('ingredient');
   }, [categoriesRequisition]);
 
-  if (isLoadingCategory) return <h2>Loading...</h2>;
+  if (isLoadingCategory) return <Phrases />;
   return (
     <div>
       <Header pathname={pathname} />

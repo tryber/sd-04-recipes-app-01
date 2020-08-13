@@ -7,6 +7,7 @@ import save from '../helpers/index';
 import Icons from '../Components/Icons';
 import Input from '../Components/MealsInProgressInput';
 import { getDetailsDrinks, getDetailsFoods } from '../Redux/Actions';
+import Phrases from '../Components/Phrases';
 
 const verifyingTags = (string) => {
   if (!string) return [];
@@ -118,7 +119,7 @@ const MeaslInProgress = ({ match: { path, params: { id } }, detailsDrink, detail
     }
   }, [detailsFoodRequisition, detailsDrinkRequisition, id]);
   if (detailsFoodsError !== '' || detailsDrinksError !== '') return <div>Failed to fetch</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Phrases />;
   const { drinkOrFood, actualData } = verifyingActualData(path, detailsFood, detailsDrink);
   const localStorage = getLocalStorage('inProgressRecipes');
   const Ingredients =
