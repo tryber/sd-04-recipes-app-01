@@ -23,7 +23,7 @@ const Meals = ({
   }, [cardsRequisition, categoriesRequisition, name]);
 
   if (isLoadingFood && isLoadingCategory) return <Phrases />;
-  
+
   return (
     <div>
       <Header pathname={pathname} />

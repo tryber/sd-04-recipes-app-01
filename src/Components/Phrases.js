@@ -13,8 +13,6 @@ const phrasesArray = [
 
 const phrasesAleatory = () => phrasesArray[Math.floor(Math.random() * phrasesArray.length)];
 
-const Phrases = () => {
-  return <h2>{phrasesAleatory()}</h2>;
-};
+const Phrases = () => <h2>{phrasesAleatory()}</h2>;
 
 export default Phrases;
