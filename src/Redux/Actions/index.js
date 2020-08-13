@@ -212,19 +212,21 @@ const requestRandomError = (error) => ({
 });
 
 export function RandomDrink() {
-  return (dispatch) => {
-    return getRandomDrink().then(
+  return (dispatch) => (
+
+      getRandomDrink().then(
       (data) => dispatch(requestRandomSucess(data)),
       (error) => dispatch(requestRandomError(error)),
-    );
-  };
+    )
+  )
 }
 
 export function RandomFood() {
-  return (dispatch) => {
-    return getRandomFood().then(
+  return (dispatch) => (
+
+    getRandomFood().then(
       (data) => dispatch(requestRandomSucess(data)),
       (error) => dispatch(requestRandomError(error)),
-    );
-  };
+    )
+  )
 }
