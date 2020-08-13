@@ -5,11 +5,12 @@ body {
   min-height: 600px;
   background-image: url(../src/images/canva-photo-editor\ \(1\).png);
   background-size: 1000px;
-  background-repeat: repeat-y;
+  background-repeat: repeat;
+  background-color: #ffffee;
 }
 
 .App {
-  width: 340px;
+  width: 100%;
 }
 
 .image {
@@ -26,6 +27,7 @@ body {
 }
 
 .meals-Page {
+  width: 100%;
   z-index: 1;
 }
 
@@ -33,7 +35,22 @@ body {
   display: flex;
   justify-content: space-around;
   align-items:  center;
-  z-index: 1;
+}
+
+.header-div {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header h2 {
+  padding: 12px 0 0 0 ;
+}
+
+.button-categories {
+  width: 100px;
+  height: 52px;
+  margin: 0 10px 5px 10px;
+  font-size: 1.3rem;
 }
 
 .start-recipe-btn {
@@ -47,24 +64,65 @@ body {
 }
 
 .position-fixed {
-  margin-left: -10px;
   position: fixed;
   bottom: 0;
-  justify-content: space-between;
-  align-items:  center;
-  width: 360px;
+  width: 100%;
+  background-color: #0062cc;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+
 }
 
 .header-categories {
-  margin: 15px 0 20px 0;
+  margin: 15px 0 15px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .meal-container {
-  margin: 15px 15px 15px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 75px;
 }
 
 .card-meals {
-  margin-bottom: 15px;
+  margin: 15px 15px 15px 15px;
+  max-width: 300px;
+  box-shadow: 0 10px 15px 0 black;
+}
+
+.card-meals:hover {
+  transition:box-shadow 0.3s;
+  box-shadow: 0 10px 15px 0 gray;
+}
+
+.animated {
+  transition: ease-in;
+  animation: slide-in 0.5s;
+}
+.input-search-Bar {
+  padding: 0 5px 0 20px;
+}
+
+.input-sb {
+  width: 80%;
+  max-width: 600px;
+}
+
+.footer-item {
+  width: 30px;
 }
 
 #meals {
@@ -114,15 +172,12 @@ body {
   }
 }
 
-@keyframes shake {
+@keyframes slide-in {
   0% {
-    transform: rotate(5deg);
-  }
-  50% {
-    transform: rotate(-5deg);
+    margin-top: -72px;
   }
   100% {
-    transform: rotate(5deg);
+    margin-top: 0;
   }
 }
 

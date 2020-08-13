@@ -17,32 +17,40 @@ const SearchBar = ({ request, showSearchBar }) => {
 
   if (!showSearchBar) return <div />;
   return (
-    <div>
-      <div className="d-flex justify-content-center">
-        <input
-          className="input border-primary rounded"
-          data-testid="search-input"
-          name="input"
-          onChange={handleChange}
-          placeholder="Buscar Receita"
-        />
+    <div className="animated">
+      <div className="card text-black bg-black">
+        <div className="d-flex justify-content-center">
+          <input
+            className="input input-sb border-primary rounded"
+            data-testid="search-input"
+            name="input"
+            onChange={handleChange}
+            placeholder="Buscar Receita"
+          />
+        </div>
+        <div className="d-flex justify-content-center align-items-center">
+          <div className="input-search-Bar">
+            <input
+              onClick={handleChange}
+              id="Ingrediente"
+              type="radio"
+              name="filter"
+              value="Ingrediente"
+            />
+            <label data-testid="ingredient-search-radio" htmlFor="Ingrediente">Ingrediente</label>
+          </div>
+          <div className="input-search-Bar">
+            <input onClick={handleChange} id="Nome" type="radio" name="filter" value="Nome" />
+            <label data-testid="name-search-radio" htmlFor="Nome">Nome</label>
+          </div>
+          <div className="input-search-Bar">
+            <input onClick={handleChange} id="letra" type="radio" name="filter" value="Primeira letra" />
+            <label data-testid="first-letter-search-radio" htmlFor="letra">Primeira letra</label>
+          </div>
+        </div>
       </div>
       <div className="d-flex justify-content-center">
-        <input
-          onClick={handleChange}
-          id="Ingrediente"
-          type="radio"
-          name="filter"
-          value="Ingrediente"
-        />
-        <label data-testid="ingredient-search-radio" htmlFor="Ingrediente">Ingrediente</label>
-        <input onClick={handleChange} id="Nome" type="radio" name="filter" value="Nome" />
-        <label data-testid="name-search-radio" htmlFor="Nome">Nome</label>
-        <input onClick={handleChange} id="letra" type="radio" name="filter" value="Primeira letra" />
-        <label data-testid="first-letter-search-radio" htmlFor="letra">Primeira letra</label>
-      </div>
-      <div className="d-flex justify-content-center">
-        <button className="btn btn-primary btn-sm btn-block" data-testid="exec-search-btn" onClick={handleClick} type="button">
+        <button className="btn btn-primary btn-lg btn-block" data-testid="exec-search-btn" onClick={handleClick} type="button">
           Buscar
         </button>
       </div>

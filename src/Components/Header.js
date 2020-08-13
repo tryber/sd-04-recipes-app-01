@@ -7,10 +7,12 @@ import SearchImage from '../images/searchIcon.svg';
 import { showSearchBarAct } from '../Redux/Actions';
 
 const renderInput = (Name, showSearchBar) => (
-  <div className="d-flex flex-row justify-content-between">
+  <div className="header">
+    <Link to="/perfil">
+      <img data-testid="profile-top-btn" src={profileImage} alt="profile" />
+    </Link>
     <h2 data-testid="page-title">{Name}</h2>
     <input
-      className="space"
       type="image"
       src={SearchImage}
       onClick={() => showSearchBar()}
@@ -20,37 +22,39 @@ const renderInput = (Name, showSearchBar) => (
   </div>
 );
 
+const renderOtherInput = (Name) => (
+  <div className="header">
+    <Link to="/perfil">
+      <img data-testid="profile-top-btn" src={profileImage} alt="profile" />
+    </Link>
+    <h2 data-testid="page-title">{Name}</h2>
+  </div>
+);
+
 const renderTitle = (pathname, showSearchBar) => {
   switch (pathname) {
     case '/comidas':
-      return (
-        renderInput('Comidas', showSearchBar)
-      );
+      return renderInput('Comidas', showSearchBar);
     case '/bebidas':
-      return (
-        renderInput('Bebidas', showSearchBar)
-      );
+      return renderInput('Bebidas', showSearchBar);
     case '/explorar':
-      return <h2 data-testid="page-title">Explorar</h2>;
+      return renderOtherInput('Explorar');
     case '/explorar/comidas':
-      return <h2 data-testid="page-title">Explorar Comidas</h2>;
+      return renderOtherInput('Explorar Comidas');
     case '/explorar/bebidas':
-      return <h2 data-testid="page-title">Explorar Bebidas</h2>;
+      return renderOtherInput('Explorar Bebidas');
     case '/explorar/comidas/ingredientes':
-      return <h2 data-testid="page-title">Explorar Ingredientes</h2>;
-
+      return renderOtherInput('Explorar Ingredientes');
     case '/explorar/bebidas/ingredientes':
-      return <h2 data-testid="page-title">Explorar Ingredientes</h2>;
+      return renderOtherInput('Explorar Ingredientes');
     case '/explorar/comidas/area':
-      return (
-        renderInput('Explorar Origem', showSearchBar)
-      );
+      return renderInput('Explorar Origem', showSearchBar);
     case '/perfil':
-      return <h2 data-testid="page-title">Perfil</h2>;
+      return renderOtherInput('Perfil');
     case '/receitas-feitas':
-      return <h2 data-testid="page-title">Receitas Feitas</h2>;
+      return renderOtherInput('Receitas Feitas');
     case '/receitas-favoritas':
-      return <h2 data-testid="page-title">Receitas Favoritas</h2>;
+      return renderOtherInput('Receitas Favoritas');
     default:
       return <h2>Nenhum título</h2>;
   }
@@ -59,10 +63,7 @@ const renderTitle = (pathname, showSearchBar) => {
 const Header = (props) => {
   const { pathname, showSearchBar } = props;
   return (
-    <div className="header">
-      <Link to="/perfil">
-        <img data-testid="profile-top-btn" src={profileImage} alt="profile" />
-      </Link>
+    <div className="btn btn-primary header-div">
       {renderTitle(pathname, showSearchBar)}
     </div>
   );

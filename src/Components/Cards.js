@@ -27,7 +27,7 @@ const Cards = (props) => {
     <div className="meal-container">
       {createNewArr(type).map((item, i) => (
         <Link to={`${newPathname}/${item[id]}`} key={item[id]}>
-          <div className="card card-meals" key={item[id]} data-testid={`${i}-recipe-card`}>
+          <div className="card text-white bg-dark card-meals" key={item[id]} data-testid={`${i}-recipe-card`}>
             <img
               className="card-img-top"
               key={item[id]}
@@ -36,9 +36,9 @@ const Cards = (props) => {
               data-testid={`${i}-card-img`}
               alt={item[strName]}
             />
-            <p className="card-header text-center text-header font-weight-bold" key={item[strName]} data-testid={`${i}-card-name`}>
+            <h3 className="card-header text-center text-header font-weight-bold" key={item[strName]} data-testid={`${i}-card-name`}>
               {item[strName]}
-            </p>
+            </h3>
           </div>
         </Link>
       ))}
