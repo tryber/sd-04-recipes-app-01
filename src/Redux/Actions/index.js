@@ -71,7 +71,7 @@ export function getFoods(filter, food) {
 
     return getFood(filter, food).then(
       (data) => dispatch(requestFoodSuccess(data)),
-      (error) => dispatch(requestFoodError(error))
+      (error) => dispatch(requestFoodError(error)),
     );
   };
 }
