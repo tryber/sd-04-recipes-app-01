@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { RandomDrink } from '../Redux/Actions/index';
@@ -18,7 +18,7 @@ const ExploreByDrink = (props) => {
   }, [getRandomDrinkID]);
 
   if (id.drinks === undefined) {
-    return "Loading";
+    return 'Loading';
   }
   const { idDrink } = id.drinks[0];
   return (

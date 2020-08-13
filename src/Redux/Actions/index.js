@@ -8,7 +8,7 @@ import {
   getDrink,
   getCategoriesDrink,
   getDetailsDrink,
-  getRandomDrink
+  getRandomDrink,
 } from '../../services/drink';
 
 export const CHANGE_INPUT = 'CHANGE_INPUT';
@@ -96,7 +96,7 @@ export function getDrinks(filter, drink) {
 
     return getDrink(filter, drink).then(
       (data) => dispatch(requestDrinkSuccess(data)),
-      (error) => dispatch(requestDrinkError(error))
+      (error) => dispatch(requestDrinkError(error)),
     );
   };
 }
@@ -121,7 +121,7 @@ export function getCategoriesFoods() {
 
     return getCategoriesFood().then(
       (data) => dispatch(requestCategoriesFoodSuccess(data)),
-      (error) => dispatch(requestCategoriesFoodError(error))
+      (error) => dispatch(requestCategoriesFoodError(error)),
     );
   };
 }
@@ -146,7 +146,7 @@ export function getCategoriesDrinks() {
 
     return getCategoriesDrink().then(
       (data) => dispatch(requestCategoriesDrinkSuccess(data)),
-      (error) => dispatch(requestCategoriesDrinkError(error))
+      (error) => dispatch(requestCategoriesDrinkError(error)),
     );
   };
 }
@@ -171,7 +171,7 @@ export function getDetailsFoods(id) {
 
     return getDetailsFood(id).then(
       (data) => dispatch(requestDetailsFoodSuccess(data)),
-      (error) => dispatch(requestDetailsFoodError(error))
+      (error) => dispatch(requestDetailsFoodError(error)),
     );
   };
 }
@@ -196,7 +196,7 @@ export function getDetailsDrinks(id) {
 
     return getDetailsDrink(id).then(
       (data) => dispatch(requestDetailsDrinkSuccess(data)),
-      (error) => dispatch(requestDetailsDrinkError(error))
+      (error) => dispatch(requestDetailsDrinkError(error)),
     );
   };
 }
@@ -215,7 +215,7 @@ export function RandomDrink() {
   return (dispatch) => {
     return getRandomDrink().then(
       (data) => dispatch(requestRandomSucess(data)),
-      (error) => dispatch(requestRandomError(error))
+      (error) => dispatch(requestRandomError(error)),
     );
   };
 }
@@ -224,7 +224,7 @@ export function RandomFood() {
   return (dispatch) => {
     return getRandomFood().then(
       (data) => dispatch(requestRandomSucess(data)),
-      (error) => dispatch(requestRandomError(error))
+      (error) => dispatch(requestRandomError(error)),
     );
   };
 }

@@ -7,28 +7,32 @@ import Footer from '../Components/Footer';
 import { RandomFood } from '../Redux/Actions/index';
 
 const ExploreByFood = (props) => {
-  const { id, getRandomFoodID, location: { pathname } } = props;
+  const {
+    id,
+    getRandomFoodID,
+    location: { pathname },
+  } = props;
 
-useEffect(() => {
-  getRandomFoodID();
-}, [getRandomFoodID]);
+  useEffect(() => {
+    getRandomFoodID();
+  }, [getRandomFoodID]);
 
-if (id.meals === undefined ) {
-  return "Loading"
-} 
-const { idMeal } = id.meals[0]
+  if (id.meals === undefined) {
+    return 'Loading';
+  }
+  const { idMeal } = id.meals[0];
   console.log(id.meals);
   return (
     <div>
       <Header pathname={pathname} />
-      <Link to="/explorar/comidas/ingredientes">
-        <button data-testid="explore-by-ingredient">Por Ingredientes</button>
+      <Link to='/explorar/comidas/ingredientes'>
+        <button data-testid='explore-by-ingredient'>Por Ingredientes</button>
       </Link>
-      <Link to="/explorar/comidas/area">
-        <button data-testid="explore-by-area">Por Local de Origem</button>
+      <Link to='/explorar/comidas/area'>
+        <button data-testid='explore-by-area'>Por Local de Origem</button>
       </Link>
-      <Link to= {`/comidas/${idMeal}`}>
-        <button data-testid="explore-surprise">Me Surpreenda!</button>
+      <Link to={`/comidas/${idMeal}`}>
+        <button data-testid='explore-surprise'>Me Surpreenda!</button>
       </Link>
       <Footer />
     </div>
