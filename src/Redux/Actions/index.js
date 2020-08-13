@@ -218,7 +218,7 @@ export function RandomDrink() {
       (data) => dispatch(requestRandomSucess(data)),
       (error) => dispatch(requestRandomError(error)),
     )
-  )
+  );
 }
 
 export function RandomFood() {
@@ -228,5 +228,5 @@ export function RandomFood() {
       (data) => dispatch(requestRandomSucess(data)),
       (error) => dispatch(requestRandomError(error)),
     )
-  )
+  );
 }
