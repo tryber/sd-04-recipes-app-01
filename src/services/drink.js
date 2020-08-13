@@ -36,3 +36,13 @@ export const getDetailsDrink = (id) => (
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
   )
 );
+
+const randomDrinkURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+
+export const getRandomDrink = () => (
+  fetch(`${randomDrinkURL}`).then((response) =>
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);

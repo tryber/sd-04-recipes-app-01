@@ -36,3 +36,13 @@ export const getDetailsFood = (id) => (
       .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
   )
 );
+
+const randomFoodURL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+
+export const getRandomFood = () => (
+  fetch(`${randomFoodURL}`).then((response) =>
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);
