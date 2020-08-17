@@ -7,6 +7,7 @@ import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import Cards from '../Components/Cards';
 import Categories from '../Components/Categories';
+import Phrases from '../Components/Phrases';
 
 const Meals = ({
   isLoadingFood,
@@ -21,7 +22,8 @@ const Meals = ({
     categoriesRequisition();
   }, [cardsRequisition, categoriesRequisition, name]);
 
-  if (isLoadingFood || isLoadingCategory) return <h2>Loading...</h2>;
+  if (isLoadingFood && isLoadingCategory) return <Phrases />;
+
   return (
     <div>
       <Header pathname={pathname} />

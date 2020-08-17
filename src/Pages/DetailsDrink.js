@@ -5,6 +5,7 @@ import { getDetailsDrinks, getFoods } from '../Redux/Actions/index';
 import RecipeDrink from '../Components/RecipeDrink';
 import Recomendations from '../Components/Recomendations/Recomendations';
 import StartRecipeBtn from '../Components/StartRecipeBtn';
+import Phrases from '../Components/Phrases';
 
 const DetailsDrink = ({
   match: { params: { id } },
@@ -20,7 +21,7 @@ const DetailsDrink = ({
     foodsRequest();
   }, [detailsRequisition, id, foodsRequest]);
 
-  if (isLoadingDetails || isLoadingRecomendation) return <h2>Loading...</h2>;
+  if (isLoadingDetails && isLoadingRecomendation) return <Phrases />;
   return (
     <div>
       <h2>
