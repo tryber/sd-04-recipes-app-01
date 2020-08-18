@@ -119,6 +119,8 @@ describe('Login page', () => {
     const user = { email: email.value };
     const userAtlocalStorage = JSON.parse(localStorage.getItem('user'));
     expect(userAtlocalStorage).toEqual(user);
+    expect(JSON.parse(localStorage.getItem('mealsToken'))).toBe(1);
+    expect(JSON.parse(localStorage.getItem('cocktailsToken'))).toBe(1);
   });
 
   test('when the button is clicked the App should redirect to /comidas', () => {
