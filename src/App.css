@@ -15,6 +15,9 @@ body {
 
 .App {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .space {
@@ -57,6 +60,10 @@ body {
   justify-content: center;
 }
 
+.login {
+  max-width: 650px;
+}
+
 .position-fixed {
   position: fixed;
   bottom: 0;
@@ -96,6 +103,7 @@ body {
   max-width: 300px;
   box-shadow: 0 10px 15px 0 black;
 }
+
 
 .card-meals:hover {
   transition:box-shadow 0.3s;

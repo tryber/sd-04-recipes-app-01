@@ -12,7 +12,7 @@ class Login extends React.Component {
       return <Redirect to="/comidas" />;
     }
     return (
-      <div className="card border-lg border-primary rounded-lg">
+      <div className="card border-lg border-primary rounded-lg login">
         <p className="card-header text-center text-header font-weight-bold">Login</p>
         <div className="card-body d-flex flex-column align-items-center">
           <label htmlFor="email" />
