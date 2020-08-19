@@ -9,26 +9,20 @@ body {
   background-color: #ffffee;
 }
 
-.App {
+#root {
   width: 100%;
 }
 
-.image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  max-height: 1000px;
-  opacity: 75%;
-  z-index: 0;
+.App {
+  width: 100%;
 }
 
 .space {
   padding: 0 0px 0 50px;
 }
 
-.meals-Page {
+.meals-page {
   width: 100%;
-  z-index: 1;
 }
 
 .header {
@@ -125,6 +119,35 @@ body {
   width: 30px;
 }
 
+.instructions {
+  width: 80%;
+  text-align: justify;
+  background: rgba(255, 255, 255, 0.61);
+  border-radius: 10px ;
+  padding: 10px;
+}
+
+.instructions p {
+  font-size: 20px;
+}
+
+.instructions ul li {
+  font-size: 20px;
+}
+
+.recipe-food-margin {
+}
+
+.card-instruction {
+  margin-top: 15px
+}
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100px;
+}
+
 #meals {
   height: 100vh;
   width: 100%;
@@ -164,13 +187,6 @@ body {
   animation: shake 1.5s infinite ease;
 }
 
-@media screen and (min-width: 1200px) 
-{
-  .image {
-    width: 100%;
-    max-height: none;
-  }
-}
 
 @keyframes slide-in {
   0% {

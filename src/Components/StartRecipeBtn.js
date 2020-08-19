@@ -34,7 +34,7 @@ const StartRecipeBtn = ({ id, pathName }) => {
       {recipeDone && (
         <button
           onClick={() => setShouldRedirect(true)}
-          className="start-recipe-btn"
+          className="start-recipe-btn btn btn-primary btn-lg btn-block"
           data-testid="start-recipe-btn"
           type="button"
         >

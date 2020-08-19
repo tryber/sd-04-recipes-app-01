@@ -12,21 +12,36 @@ const RecipeFood = ({ detailsRecipe, pathName }) => {
   } = brazilianWay;
 
   return (
-    <div>
-      <img src={strMealThumb} alt={strMeal} data-testid="recipe-photo" width="200" />
-      <h2 data-testid="recipe-title">{strMeal}</h2>
-      <Icons pathName={pathName} detailsRecipe={brazilianWay} />
-      <p data-testid="recipe-category">{strCategory}</p>
-      <p>Ingredients:</p>
-      <ul>
-        {getIngredients(measures).map(({ ingredient, measure }, index) => (
-          <li data-testid={`${index}-ingredient-name-and-measure`} key={`${measure} ${ingredient}`}>
-            {measure} {ingredient}
-          </li>
-        ))}
-      </ul>
-      <p>Instructions</p>
-      <p data-testid="instructions">{strInstructions}</p>
+    <div className="d-flex flex-column align-items-center recipe-food-margin">
+      <div className="card text-white bg-dark card-meals">
+        <img className="card-img-top" src={strMealThumb} alt={strMeal} data-testid="recipe-photo" />
+        <div className="card-body d-flex flex-row justify-content-between">
+          <h2 className="card-text" data-testid="recipe-title">{strMeal}</h2>
+          <Icons pathName={pathName} detailsRecipe={brazilianWay} />
+        </div>
+      </div>
+      <div className="d-flex flex-column justify-content-center align-items-center instructions">
+        <h3 data-testid="recipe-category">
+          Category:
+          {' '}
+          {strCategory}
+        </h3>
+        <h2>Ingredients:</h2>
+        <div className="w-100">
+          <ul>
+            {getIngredients(measures).map(({ ingredient, measure }, index) => (
+              <li data-testid={`${index}-ingredient-name-and-measure`} key={`${measure} ${ingredient}`}>
+                {measure}
+                {' '}
+                {ingredient}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <h3>Instructions</h3>
+        <p data-testid="instructions" className="text-wrap text-break w-100">{strInstructions}</p>
+      </div>
+      <br />
       <iframe
         data-testid="video"
         title="video"

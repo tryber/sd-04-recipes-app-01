@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeart from '../images/whiteHeartIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
-import save from '../helpers/index';
-import { getLocalStorage } from '../helpers/index';
+import save, { getLocalStorage } from '../helpers/index';
 
 const copy = require('clipboard-copy');
 
@@ -47,8 +46,7 @@ const InputShare = (strSource, id, callback, i, PathDoneFavorite) => {
   );
 };
 
-const Comparisor = (idMeal) =>
-  getLocalStorage('favoriteRecipes').find(({ id }) => id === idMeal);
+const Comparisor = (idMeal) => getLocalStorage('favoriteRecipes').find(({ id }) => id === idMeal);
 
 const foodData = (strMeal, strMealThumb, strCategory, idMeal, strArea) => ({
   id: idMeal,
@@ -79,12 +77,17 @@ const drinkData = (
 const verifyingRoute = (props, path) => {
   if (path === '/comidas/:id' || path === '/comidas/:id/in-progress') {
     const {
-      detailsRecipe: { strMeal, strMealThumb, strCategory, idMeal, strArea },
+      detailsRecipe: {
+        strMeal, strMealThumb, strCategory, idMeal, strArea,
+      },
     } = props;
     return foodData(strMeal, strMealThumb, strCategory, idMeal, strArea);
   }
   const {
-    detailsDrink: { strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink } } = props;
+    detailsDrink: {
+      strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink,
+    },
+  } = props;
   return drinkData(strDrink, strDrinkThumb, strCategory, strAlcoholic, idDrink);
 };
 
@@ -114,12 +117,14 @@ const IconsFood = (props) => {
   };
   return (
     <div>
-      <div>
-        {Comparisor(actualData.id)
-          ? InputHeart(blackHeart, unFavorite, i, PathDoneFavorite)
-          : InputHeart(whiteHeart, onFavorite, i, PathDoneFavorite)}
+      <div className="icons">
+        <div>
+          {Comparisor(actualData.id)
+            ? InputHeart(blackHeart, unFavorite, i, PathDoneFavorite)
+            : InputHeart(whiteHeart, onFavorite, i, PathDoneFavorite)}
+        </div>
+        {InputShare(path, actualData.id, setCopied, i, PathDoneFavorite)}
       </div>
-      {InputShare(path, actualData.id, setCopied, i, PathDoneFavorite)}
       {copied && <p>Link copiado!</p>}
     </div>
   );
