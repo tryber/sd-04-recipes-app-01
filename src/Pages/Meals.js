@@ -7,20 +7,23 @@ import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import Cards from '../Components/Cards';
 import Categories from '../Components/Categories';
+import Phrases from '../Components/Phrases';
 
 const Meals = ({
   isLoadingFood,
   isLoadingCategory,
   cardsRequisition,
   categoriesRequisition,
-  location: { pathname },
+  location: { pathname, name },
 }) => {
   useEffect(() => {
-    cardsRequisition();
+    if (name) cardsRequisition('Ingrediente', name);
+    else cardsRequisition();
     categoriesRequisition();
-  }, [cardsRequisition, categoriesRequisition]);
+  }, [cardsRequisition, categoriesRequisition, name]);
 
-  if (isLoadingFood || isLoadingCategory) return <h2>Loading...</h2>;
+  if (isLoadingFood && isLoadingCategory) return <Phrases />;
+
   return (
     <div className="meals-Page">
       <Header pathname={pathname} />

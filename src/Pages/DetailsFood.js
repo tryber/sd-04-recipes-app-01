@@ -5,6 +5,7 @@ import { getDetailsFoods, getDrinks } from '../Redux/Actions/index';
 import RecipeFood from '../Components/RecipeFood';
 import Recomendations from '../Components/Recomendations/Recomendations';
 import StartRecipeBtn from '../Components/StartRecipeBtn';
+import Phrases from '../Components/Phrases';
 
 const DetailsFood = ({
   match: {
@@ -22,7 +23,7 @@ const DetailsFood = ({
     drinksRequest();
   }, [detailsRequisition, id, drinksRequest]);
 
-  if (isLoadingDetails || isLoadingRecomendation) return <h2>Loading...</h2>;
+  if (isLoadingDetails && isLoadingRecomendation) return <Phrases />;
   return (
     <div className="meals-page d-flex flex-column justify-content-center align-items-center">
       <div className="btn btn-primary header-div">

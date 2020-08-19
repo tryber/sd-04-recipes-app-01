@@ -7,13 +7,21 @@ import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { getFoods, getCategoriesFoods } from '../Redux/Actions/index';
 import CategoriesDropdown from '../Components/CategoriesDropdown';
+import Phrases from '../Components/Phrases';
 
-const ExploreByArea = ({ location: { pathname }, categoriesRequisition, cardsRequisition }) => {
+const ExploreByArea = ({
+  location: { pathname },
+  categoriesRequisition,
+  cardsRequisition,
+  isLoadingCategory,
+  isLoadingFood,
+}) => {
   useEffect(() => {
     cardsRequisition();
     categoriesRequisition('area');
   }, [cardsRequisition, categoriesRequisition]);
 
+  if (isLoadingCategory && isLoadingFood) return <Phrases />;
   return (
     <div>
       <Header pathname={pathname} />
@@ -29,11 +37,18 @@ ExploreByArea.propTypes = {
   location: PropTypes.shape(PropTypes.string.isRequired).isRequired,
   categoriesRequisition: PropTypes.func.isRequired,
   cardsRequisition: PropTypes.func.isRequired,
+  isLoadingCategory: PropTypes.bool.isRequired,
+  isLoadingFood: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  isLoadingCategory: state.categoriesDrinksReducer.isLoading,
+  isLoadingFood: state.foodRequestReducer.isLoading,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   cardsRequisition: (filter, food) => dispatch(getFoods(filter, food)),
   categoriesRequisition: (type) => dispatch(getCategoriesFoods(type)),
 });
 
-export default connect(null, mapDispatchToProps)(ExploreByArea);
+export default connect(mapStateToProps, mapDispatchToProps)(ExploreByArea);
