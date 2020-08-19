@@ -21,7 +21,7 @@ const SearchBar = ({ request, showSearchBar }) => {
       <div className="card text-black bg-black">
         <div className="d-flex justify-content-center">
           <input
-            className="input input-sb border-primary rounded"
+            className="input input-sb border-primary rounded no-shadow"
             data-testid="search-input"
             name="input"
             onChange={handleChange}
@@ -31,6 +31,7 @@ const SearchBar = ({ request, showSearchBar }) => {
         <div className="d-flex justify-content-center align-items-center">
           <div className="input-search-Bar">
             <input
+              className="no-shadow"
               onClick={handleChange}
               id="Ingrediente"
               type="radio"
@@ -40,7 +41,7 @@ const SearchBar = ({ request, showSearchBar }) => {
             <label data-testid="ingredient-search-radio" htmlFor="Ingrediente">Ingrediente</label>
           </div>
           <div className="input-search-Bar">
-            <input onClick={handleChange} id="Nome" type="radio" name="filter" value="Nome" />
+            <input className="no-shadow" onClick={handleChange} id="Nome" type="radio" name="filter" value="Nome" />
             <label data-testid="name-search-radio" htmlFor="Nome">Nome</label>
           </div>
           <div className="input-search-Bar">

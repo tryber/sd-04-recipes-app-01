@@ -11,6 +11,7 @@ const InputHeart = (heart, callback, i, PathDoneFavorite) => {
   if (callback) {
     return (
       <input
+        className="no-shadow"
         type="image"
         src={heart}
         alt="s2"
@@ -36,6 +37,7 @@ const InputShare = (strSource, id, callback, i, PathDoneFavorite) => {
   return (
     <div>
       <input
+        className="no-shadow"
         type="image"
         alt="shareIcon"
         src={shareIcon}

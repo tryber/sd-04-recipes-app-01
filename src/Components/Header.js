@@ -9,10 +9,11 @@ import { showSearchBarAct } from '../Redux/Actions';
 const renderInput = (Name, showSearchBar) => (
   <div className="header">
     <Link to="/perfil">
-      <img data-testid="profile-top-btn" src={profileImage} alt="profile" />
+      <img className="no-shadow" data-testid="profile-top-btn" src={profileImage} alt="profile" />
     </Link>
     <h2 data-testid="page-title">{Name}</h2>
     <input
+      className="no-shadow"
       type="image"
       src={SearchImage}
       onClick={() => showSearchBar()}
@@ -25,7 +26,7 @@ const renderInput = (Name, showSearchBar) => (
 const renderOtherInput = (Name) => (
   <div className="header">
     <Link to="/perfil">
-      <img data-testid="profile-top-btn" src={profileImage} alt="profile" />
+      <img className="no-shadow" data-testid="profile-top-btn" src={profileImage} alt="profile" />
     </Link>
     <h2 data-testid="page-title">{Name}</h2>
   </div>

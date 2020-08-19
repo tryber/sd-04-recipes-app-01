@@ -1,6 +1,5 @@
 import React from 'react';
-import { getIngredients, getLocalStorage } from '../helpers/index';
-import save from '../helpers/index';
+import save, { getIngredients, getLocalStorage } from '../helpers/index';
 
 const addToStorageFistTime = (local, actualData, drinkOrFood, event) => ({
   ...local,
@@ -63,8 +62,8 @@ const handleInput = (
   }
   const local = getLocalStorage('inProgressRecipes');
   if (
-    !local[drinkOrFood.key] ||
-    !local[drinkOrFood.key][actualData[drinkOrFood.id]]
+    !local[drinkOrFood.key]
+    || !local[drinkOrFood.key][actualData[drinkOrFood.id]]
   ) {
     setToStore = addToStorageFistTime(local, actualData, drinkOrFood, event);
   } else {
@@ -90,43 +89,37 @@ const renderInputs = (
   index,
   ingredient,
   handleInputRendered,
-) => (
-  Ingredients.includes(ingredient) ? (
-    <input
-      type="checkbox"
-      name={ingredient}
-      data-testid="ingredient-step"
-      onClick={(event) =>
-        handleInputRendered(
-          event,
-          actualData,
-          drinkOrFood,
-          Ingredients,
-          path,
-          setRender,
-          render,
-        )
-      }
-      defaultChecked
-    />
-  ) : (
-    <input
-      type="checkbox"
-      name={ingredient}
-      onClick={(event) =>
-        handleInputRendered(
-          event,
-          actualData,
-          drinkOrFood,
-          Ingredients,
-          path,
-          setRender,
-          render,
-        )
-      }
-    />
-  )
-);
+) => (Ingredients.includes(ingredient) ? (
+  <input
+    type="checkbox"
+    name={ingredient}
+    data-testid="ingredient-step"
+    onClick={(event) => handleInputRendered(
+      event,
+      actualData,
+      drinkOrFood,
+      Ingredients,
+      path,
+      setRender,
+      render,
+    )}
+    defaultChecked
+  />
+) : (
+  <input
+    type="checkbox"
+    name={ingredient}
+    onClick={(event) => handleInputRendered(
+      event,
+      actualData,
+      drinkOrFood,
+      Ingredients,
+      path,
+      setRender,
+      render,
+    )}
+  />
+));
 const renderIngredientCheckBox = (
   actualData,
   drinkOrFood,
@@ -136,33 +129,42 @@ const renderIngredientCheckBox = (
   Ingredients,
   decorationDefault,
 ) => (
-  <div>
-    <p data-testid="recipe-category">{actualData.strCategory}</p>
-    <p>Ingredients:</p>
-    {getIngredients(actualData).map(({ ingredient, measure }, index) => (
-      <div data-testid={`${index}-ingredient-step`}>
-        {renderInputs(
-          Ingredients,
-          actualData,
-          drinkOrFood,
-          path,
-          render,
-          setRender,
-          index,
-          ingredient,
-          handleInput,
-        )}
-        {Ingredients.includes(ingredient) ? (
-          <label htmlFor={ingredient} style={decorationDefault}>
-            {measure} {ingredient}
-          </label>
-        ) : (
-          <label htmlFor={ingredient}>
-            {measure} {ingredient}
-          </label>
-        )}
-      </div>
-    ))}
+  <div className="">
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      <h3>Category:</h3>
+      <p data-testid="recipe-category">{actualData.strCategory}</p>
+      <h3>Ingredients:</h3>
+    </div>
+    <div className="padding-left">
+      {getIngredients(actualData).map(({ ingredient, measure }, index) => (
+        <div data-testid={`${index}-ingredient-step`}>
+          {renderInputs(
+            Ingredients,
+            actualData,
+            drinkOrFood,
+            path,
+            render,
+            setRender,
+            index,
+            ingredient,
+            handleInput,
+          )}
+          {Ingredients.includes(ingredient) ? (
+            <label className="padding-left" htmlFor={ingredient} style={decorationDefault}>
+              {measure}
+              {' '}
+              {ingredient}
+            </label>
+          ) : (
+            <label className="padding-left" htmlFor={ingredient}>
+              {measure}
+              {' '}
+              {ingredient}
+            </label>
+          )}
+        </div>
+      ))}
+    </div>
   </div>
 );
 

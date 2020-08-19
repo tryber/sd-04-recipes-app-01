@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { getIngredients, getLocalStorage } from '../helpers/index';
-import save from '../helpers/index';
+import save, { getIngredients, getLocalStorage } from '../helpers/index';
+
 import Icons from '../Components/Icons';
 import Input from '../Components/MealsInProgressInput';
 import { getDetailsDrinks, getDetailsFoods } from '../Redux/Actions';
@@ -61,23 +61,26 @@ const btnTrue = (actualData, drinkOrFood, setRedirect) => (
     <button
       data-testid="finish-recipe-btn"
       onClick={() => submitClick(actualData, drinkOrFood, setRedirect)}
-      className="start-recipe-btn" type="button"
-    >Finalizar Receita</button>
+      className="start-recipe-btn btn btn-primary btn-lg btn-block"
+      type="button"
+    >
+      Finalizar Receita
+
+    </button>
   </div>
 );
 const btnFalse = () => (
   <div className="btnPosition">
-    <button data-testid="finish-recipe-btn" className="start-recipe-btn" type="button" disabled>
+    <button data-testid="finish-recipe-btn" className="start-recipe-btn btn btn-secondary btn-lg btn-block" type="button" disabled>
       Finalizar Receita
     </button>
   </div>
 );
 const renderButton = (actualData, drinkOrFood, setRedirect) => {
   const store = getLocalStorage('inProgressRecipes');
-  const ingredientsOnTheBoard =
-    !store[drinkOrFood.key] ||
-      !store[drinkOrFood.key][actualData[drinkOrFood.id]]
-      ? [] : store[drinkOrFood.key][actualData[drinkOrFood.id]];
+  const ingredientsOnTheBoard = !store[drinkOrFood.key]
+      || !store[drinkOrFood.key][actualData[drinkOrFood.id]]
+    ? [] : store[drinkOrFood.key][actualData[drinkOrFood.id]];
   const compareForButton = getIngredients(actualData).map((Ingredient) => Ingredient.ingredient);
   if (compareForButton.length === ingredientsOnTheBoard.length) {
     return btnTrue(actualData, drinkOrFood, setRedirect);
@@ -103,9 +106,11 @@ const verifyingActualData = (path, detailsFood, detailsDrink) => {
   };
 };
 
-const MeaslInProgress = ({ match: { path, params: { id } }, detailsDrink, detailsFood, match,
+const MeaslInProgress = ({
+  match: { path, params: { id } }, detailsDrink, detailsFood, match,
   detailsDrinkRequisition, detailsFoodRequisition, isLoadingDrinkDetails, detailsFoodsError,
-  isLoadingFoodDetails, detailsDrinksError }) => {
+  isLoadingFoodDetails, detailsDrinksError,
+}) => {
   const [render, setRender] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
@@ -117,45 +122,54 @@ const MeaslInProgress = ({ match: { path, params: { id } }, detailsDrink, detail
     } else {
       detailsDrinkRequisition(id);
     }
-  }, [detailsFoodRequisition, detailsDrinkRequisition, id]);
+  }, [detailsFoodRequisition, detailsDrinkRequisition, id, path]);
   if (detailsFoodsError !== '' || detailsDrinksError !== '') return <div>Failed to fetch</div>;
   if (isLoading) return <Phrases />;
   const { drinkOrFood, actualData } = verifyingActualData(path, detailsFood, detailsDrink);
   const localStorage = getLocalStorage('inProgressRecipes');
-  const Ingredients =
-    !localStorage[drinkOrFood.key] ||
-      !localStorage[drinkOrFood.key][actualData[drinkOrFood.id]]
-      ? []
-      : localStorage[drinkOrFood.key][actualData[drinkOrFood.id]];
+  const Ingredients = !localStorage[drinkOrFood.key]
+      || !localStorage[drinkOrFood.key][actualData[drinkOrFood.id]]
+    ? []
+    : localStorage[drinkOrFood.key][actualData[drinkOrFood.id]];
   if (redirect) return <Redirect to="/receitas-feitas" />;
   return (
-    <div>
-      <img
-        src={actualData.strMealThumb || actualData.strDrinkThumb}
-        alt={actualData.strMeal || actualData.strDrink}
-        data-testid="recipe-photo"
-        width="200"
-      />
-      <h2 data-testid="recipe-title">
-        {actualData.strMeal || actualData.strDrink}
-      </h2>
-      <Icons
-        pathName={match}
-        detailsDrink={actualData}
-        detailsRecipe={actualData}
-      />
-      {Input(
-        actualData,
-        drinkOrFood,
-        path,
-        render,
-        setRender,
-        Ingredients,
-        decorationDefault,
-      )}
-      <p>Instructions</p>
-      <p data-testid="instructions">{actualData.strInstructions}</p>
-      {renderButton(actualData, drinkOrFood, setRedirect)}
+    <div className="recipe-food-margin">
+      <div className="meals-page d-flex flex-column justify-content-center align-items-center">
+        <div className="card text-white bg-dark card-meals">
+          <img
+            className="card-img-top"
+            src={actualData.strMealThumb || actualData.strDrinkThumb}
+            alt={actualData.strMeal || actualData.strDrink}
+            data-testid="recipe-photo"
+            width="200"
+          />
+          <div className="card-body d-flex flex-row justify-content-between">
+            <h2 data-testid="recipe-title" className="card-text">
+              {actualData.strMeal || actualData.strDrink}
+            </h2>
+            <Icons
+              pathName={match}
+              detailsDrink={actualData}
+              detailsRecipe={actualData}
+            />
+          </div>
+        </div>
+        <div className="d-flex flex-column justify-content-center align-items-center instructions margin-bottom">
+          {Input(
+            actualData,
+            drinkOrFood,
+            path,
+            render,
+            setRender,
+            Ingredients,
+            decorationDefault,
+          )}
+          <br />
+          <h3>Instructions</h3>
+          <p data-testid="instructions">{actualData.strInstructions}</p>
+        </div>
+        {renderButton(actualData, drinkOrFood, setRedirect)}
+      </div>
     </div>
   );
 };

@@ -17,7 +17,6 @@ import RecepiesFavorited from './Pages/RecepiesFavorited';
 import DetailsFood from './Pages/DetailsFood';
 import DetailsDrink from './Pages/DetailsDrink';
 import MeaslInProgress from './Pages/MealsInPropgress';
-import Image from './images/brooke-lark-08bOYnH_r_E-unsplash.jpg';
 
 function App() {
   return (

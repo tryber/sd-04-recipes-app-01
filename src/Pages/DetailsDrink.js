@@ -23,10 +23,12 @@ const DetailsDrink = ({
 
   if (isLoadingDetails && isLoadingRecomendation) return <Phrases />;
   return (
-    <div>
-      <h2>
-        Detalhes da receita
-      </h2>
+    <div className="meals-page d-flex flex-column justify-content-center align-items-center">
+      <div className="btn btn-primary header-div">
+        <h2>
+          Detalhes da receita
+        </h2>
+      </div>
       <RecipeDrink pathName={match} />
       <Recomendations pathName={match} stateDrinksOrFoods={foods} />
       <StartRecipeBtn pathName={match} id={id} />
