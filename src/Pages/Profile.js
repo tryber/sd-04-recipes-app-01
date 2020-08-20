@@ -6,20 +6,24 @@ import Footer from '../Components/Footer';
 import { getLocalStorage } from '../helpers';
 
 const Profile = ({ location: { pathname } }) => (
-  <div>
+  <div className="profile-page">
     <Header pathname={pathname} />
-    <h2 data-testid="profile-email">{getLocalStorage('user').email}</h2>
-    <Link to="/receitas-feitas">
-      <button data-testid="profile-done-btn">Receitas Feitas</button>
-    </Link>
-    <Link to="/receitas-favoritas">
-      <button data-testid="profile-favorite-btn">Receitas Favoritas</button>
-    </Link>
-    <Link to="/">
-      <button type="submit" data-testid="profile-logout-btn" onClick={() => localStorage.clear()}>
-        Sair
-      </button>
-    </Link>
+    <div className="profile-itens">
+      <p data-testid="profile-email">{getLocalStorage('user').email}</p>
+      <div className="profile-itens-buttons">
+        <Link to="/receitas-feitas">
+          <button className="btn btn-primary btn-lg btn-block button-profile" data-testid="profile-done-btn">Receitas Feitas</button>
+        </Link>
+        <Link to="/receitas-favoritas">
+          <button className="btn btn-primary btn-lg btn-block button-profile" data-testid="profile-favorite-btn">Receitas Favoritas</button>
+        </Link>
+        <Link to="/">
+          <button className="btn btn-primary btn-lg btn-block button-profile" type="submit" data-testid="profile-logout-btn" onClick={() => localStorage.clear()}>
+            Sair
+          </button>
+        </Link>
+      </div>
+    </div>
     <Footer />
   </div>
 );

@@ -24,8 +24,43 @@ body {
   padding: 0 0px 0 50px;
 }
 
-.meals-page {
+.meals-Page {
   width: 100%;
+}
+
+.profile-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-itens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30%;
+}
+
+.profile-itens-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-itens button {
+  margin-top: 7%;
+}
+
+@media (min-width: 650px) {
+  .profile-itens {
+    margin-top: 10%;
+  }
+  
+  .profile-itens p {
+    font-size: 1.6em;
+    max-width: 100%;
+    margin-bottom: 3%;
+  }
 }
 
 .header {
@@ -72,21 +107,19 @@ body {
 }
 
 .footer {
-  display: flex;
   align-items: center;
-  justify-content: space-around;
+  display: flex;
   flex-direction: row;
-
+  justify-content: space-around;
 }
 
 .header-categories {
-  margin: 15px 0 15px 0;
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: center;
-
+  margin: 15px 0 15px 0;
+  width: 100%;
 }
 
 .meal-container {
