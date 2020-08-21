@@ -57,3 +57,59 @@ export const recomendationItemKeys = (pathname) => {
   }
   return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
 };
+
+export const recipeInProgressData = (pathname) => {
+  if (pathname === '/comidas/:id/in-progress') {
+    return {
+      strName: 'strMeal', strThumb: 'strMealThumb', categorieOrAlcoholic: 'strCategory',
+    };
+  }
+  return { strName: 'strDrink', strThumb: 'strDrinkThumb', categorieOrAlcoholic: 'strAlcoholic' };
+};
+
+export const createPathObj = (type, id) => ({ path: `/${type}/:id`, url: `/${type}/${id}` });
+
+export const convertObjKeys = (recipe) => {
+  if (recipe.type === 'comida') {
+    return {
+      strMeal: recipe.name,
+      strMealThumb: recipe.image,
+      strCategory: recipe.category,
+      idMeal: recipe.id,
+      strArea: recipe.area,
+    };
+  }
+  return {
+    strDrink: recipe.name,
+    strDrinkThumb: recipe.image,
+    strCategory: recipe.category,
+    strAlcoholic: recipe.alcoholicOrNot,
+    idDrink: recipe.id,
+  };
+};
+
+export const filterCards = (doneRecipes, name, callback, string) => {
+  if (name === 'All') {
+    callback(getLocalStorage(string));
+  }
+  if (name === 'Foods') {
+    callback(doneRecipes.filter((recipe) => recipe.type === 'comida'));
+  }
+  if (name === 'Drinks') {
+    callback(doneRecipes.filter((recipe) => recipe.type === 'bebida'));
+  }
+};
+
+export const recomendationItemKeysToCards = (pathname) => {
+  if (pathname.includes('/comidas')) {
+    return { id: 'idMeal', strName: 'strMeal', strThumb: 'strMealThumb' };
+  }
+  return { id: 'idDrink', strName: 'strDrink', strThumb: 'strDrinkThumb' };
+};
+
+export const recomendationIngredientsToCards = (pathname) => {
+  if (pathname.includes('/comidas')) {
+    return { strName: 'strIngredient' };
+  }
+  return { strName: 'strIngredient1' };
+};

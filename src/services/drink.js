@@ -18,14 +18,17 @@ export const getDrink = (filter = '', drink) => {
 };
 
 const categoriesURL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
+const listIngredientesURL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
 
-export const getCategoriesDrink = () => (
-  fetch(`${categoriesURL}`).then((response) =>
+export const getCategoriesDrink = (type) => {
+  let link = categoriesURL;
+  if (type === 'ingredient') link = listIngredientesURL;
+  return fetch(`${link}`).then((response) =>
     response
       .json()
       .then((json) => (response.ok ? Promise.resolve(json.drinks) : Promise.reject(json))),
-  )
-);
+  );
+};
 
 const detailsURL = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
