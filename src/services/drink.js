@@ -32,7 +32,20 @@ export const getCategoriesDrink = (type) => {
 
 const detailsURL = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-export const getDetailsDrink = (id) =>
+export const getDetailsDrink = (id) => (
   fetch(`${detailsURL}${id}`).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
-  );
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);
+
+const randomDrinkURL = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
+
+export const getRandomDrink = () => (
+  fetch(`${randomDrinkURL}`).then((response) =>
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);

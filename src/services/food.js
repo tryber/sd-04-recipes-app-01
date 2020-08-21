@@ -36,7 +36,20 @@ export const getCategoriesFood = (type) => {
 
 const detailsURL = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=';
 
-export const getDetailsFood = (id) =>
+export const getDetailsFood = (id) => (
   fetch(`${detailsURL}${id}`).then((response) =>
-    response.json().then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
-  );
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);
+
+const randomFoodURL = 'https://www.themealdb.com/api/json/v1/1/random.php';
+
+export const getRandomFood = () => (
+  fetch(`${randomFoodURL}`).then((response) =>
+    response
+      .json()
+      .then((json) => (response.ok ? Promise.resolve(json) : Promise.reject(json))),
+  )
+);

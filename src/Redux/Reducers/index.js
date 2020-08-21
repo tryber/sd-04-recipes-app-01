@@ -7,6 +7,7 @@ import categoriesDrinksReducer from './categoriesDrinksReducer';
 import detailsFoodsReducer from './detailsFoodsReducer';
 import detailsDrinksReducer from './detailsDrinksReducer';
 import headerAndFooterReducer from './headerAndFooterReducer';
+import randomReducer from './randomReducer';
 
 const rootReducer = combineReducers({
   loginReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   detailsFoodsReducer,
   detailsDrinksReducer,
   headerAndFooterReducer,
+  randomReducer,
 });
 
 export default rootReducer;
